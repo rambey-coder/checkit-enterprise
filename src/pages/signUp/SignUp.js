@@ -1,10 +1,12 @@
 import React from "react";
-import "./SignUp.css"
+import "./SignUp.css";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-    const handleNavigate = () => { }
-    
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="signup-container">
       <div className="img-background">
@@ -23,7 +25,7 @@ const SignUp = () => {
           <p>Register with us today</p>
           <div className="form-content">
             <div className="forms">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="form">
                   <span>
                     <label htmlFor="name">Username</label>
@@ -46,7 +48,7 @@ const SignUp = () => {
                     <input type="password" />
                   </span>
                 </div>
-                <button onClick={handleNavigate}>Sign up</button>
+                <button>Sign up</button>
               </form>
             </div>
           </div>
