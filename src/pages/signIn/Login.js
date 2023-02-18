@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Login.css"
+import { useAppContext } from "../../context/Context";
 
 const Login = () => {
+  const { username, setUsername, password, setPassword } = useAppContext();
+  
    const handleSubmit = (e) => {
      e.preventDefault();
   };
@@ -29,12 +32,20 @@ const Login = () => {
                 <div className="form">
                   <span>
                     <label htmlFor="name">Username</label>
-                    <input type="text" />
+                    <input
+                      type="text"
+                      onChange={(e) => setUsername(e.target.value)}
+                      value={username}
+                    />
                   </span>
 
                   <span>
                     <label htmlFor="password">Password</label>
-                    <input type="password" />
+                    <input
+                      type="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                    />
                   </span>
                 </div>
                 <button>Sign In</button>

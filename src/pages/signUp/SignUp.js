@@ -1,8 +1,11 @@
 import React from "react";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
+import { useAppContext } from "../../context/Context";
 
 const SignUp = () => {
+  const { username, setUsername, password, setPassword, email, setEmail } =
+    useAppContext();
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -29,17 +32,29 @@ const SignUp = () => {
                 <div className="form">
                   <span>
                     <label htmlFor="name">Username</label>
-                    <input type="text" />
+                    <input
+                      type="text"
+                      onChange={(e) => setUsername(e.target.value)}
+                      value={username}
+                    />
                   </span>
 
                   <span>
                     <label htmlFor="name">Email</label>
-                    <input type="email" />
-                                  </span>
-                                  
+                    <input
+                      type="email"
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                    />
+                  </span>
+
                   <span>
                     <label htmlFor="password">Password</label>
-                    <input type="password" />
+                    <input
+                      type="password"
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                    />
                   </span>
                 </div>
                 <button>Sign up</button>
