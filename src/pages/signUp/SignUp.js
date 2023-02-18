@@ -3,8 +3,8 @@ import styles from "./SignUp.module.css";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../context/Context";
 
-import visible from "./assets/eye.svg"
-import hidden from "./assets/eye-off.svg"
+import visible from "./assets/eye.svg";
+import hidden from "./assets/eye-off.svg";
 
 const SignUp = () => {
   const {
@@ -14,12 +14,14 @@ const SignUp = () => {
     setPassword,
     email,
     setEmail,
+    error,
     togglePassword,
     handleToggle,
+    // handleEmail,
+    // handlepassword,
+    // handleusername,
+    handleSubmit,
   } = useAppContext();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
 
   return (
     <div className={styles.signup_container}>
@@ -43,34 +45,59 @@ const SignUp = () => {
                 <div className={styles.form}>
                   <span>
                     <label htmlFor="name">Username</label>
+
                     <input
                       type="text"
                       onChange={(e) => setUsername(e.target.value)}
                       value={username}
+                    //   onBlur={handleusername}
                     />
+
+                    {error ? (
+                      <p className={styles.err}>Add a valid email</p>
+                    ) : (
+                      ""
+                    )}
                   </span>
 
                   <span>
                     <label htmlFor="name">Email</label>
+
                     <input
                       type="email"
-                      onChange={(e) => setPassword(e.target.value)}
-                      value={password}
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
+                    //   onBlur={handleEmail}
                     />
+
+                    {error ? (
+                      <p className={styles.err}>Add a valid email</p>
+                    ) : (
+                      ""
+                    )}
                   </span>
 
                   <span>
                     <label htmlFor="password">Password</label>
+
                     <input
                       type={togglePassword ? "text" : "password"}
-                      onChange={(e) => setEmail(e.target.value)}
-                      value={email}
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                    //   onBlur={handlepassword}
                     />
+
                     <img
                       src={togglePassword ? visible : hidden}
                       alt=""
                       onClick={handleToggle}
                     />
+
+                    {error ? (
+                      <p className={styles.err}>Add a valid email</p>
+                    ) : (
+                      ""
+                    )}
                   </span>
                 </div>
                 <button>Sign up</button>

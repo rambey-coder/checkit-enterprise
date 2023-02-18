@@ -104,11 +104,18 @@
     border: 1px solid #1E1E1E;
     padding: 12px 10px;
     border-radius: 4px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: #B4B4B4;
     font-size: 12px;
     font-weight: 500;
     outline: 0;
+}
+
+.err {
+    position: absolute;
+    color: rgb(255, 80, 80);
+    font-size: 12px;
+    bottom: 0;
 }
 
 .form > span > input:focus {
