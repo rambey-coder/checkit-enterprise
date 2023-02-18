@@ -1,20 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Login.css"
+import styles from "./Login.module.css"
 import { useAppContext } from "../../context/Context";
 
+import visible from "./assets/eye.svg"
+import hidden from "./assets/eye-off.svg"
+
 const Login = () => {
-  const { username, setUsername, password, setPassword } = useAppContext();
-  
+  const {
+    username,
+    setUsername,
+    password,
+    setPassword,
+    togglePassword,
+    handleToggle,
+  } = useAppContext();
+
    const handleSubmit = (e) => {
      e.preventDefault();
   };
   
   return (
-    <div className="signup-container">
-      <div className="background">
-        <div className="color"></div>
-        <div className="txt-container">
+    <div className={styles.signup_container}>
+      <div className={styles.background}>
+        <div className={styles.color}></div>
+        <div className={styles.txt_container}>
           <h1>
             Ship with ease. <br /> <span>Remotely</span>
           </h1>
@@ -22,14 +32,14 @@ const Login = () => {
         </div>
       </div>
 
-      <div className="form-container">
-        <div className="form-section">
+      <div className={styles.form_container}>
+        <div className={styles.form_section}>
           <h1>Sign In</h1>
           <p>Welcome back!</p>
-          <div className="form-content">
-            <div className="forms">
+          <div className={styles.form_content}>
+            <div className={styles.forms}>
               <form onSubmit={handleSubmit}>
-                <div className="form">
+                <div className={styles.form}>
                   <span>
                     <label htmlFor="name">Username</label>
                     <input
@@ -42,9 +52,14 @@ const Login = () => {
                   <span>
                     <label htmlFor="password">Password</label>
                     <input
-                      type="password"
+                      type={togglePassword ? "text" : "password"}
                       onChange={(e) => setPassword(e.target.value)}
                       value={password}
+                    />
+                    <img
+                      src={togglePassword ? visible : hidden}
+                      alt=""
+                      onClick={handleToggle}
                     />
                   </span>
                 </div>

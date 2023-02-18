@@ -14,10 +14,24 @@ const ContextProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [togglePassword, setTogglePassword] = useState(false)
+
+  const handleToggle = () => {
+    setTogglePassword(!togglePassword)
+  }
 
   return (
     <AppContext.Provider
-      value={{ username, setUsername, email, setEmail, password, setPassword }}
+      value={{
+        username,
+        setUsername,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        togglePassword,
+        handleToggle,
+      }}
     >
       {children}
     </AppContext.Provider>
