@@ -35,14 +35,8 @@ const SignUp = () => {
                   <span>
                     <label htmlFor="name">Email</label>
                     <input type="email" />
-                  </span>
-                </div>
-                <div className="form">
-                  <span>
-                    <label htmlFor="mail">Role</label>
-                    <input type="text" />
-                  </span>
-
+                                  </span>
+                                  
                   <span>
                     <label htmlFor="password">Password</label>
                     <input type="password" />
