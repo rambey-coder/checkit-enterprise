@@ -87,10 +87,10 @@ const ContextProvider = ({ children }) => {
       const res = await SignIn(data);
       if (res) {
         toast.success(res?.data?.message);
-
+        localStorage.setItem("user", JSON.stringify(res?.data));
         navigate("/profile");
       }
-      return res.data;
+      return res?.data;
     } catch (error) {
       if (error) {
         toast.error(error?.response?.data?.message);

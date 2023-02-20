@@ -6,6 +6,8 @@ export function RequireToken() {
   let location = useLocation();
   if (!auth) {
     return <Navigate to="/login" state={{ from: location }} />;
+  } else {
+      <Navigate to="/profile" />
   }
 
   return <Outlet />;
