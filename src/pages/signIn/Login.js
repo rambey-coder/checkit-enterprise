@@ -1,20 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Login.css"
+import styles from "./Login.module.css"
 import { useAppContext } from "../../context/Context";
 
+import visible from "./assets/eye.svg"
+import hidden from "./assets/eye-off.svg"
+
 const Login = () => {
-  const { username, setUsername, password, setPassword } = useAppContext();
-  
-   const handleSubmit = (e) => {
-     e.preventDefault();
-  };
-  
+  const {
+    userName,
+    setUserName,
+    pass,
+    setPass,
+    togglePassword,
+    handleToggle,
+    handleLogin,
+  } = useAppContext();
+
   return (
-    <div className="signup-container">
-      <div className="background">
-        <div className="color"></div>
-        <div className="txt-container">
+    <div className={styles.signup_container}>
+      <div className={styles.background}>
+        <div className={styles.color}></div>
+        <div className={styles.txt_container}>
           <h1>
             Ship with ease. <br /> <span>Remotely</span>
           </h1>
@@ -22,29 +29,34 @@ const Login = () => {
         </div>
       </div>
 
-      <div className="form-container">
-        <div className="form-section">
+      <div className={styles.form_container}>
+        <div className={styles.form_section}>
           <h1>Sign In</h1>
           <p>Welcome back!</p>
-          <div className="form-content">
-            <div className="forms">
-              <form onSubmit={handleSubmit}>
-                <div className="form">
+          <div className={styles.form_content}>
+            <div className={styles.forms}>
+              <form onSubmit={handleLogin}>
+                <div className={styles.form}>
                   <span>
                     <label htmlFor="name">Username</label>
                     <input
                       type="text"
-                      onChange={(e) => setUsername(e.target.value)}
-                      value={username}
+                      onChange={(e) => setUserName(e.target.value)}
+                      value={userName}
                     />
                   </span>
 
                   <span>
                     <label htmlFor="password">Password</label>
                     <input
-                      type="password"
-                      onChange={(e) => setPassword(e.target.value)}
-                      value={password}
+                      type={togglePassword ? "text" : "password"}
+                      onChange={(e) => setPass(e.target.value)}
+                      value={pass}
+                    />
+                    <img
+                      src={togglePassword ? visible : hidden}
+                      alt=""
+                      onClick={handleToggle}
                     />
                   </span>
                 </div>

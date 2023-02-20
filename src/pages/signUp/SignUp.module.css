@@ -1,8 +1,8 @@
-.signup-container {
+.signup_container {
     display: flex;
 }
 
-.img-background {
+.img_background {
     background: url(./assets/ship.jpg);
     background-size: cover;
     height: 100vh;
@@ -25,53 +25,53 @@
     background: #FD7B38;
 }
 
-.txt-container {
+.txt_container {
     width: 80%;
     margin: auto;
     position: relative;
     z-index: 99;
 }
 
-.txt-container > img:nth-child(1) {
+.txt_container > img:nth-child(1) {
     width: 40px;
 }
 
-.txt-container > h1 {
+.txt_container > h1 {
     color: #fff;
     font-weight: 600;
 }
 
-.txt-container > h1 > span {
+.txt_container > h1 > span {
     color: #FD7B38;
 }
 
 
-.txt-container > p {
+.txt_container > p {
     color: #fff;
     font-size: 14px;
     margin-top: 2rem;
     width: 70%;
 }
 
-.form-container {
+.form_container {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.form-section {
+.form_section {
     width: 80%;
     margin: auto;
 }
 
-.form-container > div > h1 {
+.form_container > div > h1 {
     color: #1E1E1E;
     font-weight: 700;
     margin-bottom: 15px;
 }
 
-.form-container > div > p:nth-child(2) {
+.form_container > div > p:nth-child(2) {
     font-size: 12px;
     font-weight: 600;
     color: #1E1E1E;
@@ -90,6 +90,7 @@
     align-items: flex-start;
     flex-direction: column;
     width: 100%;
+    position: relative;
 }
 
 .form > span > label {
@@ -103,16 +104,31 @@
     border: 1px solid #1E1E1E;
     padding: 12px 10px;
     border-radius: 4px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: #B4B4B4;
     font-size: 12px;
     font-weight: 500;
     outline: 0;
 }
 
+.err {
+    position: absolute;
+    color: rgb(255, 80, 80);
+    font-size: 12px;
+    bottom: 0;
+}
+
 .form > span > input:focus {
     border: 1px solid #FD7B38;
     transition: .4s linear;
+}
+
+.form > span > img {
+    width: 15px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 40px;
 }
 
 div.forms > form > button {
@@ -136,24 +152,24 @@ div.forms > form > button:hover {
     color: #FD7B38;
 }
 
-.form-container > div > p:nth-child(4) {
+.form_container > div > p:nth-child(4) {
     text-align: center;
     font-size: 13px;
     color: #1E1E1E;
     font-weight: 600;
 }
 
-.form-container > div > p:nth-child(4) > span > a {
+.form_container > div > p:nth-child(4) > span > a {
     color: #FD7B38;
     text-decoration: none;
 }
 
 @media screen and (max-width: 768px) {
-    .signup-container {
+    .signup_container {
         flex-direction: column;
     }
 
-    .img-background, .form-container {
+    .img_background, .form_container {
         width: 100%;
         height: 100vh;
     }
@@ -176,7 +192,7 @@ div.forms > form > button:hover {
         margin-bottom: 0;
     }
 
-    .txt-container > p {
+    .txt_container > p {
         width: 85%;
     }
 }
