@@ -22,7 +22,7 @@
     height: 100%;
     z-index: 0;
     opacity: 0.3;
-    background: #FD7B38;
+    background: #2995D9;
 }
 
 .txt_container {
@@ -42,7 +42,7 @@
 }
 
 .txt_container > h1 > span {
-    color: #FD7B38;
+    color: #031D40;
 }
 
 
@@ -119,7 +119,7 @@
 }
 
 .form > span > input:focus {
-    border: 1px solid #FD7B38;
+    border: 1px solid #2995D9;
     transition: .4s linear;
 }
 
@@ -137,7 +137,7 @@ div.forms > form > button {
     color: #fff;
     font-size: 14px;
     font-weight: 500;
-    background: #FD7B38;
+    background: #031D40;
     margin-top: 2rem;
     border: 1px solid transparent;
     border-radius: 4px;
@@ -147,9 +147,9 @@ div.forms > form > button {
 
 div.forms > form > button:hover {
     background: transparent;
-    border: 1px solid #FD7B38;
+    border: 1px solid #08428C;
     transition: all 0.4s linear;
-    color: #FD7B38;
+    color: #031D40;
 }
 
 .form_container > div > p:nth-child(4) {
@@ -160,7 +160,7 @@ div.forms > form > button:hover {
 }
 
 .form_container > div > p:nth-child(4) > span > a {
-    color: #FD7B38;
+    color: #031D40;
     text-decoration: none;
 }
 
