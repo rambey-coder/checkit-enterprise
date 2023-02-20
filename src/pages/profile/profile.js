@@ -3,7 +3,6 @@ import { getCurrentUser } from "../../services/auth";
 
 const profile = () => {
   const currentUser = getCurrentUser();
-  console.log(currentUser)
 
   return (
     <div>
