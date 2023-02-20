@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import { getCurrentUser } from "../../services/auth";
 
 const profile = () => {
-  return (
-    <div>profile</div>
-  )
-}
+  const currentUser = getCurrentUser();
+  console.log(currentUser)
 
-export default profile
+  return (
+    <div>
+      <h1>Username: {currentUser?.username}</h1>
+      <p>email {currentUser?.email}</p>
+    </div>
+  );
+};
+
+export default profile;

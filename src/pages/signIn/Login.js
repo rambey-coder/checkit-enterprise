@@ -8,18 +8,15 @@ import hidden from "./assets/eye-off.svg"
 
 const Login = () => {
   const {
-    username,
-    setUsername,
-    password,
-    setPassword,
+    userName,
+    setUserName,
+    pass,
+    setPass,
     togglePassword,
     handleToggle,
+    handleLogin,
   } = useAppContext();
 
-   const handleSubmit = (e) => {
-     e.preventDefault();
-  };
-  
   return (
     <div className={styles.signup_container}>
       <div className={styles.background}>
@@ -38,14 +35,14 @@ const Login = () => {
           <p>Welcome back!</p>
           <div className={styles.form_content}>
             <div className={styles.forms}>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleLogin}>
                 <div className={styles.form}>
                   <span>
                     <label htmlFor="name">Username</label>
                     <input
                       type="text"
-                      onChange={(e) => setUsername(e.target.value)}
-                      value={username}
+                      onChange={(e) => setUserName(e.target.value)}
+                      value={userName}
                     />
                   </span>
 
@@ -53,8 +50,8 @@ const Login = () => {
                     <label htmlFor="password">Password</label>
                     <input
                       type={togglePassword ? "text" : "password"}
-                      onChange={(e) => setPassword(e.target.value)}
-                      value={password}
+                      onChange={(e) => setPass(e.target.value)}
+                      value={pass}
                     />
                     <img
                       src={togglePassword ? visible : hidden}

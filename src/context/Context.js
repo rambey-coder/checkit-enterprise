@@ -1,7 +1,8 @@
 import { createContext, useState, useContext } from "react";
-import ApiService from "../services/auth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { SignIn } from "../services/auth";
+import { SignUp } from "../services/auth";
 
 const AppContext = createContext(null);
 
@@ -20,6 +21,10 @@ const ContextProvider = ({ children }) => {
   const [nameError, setNameError] = useState(false);
   const [passError, setPassError] = useState(false);
 
+  // signin
+  const [userName, setUserName] = useState("");
+  const [pass, setPass] = useState("");
+
   const emailTest = new RegExp(/\S+@\S+\.\S+/);
   const passwordTest = new RegExp(/^["0-9a-zA-Z!@#$&()\\-`.+,/"]{8,}$/);
   const usernameTest = new RegExp(/^[A-Za-z]{5,29}$/);
@@ -30,6 +35,7 @@ const ContextProvider = ({ children }) => {
     setTogglePassword(!togglePassword);
   };
 
+  //signup
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -54,7 +60,7 @@ const ContextProvider = ({ children }) => {
       }, 3000);
     } else {
       try {
-        const res = await ApiService.SignUp(data);
+        const res = await SignUp(data);
         if (res) {
           toast.success(res?.data?.message);
           navigate("/profile");
@@ -62,8 +68,33 @@ const ContextProvider = ({ children }) => {
       } catch (error) {
         if (error) {
           toast.error(error?.response?.data?.message);
-          navigate(null)
+          navigate(null);
         }
+      }
+    }
+  };
+
+  //sign in
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      username: userName,
+      password: pass,
+    };
+
+    try {
+      const res = await SignIn(data);
+      if (res) {
+        toast.success(res?.data?.message);
+
+        navigate("/profile");
+      }
+      return res.data;
+    } catch (error) {
+      if (error) {
+        toast.error(error?.response?.data?.message);
+        navigate(null);
       }
     }
   };
@@ -76,6 +107,11 @@ const ContextProvider = ({ children }) => {
         setPassword,
         handleToggle,
         handleSubmit,
+        handleLogin,
+        userName,
+        setUserName,
+        pass,
+        setPass,
         username,
         email,
         password,
