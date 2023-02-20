@@ -1,7 +1,7 @@
 import "./App.css";
 import Login from "./pages/signIn/Login";
 import SignUp from "./pages/signUp/SignUp";
-import Profile from "./pages/profile/Profile";
+import Profile from "./pages/profile/Profile"
 import { Routes, Route } from "react-router-dom";
 import { RequireToken } from "./Auth";
 import { ToastContainer } from "react-toastify";
