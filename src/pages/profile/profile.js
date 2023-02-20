@@ -1,7 +1,7 @@
 import React from "react";
 import { getCurrentUser } from "../../services/auth";
 
-const profile = () => {
+const Profile = () => {
   const currentUser = getCurrentUser();
 
   return (
@@ -12,4 +12,4 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default Profile;
