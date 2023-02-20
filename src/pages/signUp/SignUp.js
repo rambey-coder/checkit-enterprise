@@ -14,12 +14,11 @@ const SignUp = () => {
     setPassword,
     email,
     setEmail,
-    error,
+    emailError,
     togglePassword,
+    nameError,
+    passError,
     handleToggle,
-    // handleEmail,
-    // handlepassword,
-    // handleusername,
     handleSubmit,
   } = useAppContext();
 
@@ -50,11 +49,12 @@ const SignUp = () => {
                       type="text"
                       onChange={(e) => setUsername(e.target.value)}
                       value={username}
-                    //   onBlur={handleusername}
                     />
 
-                    {error ? (
-                      <p className={styles.err}>Add a valid email</p>
+                    {nameError ? (
+                      <p className={styles.err}>
+                        Username must be atleast 5 letters
+                      </p>
                     ) : (
                       ""
                     )}
@@ -67,10 +67,9 @@ const SignUp = () => {
                       type="email"
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}
-                    //   onBlur={handleEmail}
                     />
 
-                    {error ? (
+                    {emailError ? (
                       <p className={styles.err}>Add a valid email</p>
                     ) : (
                       ""
@@ -84,7 +83,6 @@ const SignUp = () => {
                       type={togglePassword ? "text" : "password"}
                       onChange={(e) => setPassword(e.target.value)}
                       value={password}
-                    //   onBlur={handlepassword}
                     />
 
                     <img
@@ -93,8 +91,10 @@ const SignUp = () => {
                       onClick={handleToggle}
                     />
 
-                    {error ? (
-                      <p className={styles.err}>Add a valid email</p>
+                    {passError ? (
+                      <p className={styles.err}>
+                        Password must be atleast 8 characters
+                      </p>
                     ) : (
                       ""
                     )}
