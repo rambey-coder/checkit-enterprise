@@ -1,7 +1,7 @@
 import { createContext, useState, useContext } from "react";
 import ApiService from "../services/auth";
 import { toast } from "react-toastify";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AppContext = createContext(null);
 
@@ -23,6 +23,8 @@ const ContextProvider = ({ children }) => {
   const emailTest = new RegExp(/\S+@\S+\.\S+/);
   const passwordTest = new RegExp(/^["0-9a-zA-Z!@#$&()\\-`.+,/"]{8,}$/);
   const usernameTest = new RegExp(/^[A-Za-z]{5,29}$/);
+
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     setTogglePassword(!togglePassword);
@@ -55,10 +57,12 @@ const ContextProvider = ({ children }) => {
         const res = await ApiService.SignUp(data);
         if (res) {
           toast.success(res?.data?.message);
+          navigate("/profile");
         }
       } catch (error) {
         if (error) {
           toast.error(error?.response?.data?.message);
+          navigate(null)
         }
       }
     }
