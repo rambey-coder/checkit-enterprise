@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./SignUp.module.css";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../context/Context";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import visible from "./assets/eye.svg";
 import hidden from "./assets/eye-off.svg";
@@ -24,6 +26,7 @@ const SignUp = () => {
 
   return (
     <div className={styles.signup_container}>
+    <ToastContainer />
       <div className={styles.img_background}>
         <div className={styles.color}></div>
         <div className={styles.txt_container}>

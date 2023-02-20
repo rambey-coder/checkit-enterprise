@@ -1,5 +1,6 @@
 import { createContext, useState, useContext } from "react";
 import ApiService from "../services/auth";
+import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 
 const AppContext = createContext(null);
@@ -50,8 +51,16 @@ const ContextProvider = ({ children }) => {
         setEmailError(false);
       }, 3000);
     } else {
-      const res = await ApiService.SignUp(data);
-      console.log(res.data.message);
+      try {
+        const res = await ApiService.SignUp(data);
+        if (res) {
+          toast.success(res?.data?.message);
+        }
+      } catch (error) {
+        if (error) {
+          toast.error(error?.response?.data?.message);
+        }
+      }
     }
   };
 
