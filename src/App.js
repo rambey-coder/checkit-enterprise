@@ -1,7 +1,7 @@
 import "./App.css";
 import Login from "./pages/signIn/Login";
 import SignUp from "./pages/signUp/SignUp";
-import Profile from "./pages/profile/Profile"
+import Account from "./pages/Account/Account";
 import { Routes, Route } from "react-router-dom";
 import { RequireToken } from "./Auth";
 import { ToastContainer } from "react-toastify";
@@ -16,7 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         {/* protected route */}
         <Route element={<RequireToken />}>
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Account />} />
         </Route>
       </Routes>
     </div>
