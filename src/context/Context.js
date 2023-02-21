@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { SignIn } from "../services/auth";
 import { SignUp } from "../services/auth";
+import { SignOut } from "../services/auth";
 
 const AppContext = createContext(null);
 
@@ -99,6 +100,12 @@ const ContextProvider = ({ children }) => {
     }
   };
 
+  //sign out
+  const handleLogout = () => {
+    SignOut()
+    navigate("/login")
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -109,6 +116,7 @@ const ContextProvider = ({ children }) => {
         handleSubmit,
         handleLogin,
         userName,
+        handleLogout,
         setUserName,
         pass,
         setPass,

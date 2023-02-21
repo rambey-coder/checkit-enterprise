@@ -14,3 +14,7 @@ export const SignIn = (data) => {
 export const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user")) || null;
 };
+
+export const SignOut = () => {
+  localStorage.removeItem("user")
+}
