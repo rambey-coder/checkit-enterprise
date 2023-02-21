@@ -1,11 +1,10 @@
-import React from "react";
-import { getCurrentUser } from "../../services/auth";
-import { useAppContext } from "../../context/Context";
+import React from 'react'
+import { getCurrentUser } from '../../services/auth'
+import { useAppContext } from '../../context/Context'
 
 const Profile = () => {
-  const { handleLogout } = useAppContext();
-  const currentUser = getCurrentUser();
-
+      const { handleLogout } = useAppContext();
+      const currentUser = getCurrentUser();
   return (
     <div>
       <h1>Username: {currentUser?.username}</h1>
@@ -13,6 +12,6 @@ const Profile = () => {
       <button onClick={handleLogout}>logout</button>
     </div>
   );
-};
+}
 
-export default Profile;
+export default Profile
