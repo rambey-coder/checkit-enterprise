@@ -9,17 +9,16 @@ import hidden from "./assets/eye-off.svg";
 const SignUp = () => {
   const {
     username,
-    setUsername,
     password,
-    setPassword,
     email,
-    setEmail,
     emailError,
     togglePassword,
     nameError,
     passError,
     handleToggle,
     handleSubmit,
+    handleChange,
+    handleBlur,
   } = useAppContext();
 
   return (
@@ -47,13 +46,15 @@ const SignUp = () => {
 
                     <input
                       type="text"
-                      onChange={(e) => setUsername(e.target.value)}
+                      name="username"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       value={username}
                     />
 
                     {nameError ? (
                       <p className={styles.err}>
-                        Username must be atleast 5 letters
+                        {nameError}
                       </p>
                     ) : (
                       ""
@@ -65,12 +66,14 @@ const SignUp = () => {
 
                     <input
                       type="email"
-                      onChange={(e) => setEmail(e.target.value)}
+                      name="email"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       value={email}
                     />
 
                     {emailError ? (
-                      <p className={styles.err}>Add a valid email</p>
+                      <p className={styles.err}>{emailError}</p>
                     ) : (
                       ""
                     )}
@@ -81,7 +84,9 @@ const SignUp = () => {
 
                     <input
                       type={togglePassword ? "text" : "password"}
-                      onChange={(e) => setPassword(e.target.value)}
+                      name="password"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       value={password}
                     />
 
@@ -93,7 +98,7 @@ const SignUp = () => {
 
                     {passError ? (
                       <p className={styles.err}>
-                        Password must be atleast 8 characters
+                        {passError}
                       </p>
                     ) : (
                       ""

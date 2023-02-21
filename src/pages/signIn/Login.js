@@ -1,20 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./Login.module.css"
+import styles from "./Login.module.css";
 import { useAppContext } from "../../context/Context";
 
-import visible from "./assets/eye.svg"
-import hidden from "./assets/eye-off.svg"
+import visible from "./assets/eye.svg";
+import hidden from "./assets/eye-off.svg";
 
 const Login = () => {
   const {
     userName,
-    setUserName,
+    handleBulr,
+    handleChange,
     pass,
-    setPass,
     togglePassword,
     handleToggle,
     handleLogin,
+    nameError,
+    passError,
   } = useAppContext();
 
   return (
@@ -41,16 +43,21 @@ const Login = () => {
                     <label htmlFor="name">Username</label>
                     <input
                       type="text"
-                      onChange={(e) => setUserName(e.target.value)}
+                      name="userName"
+                      onChange={handleChange}
+                      onBlur={handleBulr}
                       value={userName}
                     />
+                    {nameError ? <p className={styles.err}>{nameError}</p> : ""}
                   </span>
 
                   <span>
                     <label htmlFor="password">Password</label>
                     <input
                       type={togglePassword ? "text" : "password"}
-                      onChange={(e) => setPass(e.target.value)}
+                      name="pass"
+                      onChange={handleChange}
+                      onBlur={handleBulr}
                       value={pass}
                     />
                     <img
@@ -58,6 +65,8 @@ const Login = () => {
                       alt=""
                       onClick={handleToggle}
                     />
+
+                    {passError ? <p className={styles.err}>{passError}</p> : ""}
                   </span>
                 </div>
                 <button>Sign In</button>
