@@ -14,6 +14,7 @@ export const useAppContext = () => {
 };
 
 const ContextProvider = ({ children }) => {
+ 
   // sign up state
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -31,8 +32,8 @@ const ContextProvider = ({ children }) => {
   const [pass, setPass] = useState("");
 
   // sign in error state
-  // const [userNameError, setuserNameError] = useState(false);
-  // const [passwordError, setPasswordError] = useState(false);
+  const [userNameError, setuserNameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const emailTest = new RegExp(/\S+@\S+\.\S+/);
   const passwordTest = new RegExp(
@@ -42,11 +43,12 @@ const ContextProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
+  // toggle password visibility
   const handleToggle = () => {
     setTogglePassword(!togglePassword);
   };
 
-  // signup value
+  // input value
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -81,6 +83,8 @@ const ContextProvider = ({ children }) => {
       setPassError(false);
       setNameError(false);
       setEmailError(false);
+      setuserNameError(false);
+      setPasswordError(false);
     }, 3000);
   };
 
@@ -97,10 +101,10 @@ const ContextProvider = ({ children }) => {
         isValid = validatePassword();
         break;
       case "UserName":
-        isValid = validatUsername();
+        isValid = validatUserName();
         break;
       case "pass":
-        isValid = validatePassword();
+        isValid = validatePass();
         break;
       default:
         break;
@@ -108,6 +112,7 @@ const ContextProvider = ({ children }) => {
     return isValid;
   };
 
+  // signup validate
   const validatePassword = () => {
     let passwordError = "";
     const value = password;
@@ -138,6 +143,32 @@ const ContextProvider = ({ children }) => {
     setNameError(usernameError);
     return usernameError === "";
   };
+  //
+
+  // sign in validate
+  const validatePass = () => {
+    let passwordError = "";
+    const value = pass;
+    if (value.trim() === "") passwordError = "Password is required";
+    else if (!passwordTest.test(value))
+      passwordError =
+        "Password must contain at least 8 characters, 1 number, 1 upper and 1 lowercase!";
+    removeError();
+    setPasswordError(passwordError);
+    return passwordError === "";
+  };
+
+  const validatUserName = () => {
+    let usernameError = "";
+    const value = userName;
+    if (value.trim() === "") usernameError = "Username is required";
+    else if (!usernameTest.test(value))
+      usernameError = "Username must be atleast 5 characters";
+    removeError();
+    setuserNameError(usernameError);
+    return usernameError === "";
+  };
+  //
 
   //signup
   const handleSubmit = async (e) => {
@@ -161,7 +192,12 @@ const ContextProvider = ({ children }) => {
         const res = await SignUp(data);
         if (res) {
           toast.success(res?.data?.message);
+
           navigate("/profile");
+
+          setEmail("");
+          setPassword("");
+          setUsername("");
         }
       } catch (error) {
         if (error) {
@@ -193,8 +229,13 @@ const ContextProvider = ({ children }) => {
         const res = await SignIn(data);
         if (res) {
           toast.success(res?.data?.message);
+
           localStorage.setItem("user", JSON.stringify(res?.data));
+
           navigate("/profile");
+
+          setUserName("");
+          setPass("");
         }
         return res?.data;
       } catch (error) {
@@ -204,6 +245,8 @@ const ContextProvider = ({ children }) => {
         }
       }
     }
+
+     
   };
 
   //sign out
@@ -232,6 +275,8 @@ const ContextProvider = ({ children }) => {
         emailError,
         nameError,
         passError,
+        userNameError,
+        passwordError,
       }}
     >
       {children}

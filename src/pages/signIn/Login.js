@@ -15,8 +15,8 @@ const Login = () => {
     togglePassword,
     handleToggle,
     handleLogin,
-    nameError,
-    passError,
+    userNameError,
+    passwordError,
   } = useAppContext();
 
   return (
@@ -48,7 +48,11 @@ const Login = () => {
                       onBlur={handleBulr}
                       value={userName}
                     />
-                    {nameError ? <p className={styles.err}>{nameError}</p> : ""}
+                    {userNameError ? (
+                      <p className={styles.err}>{userNameError}</p>
+                    ) : (
+                      ""
+                    )}
                   </span>
 
                   <span>
@@ -66,7 +70,11 @@ const Login = () => {
                       onClick={handleToggle}
                     />
 
-                    {passError ? <p className={styles.err}>{passError}</p> : ""}
+                    {passwordError ? (
+                      <p className={styles.err}>{passwordError}</p>
+                    ) : (
+                      ""
+                    )}
                   </span>
                 </div>
                 <button>Sign In</button>
