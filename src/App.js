@@ -3,7 +3,7 @@ import Login from "./pages/signIn/Login";
 import SignUp from "./pages/signUp/SignUp";
 import Account from "./pages/Account/Account";
 import { Routes, Route } from "react-router-dom";
-import { Authenticated, RequireToken } from "./Auth";
+import { Authenticated, RequireToken } from "./Authentication";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
