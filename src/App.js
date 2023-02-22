@@ -3,7 +3,7 @@ import Login from "./pages/signIn/Login";
 import SignUp from "./pages/signUp/SignUp";
 import Account from "./pages/Account/Account";
 import { Routes, Route } from "react-router-dom";
-import { RequireToken } from "./Auth";
+import { Authenticated, RequireToken } from "./Auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,8 +12,11 @@ function App() {
     <div className="App">
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        {/* protected from visiting when authenticated */}
+        <Route element={<Authenticated />}>
+          <Route path="/" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
         {/* protected route */}
         <Route element={<RequireToken />}>
           <Route path="/profile" element={<Account />} />
