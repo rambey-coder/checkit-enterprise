@@ -169,6 +169,10 @@ div.forms > form > button:hover {
         flex-direction: column;
     }
 
+    .background {
+        display: none;
+    }
+
     .background, .form_container {
         width: 100%;
         height: 100vh;
