@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Sidebar.module.css";
+
 import dashboard from "./assets/dashboard.svg";
+import create from "./assets/create.svg"
 
 const Sidebar = () => {
   return (
@@ -13,7 +15,7 @@ const Sidebar = () => {
           </div>
 
           <div>
-            <img src={dashboard} alt="dashboard" />
+            <img src={create} alt="create" />
             <p>Create Order</p>
                   </div>
                   
