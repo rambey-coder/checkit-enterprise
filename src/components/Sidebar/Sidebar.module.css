@@ -21,7 +21,7 @@
     width: 100%;
 }
 
-.head > div {
+.head > div, .head > a {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -29,13 +29,14 @@
     padding: 15px;
     width: 100%;
     margin: 25px 0;
+    text-decoration: none;
 }
 
-.head > div > img {
+.head > div > img, .head > a > img {
     width: 25px;
 }
 
-.head > div > p {
+.head > div > p, .head > a > p {
     color: #fff;
     font-size: 14px;
 }

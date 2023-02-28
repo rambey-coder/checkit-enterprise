@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Sidebar.module.css";
+import { Link } from "react-router-dom";
 
 import dashboard from "./assets/dashboard.svg";
 import create from "./assets/create.svg"
@@ -11,10 +12,10 @@ const Sidebar = () => {
     <div className={styles.sidebar}>
       <div className={styles.container}>
         <div className={styles.head}>
-          <div>
+          <Link to="/profile">
             <img src={dashboard} alt="dashboard" />
             <p>Dashboard</p>
-          </div>
+          </Link>
 
           <div>
             <img src={create} alt="create" />
