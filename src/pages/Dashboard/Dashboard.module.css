@@ -67,3 +67,13 @@
   font-weight: 700;
   text-transform: capitalize;
 }
+
+
+.history {
+  width: 95%;
+  margin: 4rem auto 0 auto;
+}
+
+.history > h1 {
+  text-align: center;
+}
