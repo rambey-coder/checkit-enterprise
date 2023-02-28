@@ -20,8 +20,8 @@ function App() {
         </Route>
         {/* protected route */}
         <Route element={<RequireToken />}>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/profile" element={<Account />} />
+              <Route path="/profile" element={<Dashboard />} />
+              <Route path="/account" element={<Account />} />
         </Route>
       </Routes>
     </div>
