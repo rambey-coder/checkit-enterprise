@@ -1,8 +1,9 @@
 .sidebar {
     background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));
-    max-width: 300px;
+    width: 300px;
     height: 100vh;
     padding: 20px;
+    /* position: absolute;  */
 }
 
 .container {

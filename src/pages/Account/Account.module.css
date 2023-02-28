@@ -1,0 +1,10 @@
+.container {
+    position: relative;
+    display: flex;
+    gap: 5rem;
+    /* align-items: center; */
+}
+
+.container_content {
+    width: 90%;
+}

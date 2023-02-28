@@ -6,14 +6,13 @@ import { Routes, Route } from "react-router-dom";
 import { Authenticated, RequireToken } from "./Authentication";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   return (
     <div className="App">
       <ToastContainer />
       <Routes>
-        <Route path="/side" element={<Sidebar />} />
         {/* protected from visiting when authenticated */}
         <Route element={<Authenticated />}>
           <Route path="/" element={<SignUp />} />
@@ -21,7 +20,8 @@ function App() {
         </Route>
         {/* protected route */}
         <Route element={<RequireToken />}>
-          <Route path="/profile" element={<Account />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/profile" element={<Account />} />
         </Route>
       </Routes>
     </div>
