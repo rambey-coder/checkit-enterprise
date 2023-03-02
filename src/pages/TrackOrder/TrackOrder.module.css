@@ -1,0 +1,39 @@
+.container {
+  position: relative;
+  display: flex;
+}
+
+.content {
+  width: 90%;
+  margin: 3rem auto 0 auto;
+  flex-grow: 10;
+}
+
+.order {
+    width: 90%;
+    margin: auto;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.head > h2 {
+    font-weight: 400;
+    font-size: 35px;
+    color: #031D40;
+    margin: 0;
+}
+
+.head > button {
+    background: #031D40;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    color: #ffff;
+    font-size: 13px;
+}

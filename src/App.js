@@ -7,6 +7,7 @@ import { Authenticated, RequireToken } from "./Authentication";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import TrackOrder from "./pages/TrackOrder/TrackOrder";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
         {/* protected route */}
         <Route element={<RequireToken />}>
               <Route path="/profile" element={<Dashboard />} />
-              <Route path="/account" element={<Account />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/track-order" element={<TrackOrder />} />
         </Route>
       </Routes>
     </div>
