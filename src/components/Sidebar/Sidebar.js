@@ -23,10 +23,10 @@ const Sidebar = () => {
             <p>Create Order</p>
           </div>
 
-          <div>
+          <Link to="/track-order">
             <img src={track} alt="dashboard" />
             <p>Track Order</p>
-          </div>
+          </Link>
 
           <div>
             <img src={calc} alt="dashboard" />
