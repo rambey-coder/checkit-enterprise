@@ -42,6 +42,15 @@ const Account = () => {
                   <span>{currentUser?.id}</span>
                 </p>
               </div>
+              <div>
+                <p>
+                  Token: &nbsp;
+                  <span>
+                    {currentUser?.accessToken.length > 30 &&
+                      currentUser?.accessToken.substring(0, 30)}....{" "}
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
         </div>

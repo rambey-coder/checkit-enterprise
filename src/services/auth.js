@@ -18,3 +18,7 @@ export const getCurrentUser = () => {
 export const SignOut = () => {
   localStorage.removeItem("user")
 }
+
+window.onbeforeunload = () => {
+  localStorage.removeItem("user");
+};
