@@ -13,23 +13,26 @@ const TrackOrder = () => {
         <div className={styles.order}>
           <div className={styles.head}>
             <h2>Orders</h2>
+          </div>
+          <div className={styles.cont}>
+            <div className={styles.filter}>
+              <div>
+                <input type="text" />
+                <img src={search} alt="search" />
+              </div>
+              <select name="" id="">
+                <option value="">Filter</option>
+                <option value="">All</option>
+                <option value="">Pending</option>
+                <option value="">Successful</option>
+                <option value="">Cancelled</option>
+              </select>
+            </div>
+
             <button>
               <img src={add} alt="add" />
               Create Order
             </button>
-          </div>
-          <div className={styles.filter}>
-            <div>
-              <input type="text" />
-              <img src={search} alt="search" />
-            </div>
-            <select name="" id="">
-              <option value="">Filter</option>
-              <option value="">All</option>
-              <option value="">Pending</option>
-              <option value="">Successful</option>
-              <option value="">Cancelled</option>
-            </select>
           </div>
         </div>
 

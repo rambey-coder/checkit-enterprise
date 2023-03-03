@@ -37,7 +37,7 @@ const ContextProvider = ({ children }) => {
 
   const emailTest = new RegExp(/\S+@\S+\.\S+/);
   const passwordTest = new RegExp(
-    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,10}$/
   );
   const usernameTest = new RegExp(/^[A-Za-z]{5,29}$/);
 

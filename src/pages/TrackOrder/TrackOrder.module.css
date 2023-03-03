@@ -27,7 +27,7 @@
   margin: 0;
 }
 
-.head > button {
+.cont > button {
   background: #031d40;
   padding: 10px 15px;
   cursor: pointer;
@@ -41,15 +41,24 @@
   gap: 10px;
 }
 
-.head > button > img {
+.cont > button > img {
   width: 20px;
+}
+
+.cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 3rem;
+
 }
 
 .filter {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 2rem;
+  gap: 10px;
+  width: 40%;
+  flex-grow: 2;
 }
 
 .filter > div {
