@@ -2,8 +2,10 @@ import { createContext, useState, useContext } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { SignIn } from "../services/auth";
-import { SignUp } from "../services/auth";
+// import { SignUp } from "../services/auth";
+import { SignUp } from "../pages/ToolKit/Features/User/service";
 import { SignOut } from "../services/auth";
+import { useDispatch } from "react-redux";
 
 const AppContext = createContext(null);
 
@@ -14,7 +16,8 @@ export const useAppContext = () => {
 };
 
 const ContextProvider = ({ children }) => {
- 
+  const dispatch = useDispatch();
+
   // sign up state
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -188,23 +191,24 @@ const ContextProvider = ({ children }) => {
     });
 
     if (isValid) {
-      try {
-        const res = await SignUp(data);
-        if (res) {
-          toast.success(res?.data?.message);
+      const res = dispatch(SignUp(data));
+      if (res) {
+        toast.success(res?.data?.message);
 
-          navigate("/profile");
+        navigate("/profile");
 
-          setEmail("");
-          setPassword("");
-          setUsername("");
-        }
-      } catch (error) {
-        if (error) {
-          toast.error(error?.response?.data?.message);
-          navigate(null);
-        }
+        setEmail("");
+        setPassword("");
+        setUsername("");
       }
+      // try {
+        
+      // } catch (error) {
+      //   if (error) {
+      //     toast.error(error?.response?.data?.message);
+      //     navigate(null);
+      //   }
+      // }
     }
   };
 
@@ -245,8 +249,6 @@ const ContextProvider = ({ children }) => {
         }
       }
     }
-
-     
   };
 
   //sign out
