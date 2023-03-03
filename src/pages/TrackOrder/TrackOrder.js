@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import styles from "./TrackOrder.module.css";
+import { Link } from "react-router-dom";
 
 import add from "./assets/add.svg";
 import search from "./assets/search.svg";
@@ -29,10 +30,10 @@ const TrackOrder = () => {
               </select>
             </div>
 
-            <button>
+            <Link to="/create-order">
               <img src={add} alt="add" />
               Create Order
-            </button>
+            </Link>
           </div>
         </div>
 
