@@ -1,10 +1,10 @@
 import { createContext, useState, useContext } from "react";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-// import { SignIn } from "../services/auth";
-// import { SignUp } from "../services/auth";
-import { SignUp, SignIn } from "../pages/ToolKit/Features/User/service";
-import { SignOut } from "../services/auth";
+import {
+  SignUp,
+  SignIn,
+  SignOut,
+} from "../pages/ToolKit/Features/User/service";
 import { useDispatch } from "react-redux";
 
 const AppContext = createContext(null);
@@ -187,7 +187,6 @@ const ContextProvider = ({ children }) => {
   const ValidateNumber = () => {
     let phoneNumberError = "";
     const value = phoneNumber;
-    console.log(value);
     if (value < 0) phoneNumberError = "Telephone number is required";
     else if (!phoneNumberTest.test(value))
       phoneNumberError = "Telephone number must be atleast 8 number";
@@ -198,7 +197,7 @@ const ContextProvider = ({ children }) => {
   //
 
   //signup
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const data = {
@@ -216,23 +215,8 @@ const ContextProvider = ({ children }) => {
 
     if (isValid) {
       const res = dispatch(SignUp(data));
-      if (res.status === 200) {
-        // toast.success(res?.data?.message);
 
-        navigate("/profile");
-
-        setEmail("");
-        setPassword("");
-        setUsername("");
-      }
-      // try {
-
-      // } catch (error) {
-      //   if (error) {
-      //     toast.error(error?.response?.data?.message);
-      //     navigate(null);
-      //   }
-      // }
+      return res;
     }
   };
 
@@ -254,25 +238,8 @@ const ContextProvider = ({ children }) => {
 
     if (isValid) {
       const res = dispatch(SignIn(data));
-      try {
-        if (res.status === 200) {
-          toast.success(res?.data?.message);
 
-          // localStorage.setItem("user", JSON.stringify(res?.data));
-
-          navigate("/profile");
-
-          setloginUserName("");
-          setLoginPassword("");
-        }
-        return res?.data;
-      } catch (error) {
-        if (error) {
-          toast.error(error?.response?.data?.message);
-          navigate(null);
-          console.log(error);
-        }
-      }
+      return res;
     }
   };
 

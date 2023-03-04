@@ -6,7 +6,7 @@ export const SignUp = (data) => async () => {
   try {
     if (res) {
       toast.success(res?.data?.message);
-      // window.location.href = "/verify-signup"; move to verify sigup
+      window.location.href = "/verify-signup";
     }
   } catch (error) {
     toast.error(error?.response?.data?.message);
@@ -15,19 +15,19 @@ export const SignUp = (data) => async () => {
 };
 
 export const SignIn = (data) => async () => {
-    const res = await SignInApi(data);
   try {
+    const res = await SignInApi(data);
+
     sessionStorage.setItem("user", JSON.stringify(res?.data));
     sessionStorage.setItem("checkitAccessToken", res?.data?.accessToken);
 
     if (res) {
-        toast.success(res?.data?.message);
-        window.location.href = "/profile";
+      toast.success(res?.data?.message);
+      window.location.href = "/profile";
     }
   } catch (error) {
-      toast.error(error?.response?.data?.message);
+    toast.error(error?.response?.data?.message);
   }
-  return res;
 };
 
 export const SignOut = () => {

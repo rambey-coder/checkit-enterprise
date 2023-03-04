@@ -12,4 +12,20 @@ const axiosInstance = axios.create({
   withCredentials: false,
 });
 
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const token = sessionStorage.getItem("checkitAccessToken");
+    if (token) {
+      config.headers = {
+        ...config.headers,
+        Authorization: `Bearer ${token}`,
+      };
+    }
+    return config;
+  },
+  (err) => {
+    Promise.reject(err);
+  }
+);
+
 export default axiosInstance;
