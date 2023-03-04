@@ -2,12 +2,8 @@ import { SignInApi, SignUpApi } from "../../ApiRequest/Api/Api";
 import { toast } from "react-toastify";
 
 export const SignUp = (data) => async () => {
-    const res = await SignUpApi(data);
-    console.log("out", res);
-    try {
-      console.log("in", res);
-    sessionStorage.setItem("checkitAccessToken", res?.data?.accessToken);
-
+  const res = await SignUpApi(data);
+  try {
     if (res) {
       toast.success(res?.data?.message);
       // window.location.href = "/verify-signup"; move to verify sigup
@@ -19,18 +15,19 @@ export const SignUp = (data) => async () => {
 };
 
 export const SignIn = (data) => async () => {
-  try {
     const res = await SignInApi(data);
-
+  try {
     sessionStorage.setItem("user", JSON.stringify(res?.data));
     sessionStorage.setItem("checkitAccessToken", res?.data?.accessToken);
 
     if (res) {
-      toast.success(res?.data?.message);
+        toast.success(res?.data?.message);
+        window.location.href = "/profile";
     }
   } catch (error) {
-    toast.error(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message);
   }
+  return res;
 };
 
 export const SignOut = () => {

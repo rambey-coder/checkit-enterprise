@@ -12,13 +12,12 @@ export const SignIn = (data) => {
 };
 
 export const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user")) || null;
+  // return JSON.parse(localStorage.getItem("user")) || null;
+  return JSON.parse(sessionStorage.getItem("user")) || null;
 };
 
 export const SignOut = () => {
   localStorage.removeItem("user")
+  sessionStorage.removeItem("user")
 }
 
-// window.onbeforeunload = () => {
-//   localStorage.removeItem("user");
-// };

@@ -8,14 +8,14 @@ import hidden from "./assets/eye-off.svg";
 
 const Login = () => {
   const {
-    userName,
+    loginUserName,
     handleBulr,
     handleChange,
     pass,
     togglePassword,
     handleToggle,
     handleLogin,
-    userNameError,
+    loginUserNameError,
     passwordError,
   } = useAppContext();
 
@@ -46,10 +46,10 @@ const Login = () => {
                       name="UserName"
                       onChange={handleChange}
                       onBlur={handleBulr}
-                      value={userName}
+                      value={loginUserName}
                     />
-                    {userNameError ? (
-                      <p className={styles.err}>{userNameError}</p>
+                    {loginUserNameError ? (
+                      <p className={styles.err}>{loginUserNameError}</p>
                     ) : (
                       ""
                     )}

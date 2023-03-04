@@ -1,9 +1,9 @@
 import { createContext, useState, useContext } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { SignIn } from "../services/auth";
+// import { SignIn } from "../services/auth";
 // import { SignUp } from "../services/auth";
-import { SignUp } from "../pages/ToolKit/Features/User/service";
+import { SignUp, SignIn } from "../pages/ToolKit/Features/User/service";
 import { SignOut } from "../services/auth";
 import { useDispatch } from "react-redux";
 
@@ -22,20 +22,22 @@ const ContextProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phoneNumber, setphoneNumber] = useState(undefined);
 
   // signup error state
   const [emailError, setEmailError] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [passError, setPassError] = useState(false);
+  const [phoneNumberError, setphoneNumberError] = useState(false);
 
   const [togglePassword, setTogglePassword] = useState(false);
 
   // sign in state
-  const [userName, setUserName] = useState("");
-  const [pass, setPass] = useState("");
+  const [loginUserName, setloginUserName] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
 
   // sign in error state
-  const [userNameError, setuserNameError] = useState(false);
+  const [loginUserNameError, setloginUserNameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
 
   const emailTest = new RegExp(/\S+@\S+\.\S+/);
@@ -43,6 +45,9 @@ const ContextProvider = ({ children }) => {
     /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,10}$/
   );
   const usernameTest = new RegExp(/^[A-Za-z]{5,29}$/);
+  const phoneNumberTest = new RegExp(
+    /^[+]*[(]{0,3}[0-9]{1,4}[)]{0,1}[-\s./0-9]{8,15}$/
+  );
 
   const navigate = useNavigate();
 
@@ -66,10 +71,13 @@ const ContextProvider = ({ children }) => {
         setPassword(value);
         break;
       case "UserName":
-        setUserName(value);
+        setloginUserName(value);
         break;
       case "pass":
-        setPass(value);
+        setLoginPassword(value);
+        break;
+      case "number":
+        setphoneNumber(value);
         break;
       default:
         break;
@@ -86,8 +94,9 @@ const ContextProvider = ({ children }) => {
       setPassError(false);
       setNameError(false);
       setEmailError(false);
-      setuserNameError(false);
+      setloginUserNameError(false);
       setPasswordError(false);
+      setphoneNumberError(false);
     }, 3000);
   };
 
@@ -108,6 +117,9 @@ const ContextProvider = ({ children }) => {
         break;
       case "pass":
         isValid = validatePass();
+        break;
+      case "number":
+        isValid = ValidateNumber();
         break;
       default:
         break;
@@ -151,7 +163,7 @@ const ContextProvider = ({ children }) => {
   // sign in validate
   const validatePass = () => {
     let passwordError = "";
-    const value = pass;
+    const value = loginPassword;
     if (value.trim() === "") passwordError = "Password is required";
     else if (!passwordTest.test(value))
       passwordError =
@@ -163,13 +175,25 @@ const ContextProvider = ({ children }) => {
 
   const validatUserName = () => {
     let usernameError = "";
-    const value = userName;
+    const value = loginUserName;
     if (value.trim() === "") usernameError = "Username is required";
     else if (!usernameTest.test(value))
       usernameError = "Username must be atleast 5 characters";
     removeError();
-    setuserNameError(usernameError);
+    setloginUserNameError(usernameError);
     return usernameError === "";
+  };
+
+  const ValidateNumber = () => {
+    let phoneNumberError = "";
+    const value = phoneNumber;
+    console.log(value);
+    if (value < 0) phoneNumberError = "Telephone number is required";
+    else if (!phoneNumberTest.test(value))
+      phoneNumberError = "Telephone number must be atleast 8 number";
+    removeError();
+    setphoneNumberError(phoneNumberError);
+    return phoneNumberError === "";
   };
   //
 
@@ -192,8 +216,8 @@ const ContextProvider = ({ children }) => {
 
     if (isValid) {
       const res = dispatch(SignUp(data));
-      if (res) {
-        toast.success(res?.data?.message);
+      if (res.status === 200) {
+        // toast.success(res?.data?.message);
 
         navigate("/profile");
 
@@ -202,7 +226,7 @@ const ContextProvider = ({ children }) => {
         setUsername("");
       }
       // try {
-        
+
       // } catch (error) {
       //   if (error) {
       //     toast.error(error?.response?.data?.message);
@@ -224,28 +248,29 @@ const ContextProvider = ({ children }) => {
     });
 
     const data = {
-      username: userName,
-      password: pass,
+      username: loginUserName,
+      password: loginPassword,
     };
 
     if (isValid) {
+      const res = dispatch(SignIn(data));
       try {
-        const res = await SignIn(data);
-        if (res) {
+        if (res.status === 200) {
           toast.success(res?.data?.message);
 
-          localStorage.setItem("user", JSON.stringify(res?.data));
+          // localStorage.setItem("user", JSON.stringify(res?.data));
 
           navigate("/profile");
 
-          setUserName("");
-          setPass("");
+          setloginUserName("");
+          setLoginPassword("");
         }
         return res?.data;
       } catch (error) {
         if (error) {
           toast.error(error?.response?.data?.message);
           navigate(null);
+          console.log(error);
         }
       }
     }
@@ -265,11 +290,11 @@ const ContextProvider = ({ children }) => {
         handleToggle,
         handleSubmit,
         handleLogin,
-        userName,
+        loginUserName,
         handleLogout,
-        setUserName,
-        pass,
-        setPass,
+        setloginUserName,
+        loginPassword,
+        setLoginPassword,
         username,
         email,
         password,
@@ -277,8 +302,10 @@ const ContextProvider = ({ children }) => {
         emailError,
         nameError,
         passError,
-        userNameError,
+        loginUserNameError,
         passwordError,
+        phoneNumber,
+        phoneNumberError,
       }}
     >
       {children}
