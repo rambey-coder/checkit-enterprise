@@ -18,10 +18,10 @@ const Sidebar = () => {
             <p>Dashboard</p>
           </Link>
 
-          <div>
+          <Link to="/create-order">
             <img src={create} alt="create" />
             <p>Create Order</p>
-          </div>
+          </Link>
 
           <Link to="/track-order">
             <img src={track} alt="dashboard" />

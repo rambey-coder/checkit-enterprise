@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import styles from "./TrackOrder.module.css";
+import { Link } from "react-router-dom";
 
 import add from "./assets/add.svg";
 import search from "./assets/search.svg";
@@ -13,23 +14,26 @@ const TrackOrder = () => {
         <div className={styles.order}>
           <div className={styles.head}>
             <h2>Orders</h2>
-            <button>
+          </div>
+          <div className={styles.cont}>
+            <div className={styles.filter}>
+              <div>
+                <input type="text" />
+                <img src={search} alt="search" />
+              </div>
+              <select name="" id="">
+                <option value="">Filter</option>
+                <option value="">All</option>
+                <option value="">Pending</option>
+                <option value="">Successful</option>
+                <option value="">Cancelled</option>
+              </select>
+            </div>
+
+            <Link to="/create-order">
               <img src={add} alt="add" />
               Create Order
-            </button>
-          </div>
-          <div className={styles.filter}>
-            <div>
-              <input type="text" />
-              <img src={search} alt="search" />
-            </div>
-            <select name="" id="">
-              <option value="">Filter</option>
-              <option value="">All</option>
-              <option value="">Pending</option>
-              <option value="">Successful</option>
-              <option value="">Cancelled</option>
-            </select>
+            </Link>
           </div>
         </div>
 

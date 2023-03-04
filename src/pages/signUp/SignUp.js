@@ -19,6 +19,8 @@ const SignUp = () => {
     handleSubmit,
     handleChange,
     handleBlur,
+    phoneNumber,
+    phoneNumberError,
   } = useAppContext();
 
   return (
@@ -52,13 +54,7 @@ const SignUp = () => {
                       value={username}
                     />
 
-                    {nameError ? (
-                      <p className={styles.err}>
-                        {nameError}
-                      </p>
-                    ) : (
-                      ""
-                    )}
+                    {nameError ? <p className={styles.err}>{nameError}</p> : ""}
                   </span>
 
                   <span>
@@ -74,6 +70,25 @@ const SignUp = () => {
 
                     {emailError ? (
                       <p className={styles.err}>{emailError}</p>
+                    ) : (
+                      ""
+                    )}
+                  </span>
+
+                  <span>
+                    <label htmlFor="number">Phone Number</label>
+
+                    <input
+                      type="number"
+                      name="number"
+                      defaultValue={phoneNumber}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={phoneNumber}
+                    />
+
+                    {phoneNumberError ? (
+                      <p className={styles.err}>{phoneNumberError}</p>
                     ) : (
                       ""
                     )}
@@ -96,13 +111,7 @@ const SignUp = () => {
                       onClick={handleToggle}
                     />
 
-                    {passError ? (
-                      <p className={styles.err}>
-                        {passError}
-                      </p>
-                    ) : (
-                      ""
-                    )}
+                    {passError ? <p className={styles.err}>{passError}</p> : ""}
                   </span>
                 </div>
                 <button>Sign up</button>
