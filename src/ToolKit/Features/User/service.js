@@ -2,8 +2,8 @@ import { SignInApi, SignUpApi } from "../../ApiRequest/Api/Api";
 import { toast } from "react-toastify";
 
 export const SignUp = (data) => async () => {
-  const res = await SignUpApi(data);
   try {
+    const res = await SignUpApi(data);
     if (res) {
       toast.success(res?.data?.message);
       window.location.href = "/verify-signup";
@@ -11,7 +11,6 @@ export const SignUp = (data) => async () => {
   } catch (error) {
     toast.error(error?.response?.data?.message);
   }
-  return res;
 };
 
 export const SignIn = (data) => async () => {
