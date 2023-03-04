@@ -1,10 +1,6 @@
 import { createContext, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  SignUp,
-  SignIn,
-  SignOut,
-} from "../pages/ToolKit/Features/User/service";
+import { SignUp, SignIn, SignOut } from "../ToolKit/Features/User/service";
 import { useDispatch } from "react-redux";
 
 const AppContext = createContext(null);
