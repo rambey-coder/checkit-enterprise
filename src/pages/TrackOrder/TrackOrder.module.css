@@ -134,10 +134,10 @@
   align-items: center;
   justify-content: space-between;
   margin: 20px 0;
-  background: #277def50;
+  background: #fff;
   padding: 15px 0;
   border-radius: 5px;
-  filter: drop-shadow(1px 1px 8px #03419350);
+  filter: drop-shadow(1px 1px 8px #b2d2fd1d);
 }
 
 .user_list:hover {
