@@ -51,7 +51,6 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 3rem;
-
 }
 
 .filter {
@@ -97,16 +96,16 @@
   border-radius: 5px;
 }
 
-.history >h5 {
-    text-align: center;
-    margin-top: 5rem;
-    font-size: 30px;
-    font-weight: 400;
-    color: rgb(73, 163, 241);
+.history > h5 {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 30px;
+  font-weight: 400;
+  color: #031d40;
 }
 
 .userlist_container {
-  background: rgba(197, 224, 248, 0.111);
+  /* background: rgba(197, 224, 248, 0.111); */
   padding: 20px 15px;
   border-radius: 10px;
   width: 95%;
@@ -118,9 +117,11 @@
   align-items: center;
   justify-content: space-between;
   color: #6a6a6a;
+  background-color: #d2cece;
   font-weight: 600;
   font-size: 13px;
-  padding-bottom: 6px;
+  padding: 15px;
+  border-radius: 5px;
 }
 
 .header_list > div {
@@ -131,23 +132,55 @@
 .user_list {
   display: flex;
   align-items: center;
-  cursor: pointer;
   justify-content: space-between;
-    margin-top: 20px;
+  margin: 20px 0;
+  background: #277def50;
+  padding: 15px 0;
+  border-radius: 5px;
+  filter: drop-shadow(1px 1px 8px #03419350);
 }
 
 .user_list:hover {
   transform: translateY(0) scale(1.008) translateZ(2px);
-  filter: drop-shadow(1px 1px 8px #e3e3e350);
   transition: all 0.4s ease-in-out;
 }
 
-.user_list >div {
+.user_list > div {
   color: #6a6a6a;
   font-weight: 400;
   font-size: 13px;
   width: 20%;
   text-align: center;
+}
+
+.agent_name > p {
+  font-weight: 600;
+  color: #313030;
+}
+
+.status > div {
+  background: #f28b0c52;
+  color: #ff4c09;
+  width: 70px;
+  padding: 5px 10px;
+  margin: auto;
+  border-radius: 5px;
+  /* background: #194234; */
+  /* color: #4FCEA2; */
+}
+
+.date > button {
+  width: 70px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: block;
+  border: 0;
+  outline: 0;
+  margin: auto;
+  cursor: pointer;
+  background: #1e6ed765;
+  color: #031d40;
+  font-weight: 500;
 }
 
 /* .agent_name {
