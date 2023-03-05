@@ -1,4 +1,4 @@
-import api from "../Request"
+import api from "../axiosRequest";
 
 export const CreateOrderApi = async (data) => {
   return api.post("orders/send-links", data);

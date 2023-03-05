@@ -1,4 +1,4 @@
-import api from "../Request"
+import api from "../axiosRequest";
 export const SignUpApi = async (data) => {
   return api.post("auth/signup", data);
 };
