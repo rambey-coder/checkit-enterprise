@@ -1,4 +1,4 @@
-import { SignInApi, SignUpApi } from "../../ApiRequest/Api/Api";
+import { SignInApi, SignUpApi } from "../../ApiRequest/Api/User";
 import { toast } from "react-toastify";
 
 export const SignUp = (data) => async () => {

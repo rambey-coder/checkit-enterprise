@@ -1,6 +1,7 @@
 import { createContext, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { SignUp, SignIn, SignOut } from "../ToolKit/Features/User/service";
+import { createOrder } from "../ToolKit/Features/Order/Service";
 import { useDispatch } from "react-redux";
 
 const AppContext = createContext(null);
@@ -55,7 +56,9 @@ const ContextProvider = ({ children }) => {
       links: orderLink,
       caddress: orderAddress,
     };
-    console.log(data);
+
+    const res = dispatch(createOrder(data));
+    return res;
   };
 
   const navigate = useNavigate();
@@ -286,7 +289,7 @@ const ContextProvider = ({ children }) => {
         orderLink,
         handleCreateOrder,
         setOrderAddress,
-        setOrderLink
+        setOrderLink,
       }}
     >
       {children}
