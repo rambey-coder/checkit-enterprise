@@ -45,6 +45,19 @@ const ContextProvider = ({ children }) => {
     /^[+]*[(]{0,3}[0-9]{1,4}[)]{0,1}[-\s./0-9]{8,15}$/
   );
 
+  // create order
+  const [orderLink, setOrderLink] = useState("");
+  const [orderAddress, setOrderAddress] = useState("");
+
+  const handleCreateOrder = (e) => {
+    e.preventDefault();
+    const data = {
+      links: orderLink,
+      caddress: orderAddress,
+    };
+    console.log(data);
+  };
+
   const navigate = useNavigate();
 
   // toggle password visibility
@@ -269,6 +282,11 @@ const ContextProvider = ({ children }) => {
         passwordError,
         phoneNumber,
         phoneNumberError,
+        orderAddress,
+        orderLink,
+        handleCreateOrder,
+        setOrderAddress,
+        setOrderLink
       }}
     >
       {children}
