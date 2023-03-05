@@ -1,4 +1,4 @@
-import api from "../request";
+import api from "../Request";
 
 export const CreateOrderApi = async (data) => {
   return api.post("orders/send-links", data);

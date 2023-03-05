@@ -26,7 +26,7 @@
   max-width: 500px;
   margin: auto;
   backdrop-filter: blur(16px) saturate(180%);
-  background-color: #f0f0f0;
+  background-color: #ffffff;
   filter: drop-shadow(2px 2px 8px rgba(229, 229, 229, 0.293));
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
