@@ -8,7 +8,9 @@ const Errorhandler = (error) => {
   } else if (error.code === "ERR_BAD_REQUEST") {
     toast.error("Something Went wrong");
   }
-  return(<></>)
+  return (<div>
+    <h1>Error</h1>
+  </div>)
 };
 
 export default Errorhandler;
