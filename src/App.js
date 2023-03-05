@@ -12,6 +12,7 @@ import Account from "./pages/Account/Account";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import TrackOrder from "./pages/TrackOrder/TrackOrder";
 import CreateOrder from "./pages/CreateOrder/CreateOrder";
+import VerifyAccount from "./pages/Verify/VerifyAccount";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route element={<Authenticated />}>
           <Route path="/" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/verify-signup" element={<VerifyAccount />} />
         </Route>
         {/* protected route */}
         <Route element={<RequireToken />}>

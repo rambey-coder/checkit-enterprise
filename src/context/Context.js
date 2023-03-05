@@ -1,6 +1,7 @@
 import { createContext, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { SignUp, SignIn, SignOut } from "../ToolKit/Features/User/service";
+import { createOrder } from "../ToolKit/Features/Order/Service";
 import { useDispatch } from "react-redux";
 
 const AppContext = createContext(null);
@@ -44,6 +45,21 @@ const ContextProvider = ({ children }) => {
   const phoneNumberTest = new RegExp(
     /^[+]*[(]{0,3}[0-9]{1,4}[)]{0,1}[-\s./0-9]{8,15}$/
   );
+
+  // create order
+  const [orderLink, setOrderLink] = useState("");
+  const [orderAddress, setOrderAddress] = useState("");
+
+  const handleCreateOrder = (e) => {
+    e.preventDefault();
+    const data = {
+      links: orderLink,
+      orderStatus: orderAddress,
+    };
+
+    const res = dispatch(createOrder(data));
+    return res;
+  };
 
   const navigate = useNavigate();
 
@@ -269,6 +285,11 @@ const ContextProvider = ({ children }) => {
         passwordError,
         phoneNumber,
         phoneNumberError,
+        orderAddress,
+        orderLink,
+        handleCreateOrder,
+        setOrderAddress,
+        setOrderLink,
       }}
     >
       {children}

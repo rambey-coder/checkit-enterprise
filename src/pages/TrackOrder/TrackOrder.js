@@ -44,20 +44,26 @@ const TrackOrder = () => {
             <div className={styles.users}>
               <div className={styles.header_list}>
                 <div>Order ID</div>
-                <div>Status</div>
+                <div>Price</div>
                 <div>Delivery Status</div>
                 {/* <div>Transcriptions</div> */}
-                <div>Date</div>
+                <div>Action</div>
               </div>
-              <hr />
+              {/* <hr /> */}
               <div className={styles.user_list}>
                 <div className={styles.agent_name}>
-                  <p>Clara David</p>
+                  <p>00011</p>
                 </div>
-                <div className={styles.company_name}>BrainBox</div>
-                <div className={styles.status}>Active</div>
+                <div className={styles.company_name}>
+                  <p>$30</p>
+                </div>
+                <div className={styles.status}>
+                  <div>Pending</div>
+                </div>
                 {/* <div className={styles.transcriptions}>40</div> */}
-                <div className={styles.date}>16 Nov 2022, 11: 30am</div>
+                <div className={styles.date}>
+                  <button>Track</button>
+                </div>
               </div>
             </div>
           </div>

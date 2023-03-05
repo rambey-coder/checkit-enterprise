@@ -1,0 +1,92 @@
+.container {
+  position: relative;
+  display: flex;
+}
+
+.general {
+  width: 90%;
+  margin: 0 auto 0 auto;
+  flex-grow: 10;
+  /* background: url(./assets/create.svg);
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat; */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content_container {
+  width: 90%;
+  margin: auto;
+}
+
+.content {
+  max-width: 500px;
+  margin: auto;
+  backdrop-filter: blur(16px) saturate(180%);
+  background-color: #ffffff;
+  filter: drop-shadow(2px 2px 8px rgba(229, 229, 229, 0.293));
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 30px;
+}
+
+.content > h3 {
+  color: #031d40;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.content > form {
+  width: 100%;
+}
+
+.content > form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.content > form > div label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #031d40;
+}
+
+.content > form > div > input {
+  padding: 10px 13px;
+  border: 1px solid #1e1e1e;
+  outline: 0;
+  margin-bottom: 25px;
+  color: #070000;
+  font-size: 13px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.content > form > div > input:focus {
+  border: 1px solid #2995d9;
+  transition: 0.4s linear;
+}
+
+.content > form > button {
+  display: block;
+  width: 100%;
+  background-color: #031d40;
+  color: #fff;
+  outline: 0;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.content > form > button:hover {
+  background: transparent;
+  color: #2995d9;
+  border-color: #2995d9;
+}
