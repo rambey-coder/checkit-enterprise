@@ -1,5 +1,6 @@
 import { SignInApi, SignUpApi } from "../../ApiRequest/Api/User";
 import { toast } from "react-toastify";
+import Errorhandler from "../../ApiRequest/Errorhandler";
 
 export const SignUp = (data) => async () => {
   try {
@@ -9,6 +10,7 @@ export const SignUp = (data) => async () => {
       window.location.href = "/verify-signup";
     }
   } catch (error) {
+    Errorhandler(error);
     toast.error(error?.response?.data?.message);
   }
 };
@@ -25,6 +27,7 @@ export const SignIn = (data) => async () => {
       window.location.href = "/profile";
     }
   } catch (error) {
+    Errorhandler(error);
     toast.error(error?.response?.data?.message);
   }
 };
