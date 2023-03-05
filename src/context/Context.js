@@ -55,11 +55,12 @@ const ContextProvider = ({ children }) => {
     e.preventDefault();
     const data = {
       links: orderLink,
-      orderStatus: orderAddress,
+      deliveryAddress: orderAddress,
     };
 
-    const res = dispatch(createOrder(data));
-    if (res.status === 200) setTrackRes(!trackRes);
+    const res = dispatch(createOrder(data, setTrackRes, trackRes));
+
+   
     return res;
   };
 

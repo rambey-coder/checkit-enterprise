@@ -15,8 +15,6 @@ const CreateOrder = () => {
     trackRes,
   } = useAppContext();
 
-  console.log(trackRes);
-
   const handleLink = (e) => {
     setOrderLink(e.target.value);
   };
