@@ -1,3 +1,4 @@
+import React from "react";
 import { toast } from "react-toastify";
 
 const Errorhandler = (error) => {
@@ -7,6 +8,7 @@ const Errorhandler = (error) => {
   } else if (error.code === "ERR_BAD_REQUEST") {
     toast.error("Something Went wrong");
   }
+  return(<></>)
 };
 
 export default Errorhandler;
