@@ -49,6 +49,7 @@ const ContextProvider = ({ children }) => {
   // create order
   const [orderLink, setOrderLink] = useState("");
   const [orderAddress, setOrderAddress] = useState("");
+  const [trackRes, setTrackRes] = useState(false);
 
   const handleCreateOrder = (e) => {
     e.preventDefault();
@@ -58,6 +59,7 @@ const ContextProvider = ({ children }) => {
     };
 
     const res = dispatch(createOrder(data));
+    if (res.status === 200) setTrackRes(!trackRes);
     return res;
   };
 
@@ -290,6 +292,7 @@ const ContextProvider = ({ children }) => {
         handleCreateOrder,
         setOrderAddress,
         setOrderLink,
+        trackRes,
       }}
     >
       {children}

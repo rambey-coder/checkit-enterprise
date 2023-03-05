@@ -1,6 +1,7 @@
 import { CreateOrderApi } from "../../ApiRequest/Api/Order";
 import { setCreateOrder } from "./OrderSlice";
 import { toast } from "react-toastify";
+import Errorhandler from "../../ApiRequest/Errorhandler";
 
 export const createOrder = (data) => async () => {
   try {
@@ -13,5 +14,6 @@ export const createOrder = (data) => async () => {
     return res;
   } catch (error) {
     toast.error(error?.response?.data?.message);
+    Errorhandler(error);
   }
 };
