@@ -4,7 +4,7 @@ import { getCurrentUser } from '../../services/auth'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import styles from "./Dashboard.module.css";
 
-import add from "./assets/add.svg";
+// import add from "./assets/add.svg";
 
 const Dashboard = () => {
 
@@ -17,9 +17,9 @@ const Dashboard = () => {
       <div className={styles.general}>
         <div className={styles.container_content}>
           <div className={styles.user_details}>
-            <div className={styles.user_bg}>
+            {/* <div className={styles.user_bg}>
               <img src={add} alt="add" />
-            </div>
+            </div> */}
 
             <div className={styles.details}>
               <div>
@@ -47,9 +47,9 @@ const Dashboard = () => {
           </div>
 
           <div className={styles.user_details}>
-            <div className={styles.user_bg}>
+            {/* <div className={styles.user_bg}>
               <img src={add} alt="add" />
-            </div>
+            </div> */}
 
             <div className={styles.details}>
               <div>
