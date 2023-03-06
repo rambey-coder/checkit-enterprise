@@ -1,12 +1,32 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import styles from "./TrackOrder.module.css";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getOrder } from "../../ToolKit/Features/Order/Service";
 
 import add from "./assets/add.svg";
 import search from "./assets/search.svg";
 
 const TrackOrder = () => {
+  const [orderData, setOrderData] = useState([])
+
+  const orders = useSelector((state) => state.order.orders);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getData = () => {
+      setOrderData(orders)
+    }
+    getData()
+  }, [orders])
+
+  useEffect(() => {
+    dispatch(getOrder());
+  }, [dispatch]);
+
+  console.log(orderData);
   return (
     <div className={styles.container}>
       <Sidebar />
