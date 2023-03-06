@@ -1,0 +1,41 @@
+.container {
+  width: 400px;
+  margin: auto;
+  background-color: #ffffff;
+  filter: drop-shadow(1px 1px 8px #b2d2fd1d);
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.img {
+  width: 100px;
+  margin: auto;
+}
+
+.img > img {
+  width: 100%;
+}
+
+.content > p {
+text-align: center;
+margin-bottom: 20px;
+color: #031d40;
+font-weight: 500;
+}
+
+.content > button {
+    display: block;
+    width: 150px;
+    margin: auto;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    background: #031d40;
+    color: #fff;
+    cursor: pointer;
+}
+
+.content > button:hover {
+    background: #031d40dd;
+}
