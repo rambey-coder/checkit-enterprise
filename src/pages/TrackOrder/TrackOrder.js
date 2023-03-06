@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import styles from "./TrackOrder.module.css";
 
 import Orders from "./Orders";
-import Sidebar from "../../components/Sidebar/Sidebar";
+// import Sidebar from "../../components/Sidebar/Sidebar";
 
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -36,7 +36,7 @@ const TrackOrder = () => {
 
   return (
     <div className={styles.container}>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className={styles.content}>
         <div className={styles.order}>
           <div className={styles.head}>

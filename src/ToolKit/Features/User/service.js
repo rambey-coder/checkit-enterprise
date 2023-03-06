@@ -32,6 +32,10 @@ export const SignIn = (data) => async () => {
   }
 };
 
+export const getCurrentUserToken = () => {
+  return JSON.parse(sessionStorage.getItem("user")) || null;
+};
+
 export const SignOut = () => {
   sessionStorage.removeItem("user");
   sessionStorage.removeItem("checkitAccessToken");

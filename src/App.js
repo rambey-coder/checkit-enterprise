@@ -18,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
+     
       <Routes>
         {/* protected from visiting when authenticated */}
         <Route element={<Authenticated />}>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/verify-signup" element={<VerifyAccount />} />
         </Route>
+
         {/* protected route */}
         <Route element={<RequireToken />}>
           <Route path="/profile" element={<Dashboard />} />

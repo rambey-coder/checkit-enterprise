@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./CreateOrder.module.css";
 import { useAppContext } from "../../context/Context";
 
-import Sidebar from "../../components/Sidebar/Sidebar";
+// import Sidebar from "../../components/Sidebar/Sidebar";
 import Modal from "./SuccessModal/Modal";
 
 const CreateOrder = () => {
@@ -24,7 +24,7 @@ const CreateOrder = () => {
 
   return (
     <div className={styles.container}>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className={styles.general}>
         {trackRes ? (
           <>

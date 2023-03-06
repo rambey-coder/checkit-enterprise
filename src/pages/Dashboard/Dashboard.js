@@ -1,7 +1,7 @@
 import React from 'react'
 import { getCurrentUser } from '../../services/auth'
 // import { useAppContext } from '../../context/Context'
-import Sidebar from '../../components/Sidebar/Sidebar'
+// import Sidebar from '../../components/Sidebar/Sidebar'
 import styles from "./Dashboard.module.css";
 
 // import add from "./assets/add.svg";
@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   return (
     <div className={styles.container}>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className={styles.general}>
         <div className={styles.container_content}>
           <div className={styles.user_details}>
