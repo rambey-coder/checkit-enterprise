@@ -1,7 +1,7 @@
 .content {
-  width: 90%;
   margin: 0 auto 0 auto;
   flex-grow: 10;
+  position: relative;
 }
 
 .order {
@@ -23,13 +23,13 @@
 }
 
 .cont > a {
-  background: #031d40;
+  background: transparent;
+  border: #031d40 1px solid;
   padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
-  border: 0;
   outline: 0;
-  color: #ffff;
+  color: #031d40;
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -153,7 +153,8 @@
   color: #313030;
 }
 
-.status > div, .order_price > p  {
+.status > div,
+.order_price > p {
   background: #f28b0c52;
   color: #ff4c09;
   width: 70px;
@@ -178,8 +179,40 @@
   font-weight: 500;
 }
 
-/* .agent_name {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-} */
+.track_container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  bottom: 0;
+  backdrop-filter: blur(4px) saturate(200%);
+  background-color: rgba(197, 197, 197, 0.66);
+  height: 100vh;
+  width: 100%;
+}
+
+.detail_cont {
+  max-width: 450px;
+  background-color: #fff;
+  margin: auto;
+  padding: 30px 0;
+  border-radius: 15px;
+  filter: drop-shadow(1px 1px 8px rgba(26, 115, 232, 0.227));
+  position: absolute;
+  right: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.detail_cont > div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:  0 30px 30px 30px;
+}
+
+.detail_cont > div:nth-child(1) > img {
+  cursor: pointer;
+}
