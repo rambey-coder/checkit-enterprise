@@ -13,6 +13,7 @@ export const createOrder = (data, setTrackRes, trackRes) => async () => {
       setCreateOrder(res?.data);
       if (res.status === 200) setTrackRes(!trackRes);
     }
+    console.log(res);
     return res;
   } catch (error) {
     toast.error(error?.response?.data?.message);

@@ -32,13 +32,18 @@
     text-decoration: none;
 }
 
-.head > div > img, .head > a > img {
+.head > div > img, .head > .link > img {
     width: 25px;
 }
 
-.head > div > p, .head > a > p {
+.head > div > p, .head > .link > p {
     color: #fff;
     font-size: 14px;
+}
+
+.link.active {
+    background-image: linear-gradient(to right top, #163483, #1f3b87, #28428b, #304a8e, #385192);
+    border-radius: 4px;
 }
 
 .app_container {
@@ -48,6 +53,5 @@
     left: 50%;
     right: -50%;
     transform: translate(-50%, 0);
-    background: #F6F6F6;
-    height: 100vh;
+    height: auto;
 }

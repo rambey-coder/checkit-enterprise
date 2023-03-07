@@ -1,47 +1,67 @@
 import React from "react";
 import styles from "./Sidebar.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import dashboard from "./assets/dashboard.svg";
 import create from "./assets/create.svg";
 import track from "./assets/track.svg";
 import calc from "./assets/calculate.svg";
-import user from "./assets/user.svg"
+import user from "./assets/user.svg";
 
-const Sidebar = ({children}) => {
+const Sidebar = ({ children }) => {
   return (
     <>
       <div className={styles.sidebar}>
         <div className={styles.container}>
           <div className={styles.head}>
-            <Link to="/profile">
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : `${styles.link} `
+              }
+            >
               <img src={dashboard} alt="dashboard" />
               <p>Dashboard</p>
-            </Link>
+            </NavLink>
 
-            <Link to="/create-order">
+            <NavLink
+              to="/create-order"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : `${styles.link} `
+              }
+            >
               <img src={create} alt="create" />
               <p>Create Order</p>
-            </Link>
+            </NavLink>
 
-            <Link to="/track-order">
+            <NavLink
+              to="/track-order"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : `${styles.link} `
+              }
+            >
               <img src={track} alt="dashboard" />
               <p>Track Order</p>
-            </Link>
+            </NavLink>
 
             <div>
               <img src={calc} alt="dashboard" />
               <p>Cost Calculator</p>
             </div>
 
-            <Link to="/account">
+            <NavLink
+              to="/account"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : `${styles.link} `
+              }
+            >
               <img src={user} alt="dashboard" />
               <p>Account</p>
-            </Link>
+            </NavLink>
           </div>
         </div>
       </div>
-        <div className={styles.app_container}>{children}</div>
+      <div className={styles.app_container}>{children}</div>
     </>
   );
 };
