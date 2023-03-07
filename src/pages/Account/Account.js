@@ -1,7 +1,6 @@
 import React from "react";
 import { getCurrentUser } from "../../services/auth";
 import { useAppContext } from "../../context/Context";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import styles from "./Account.module.css";
 
 import user from "./assets/user.svg";
@@ -11,8 +10,6 @@ const Account = () => {
   const currentUser = getCurrentUser();
 
   return (
-    <div className={styles.container}>
-      <Sidebar />
       <div className={styles.general}>
         <div className={styles.container_content}>
           <div className={styles.user_details}>
@@ -47,16 +44,16 @@ const Account = () => {
                   Token: &nbsp;
                   <span>
                     {currentUser?.accessToken.length > 30 &&
-                      currentUser?.accessToken.substring(0, 30)}....{" "}
+                      currentUser?.accessToken.substring(0, 30)}
+                    ....{" "}
                   </span>
                 </p>
               </div>
             </div>
           </div>
-        </div>
         <button onClick={handleLogout}>logout</button>
+        </div>
       </div>
-    </div>
   );
 };
 

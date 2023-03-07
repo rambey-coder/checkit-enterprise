@@ -12,7 +12,6 @@ export const SignIn = (data) => {
 };
 
 export const getCurrentUser = () => {
-  // return JSON.parse(localStorage.getItem("user")) || null;
   return JSON.parse(sessionStorage.getItem("user")) || null;
 };
 

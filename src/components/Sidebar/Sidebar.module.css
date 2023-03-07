@@ -4,7 +4,7 @@
     height: 100vh;
     padding: 20px;
     flex-grow: 1;
-    /* position: absolute;  */
+    position: fixed; 
 }
 
 .container {
@@ -39,4 +39,15 @@
 .head > div > p, .head > a > p {
     color: #fff;
     font-size: 14px;
+}
+
+.app_container {
+    width: 80%;
+    margin: auto;
+    position: relative;
+    left: 50%;
+    right: -50%;
+    transform: translate(-50%, 0);
+    background: #F6F6F6;
+    height: 100vh;
 }
