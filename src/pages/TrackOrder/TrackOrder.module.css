@@ -165,6 +165,12 @@
   /* color: #4FCEA2; */
 }
 
+.order_price > .updated_price {
+  background: transparent;
+  color: #4FCEA2;
+  font-weight: 700;
+}
+
 .date > button {
   width: 70px;
   border-radius: 5px;
@@ -207,12 +213,35 @@
 }
 
 .detail_cont > div:nth-child(1) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding:  0 30px 30px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 30px 30px;
 }
 
 .detail_cont > div:nth-child(1) > img {
   cursor: pointer;
+}
+
+.details > div {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+}
+
+.details > div > p:nth-child(1) {
+  font-weight: 600;
+  color: #031d40;
+  flex-grow: 5;
+}
+
+.details > div > p:nth-child(2) {
+  background: #0065e82e;
+  flex-grow: 10;
+  width: 150px;
+  padding: 8px;
+  text-align: center;
+  border-radius: 4px;
+  color: #031d40;
 }

@@ -13,10 +13,12 @@ import search from "./assets/search.svg";
 
 const TrackOrder = () => {
   const [orderData, setOrderData] = useState([]);
-  const [orderId, setOrderId] = useState();
+  const [orderIdData, setOrderIdData] = useState();
   const [click, setClick] = useState(false);
 
   const orders = useSelector((state) => state.order.orders);
+
+  // console.log(orders);
 
   const dispatch = useDispatch();
 
@@ -31,8 +33,8 @@ const TrackOrder = () => {
     dispatch(getOrder());
   }, [dispatch]);
 
-  const handleTrackOrder = (order_ID) => {
-    setOrderId(order_ID);
+  const handleTrackOrder = (order_data) => {
+    setOrderIdData(order_data);
     setClick(!click);
   };
 
@@ -79,7 +81,7 @@ const TrackOrder = () => {
               return (
                 <Orders
                   order={order}
-                  order_ID={order.id}
+                  order_data={order}
                   handleTrackOrder={handleTrackOrder}
                   key={order.id}
                 />
@@ -88,9 +90,20 @@ const TrackOrder = () => {
           </div>
         </div>
       </div>
-      {click && <OrderDetail orderId={orderId} 
-        click={click} setClick={setClick}
-      />}
+      {orders?.map((order) => {
+        return (
+          <>
+            {click && (
+              <OrderDetail
+                orderIdData={orderIdData}
+                click={click}
+                setClick={setClick}
+                key={order?.id}
+              />
+            )}
+          </>
+        );
+      })}
     </div>
   );
 };

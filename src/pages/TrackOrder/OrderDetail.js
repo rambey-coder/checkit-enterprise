@@ -1,11 +1,12 @@
 import React from "react";
-import styles from "./TrackOrder.module.css"
+import styles from "./TrackOrder.module.css";
+import { ShortenTextLength } from "../../components/Functions/ShortTextLength";
 
-import close from "./assets/x.svg"
+import close from "./assets/x.svg";
 
-const OrderDetail = ({ orderId, click, setClick }) => {
-    const handleClose = () => {
-      setClick(!click)
+const OrderDetail = ({ click, setClick, orderIdData }) => {
+  const handleClose = () => {
+    setClick(!click);
   };
   return (
     <div className={styles.track_container}>
@@ -15,32 +16,32 @@ const OrderDetail = ({ orderId, click, setClick }) => {
           <img src={close} alt="" onClick={handleClose} />
         </div>
         <hr />
-        <div>
+        <div className={styles.details}>
           <div>
-            <p>Order ID</p>
-            {orderId}
-            <hr />
+            <p>Order ID:</p>
+            <p>{orderIdData.id}</p>
           </div>
+          <hr />
+          {/* <div>
+                            <p>Date Created:</p>
+                            <p>{order.created} </p>
+                          </div>
+                          <hr /> */}
           <div>
-            <p>Date Created</p>
-            {orderId}
-            <hr />
+            <p>Order Link:</p>
+            <p>{ShortenTextLength(orderIdData.links)}</p>
           </div>
+          <hr />
           <div>
-            <p>Order Link</p>
-            {orderId}
-            <hr />
+            <p>Order Price:</p>
+            <p>{orderIdData?.orderPrice}</p>
           </div>
+          <hr />
           <div>
-            <p>Order Price</p>
-            {orderId}
-            <hr />
+            <p>Order status:</p>
+            <p>{orderIdData?.orderStatus}</p>
           </div>
-          <div>
-            <p>Order status</p>
-            {orderId}
-            <hr />
-          </div>
+          <hr />
         </div>
       </div>
     </div>
