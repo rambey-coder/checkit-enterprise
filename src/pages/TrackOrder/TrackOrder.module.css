@@ -224,7 +224,7 @@
 }
 
 .details > div {
-  padding: 10px 20px;
+  padding: 15px 20px;
   display: flex;
   align-items: center;
   background: #f8f9fa;
@@ -237,11 +237,9 @@
 }
 
 .details > div > p:nth-child(2) {
-  background: #0065e82e;
-  flex-grow: 10;
+font-weight: 600;
   width: 150px;
-  padding: 8px;
   text-align: center;
   border-radius: 4px;
-  color: #031d40;
+  color: #194234;
 }

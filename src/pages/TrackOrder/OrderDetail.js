@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./TrackOrder.module.css";
 import { ShortenTextLength } from "../../components/Functions/ShortTextLength";
+import { Link } from "react-router-dom";
 
 import close from "./assets/x.svg";
 
@@ -22,14 +23,11 @@ const OrderDetail = ({ click, setClick, orderIdData }) => {
             <p>{orderIdData.id}</p>
           </div>
           <hr />
-          {/* <div>
-                            <p>Date Created:</p>
-                            <p>{order.created} </p>
-                          </div>
-                          <hr /> */}
           <div>
             <p>Order Link:</p>
-            <p>{ShortenTextLength(orderIdData.links)}</p>
+            <Link to={orderIdData.links}>
+              {ShortenTextLength(orderIdData.links)}
+            </Link>
           </div>
           <hr />
           <div>
