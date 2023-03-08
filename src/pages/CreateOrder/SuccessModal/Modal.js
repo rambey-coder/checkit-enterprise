@@ -1,5 +1,6 @@
 import React from 'react'
 import style from "./Modal.module.css"
+import { Link } from 'react-router-dom'
 
 import success from "./assets/tick.gif"
 
@@ -11,7 +12,7 @@ const Modal = () => {
       </div>
       <div className={style.content}>
         <p>Order Created Successfully</p>
-        <button>Track Order</button>
+        <Link to="/track-order">Track Order</Link>
       </div>
     </div>
   )
