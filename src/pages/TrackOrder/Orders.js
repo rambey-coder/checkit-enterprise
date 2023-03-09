@@ -1,8 +1,11 @@
-import React from 'react'
+import {React} from 'react'
 import styles from "./TrackOrder.module.css"
 import edit from "./assets/edit.svg"
 
-const Orders = ({ handleTrackOrder, order, order_data }) => {
+const Orders = ({ handleTrackOrder, order, order_data, editOrderHandle }) => {
+  const handleEditOrder = (e, order) => {
+    editOrderHandle(order)
+  };
   return (
     <div className={styles.user_list}>
       <div className={styles.agent_name}>
@@ -32,7 +35,7 @@ const Orders = ({ handleTrackOrder, order, order_data }) => {
       </div>
 
       <div className={styles.edit}>
-        <img src={edit} alt="" />
+        <img src={edit} alt="" onClick={(e) => handleEditOrder(e, order)} />
       </div>
     </div>
   );

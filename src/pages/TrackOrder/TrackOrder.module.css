@@ -159,7 +159,7 @@
 }
 
 .status > div > p,
-.order_price > p, .order_status > .pending  {
+.order_price > p, .order_status > .pending, .order_detail_cont > .pending  {
   background: #f28b0c52;
   color: #ff4c09;
   width: 70px;
