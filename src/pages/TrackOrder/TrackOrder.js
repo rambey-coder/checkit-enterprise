@@ -18,7 +18,7 @@ const TrackOrder = () => {
 
   const orders = useSelector((state) => state.order.orders);
 
-  // console.log(orders);
+  console.log(orders);
 
   const dispatch = useDispatch();
 

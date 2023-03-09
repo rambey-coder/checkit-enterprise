@@ -3,7 +3,7 @@ import styles from "./TrackOrder.module.css"
 
 const Orders = ({ handleTrackOrder, order, order_data }) => {
   return (
-    <div className={styles.user_list} >
+    <div className={styles.user_list}>
       <div className={styles.agent_name}>
         <p>{order?.id}</p>
       </div>
@@ -19,14 +19,12 @@ const Orders = ({ handleTrackOrder, order, order_data }) => {
           {order?.orderStatus === null ? (
             <p>Pending</p>
           ) : (
-            <p>{order?.orderStatus}</p>
+            <p className={styles.updated_status}>{order?.orderStatus}</p>
           )}
         </div>
       </div>
       <div className={styles.date}>
-        <button onClick={() => handleTrackOrder(order_data)}>
-          Track
-        </button>
+        <button onClick={() => handleTrackOrder(order_data)}>Track</button>
       </div>
     </div>
   );

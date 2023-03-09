@@ -18,28 +18,34 @@ const OrderDetail = ({ click, setClick, orderIdData }) => {
         </div>
         <hr />
         <div className={styles.details}>
-          <div>
+          <div className={styles.order_detail_cont}>
             <p>Order ID:</p>
             <p>{orderIdData.id}</p>
           </div>
-          <hr />
-          <div>
+          {/* <hr /> */}
+          <div className={styles.order_detail_cont}>
             <p>Order Link:</p>
             <Link to={orderIdData.links}>
               {ShortenTextLength(orderIdData.links)}
             </Link>
           </div>
-          <hr />
-          <div>
+          {/* <hr /> */}
+          <div className={styles.order_detail_cont}>
             <p>Order Price:</p>
-            <p>{orderIdData?.orderPrice}</p>
+            <p>${orderIdData?.orderPrice}</p>
           </div>
-          <hr />
-          <div>
+          {/* <hr /> */}
+          <div className={styles.order_status}>
             <p>Order status:</p>
-            <p>{orderIdData?.orderStatus}</p>
+            {orderIdData?.orderStatus === null ? (
+              <p className={styles.pending}>Pending</p>
+            ) : (
+              <p className={styles.updated_status}>
+                {orderIdData?.orderStatus}
+              </p>
+            )}
           </div>
-          <hr />
+          {/* <hr /> */}
         </div>
       </div>
     </div>
