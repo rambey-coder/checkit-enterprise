@@ -1,5 +1,9 @@
-import { CreateOrderApi, getOrderApi } from "../../ApiRequest/Api/Order";
-import { setCreateOrder, setOrders } from "./OrderSlice";
+import {
+  CreateOrderApi,
+  getOrderApi,
+  editOrderApi,
+} from "../../ApiRequest/Api/Order";
+import { setCreateOrder, setOrders, setEditOrder } from "./OrderSlice";
 import { toast } from "react-toastify";
 import Errorhandler from "../../ApiRequest/Errorhandler";
 import { dispatch } from "../../Store";
@@ -29,5 +33,14 @@ export const getOrder = () => async () => {
   } catch (error) {
     toast.error(error?.response?.data?.message);
     Errorhandler(error);
+  }
+};
+
+export const editOrder = () => async (id, data) => {
+  try {
+    const res = await editOrderApi(id, data)
+    console.log(res);
+  } catch (error) {
+    console.log(error);
   }
 };

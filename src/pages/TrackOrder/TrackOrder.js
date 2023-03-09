@@ -19,12 +19,9 @@ const TrackOrder = () => {
   const [editOrderMode, setEditOrderMode] = useState(false);
   const [editOrderData, setEditOrderData] = useState(null);
 
-  console.log(editOrderData);
-
   const orders = useSelector((state) => state.order.orders);
 
   const editOrderHandle = (order) => {
-    console.log(order);
     setEditOrderMode(true);
     setEditOrderData(order);
   };

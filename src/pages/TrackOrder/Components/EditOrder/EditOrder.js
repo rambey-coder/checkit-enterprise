@@ -1,21 +1,30 @@
-import { React, useState , useRef} from "react";
+import { React, useState } from "react";
 import styles from "./EditOrder.module.css";
+import { useDispatch } from "react-redux";
+import { editOrder } from "../../../../ToolKit/Features/Order/Service";
 
 const EditOrder = ({ editOrderData, editOrderMode }) => {
-  const editLinks = useRef()
-  const editAddressRef = useRef();
+  
   const [editLink, setEditLink] = useState("");
   const [editAddress, setEditAddress] = useState("");
+
+  const dispatch = useDispatch();
+
   const handleEditOrder = (e) => {
     e.preventDefault();
+    let id = editOrderData.id;
+    const data = {
+      links: editLink,
+      deliveryAddress: editAddress,
+    };
+    dispatch(editOrder(id, data));
   };
-console.log(editLink);
-console.log(editAddress);
+
   const handleEditLink = (e) => {
-    setEditLink(editLinks.current.value);
+    setEditLink(e.target.value);
   };
   const handleEditAddress = (e) => {
-    setEditAddress(editAddressRef.current.value);
+    setEditAddress(e.target.value);
   };
   return (
     <div className={styles.content}>
@@ -27,8 +36,6 @@ console.log(editAddress);
             <input
               type="text"
               onChange={handleEditLink}
-              // value={editLink}
-              ref={editLinks}
               defaultValue={editOrderMode ? editOrderData.links : ""}
             />
           </div>
@@ -37,8 +44,6 @@ console.log(editAddress);
             <input
               type="text"
               onChange={handleEditAddress}
-              // value={editAddress}
-              ref={editAddressRef}
               defaultValue={editOrderMode ? editOrderData.deliveryAddress : ""}
             />
           </div>
