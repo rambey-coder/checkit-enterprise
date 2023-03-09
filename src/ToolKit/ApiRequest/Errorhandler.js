@@ -5,23 +5,28 @@ const Errorhandler = (error) => {
 
   if (error.message === "Network Error") {
     toast.error("Network Error");
-  } else if (error.code === "ERR_BAD_REQUEST") {
-    toast.error("Something Went wrong");
   } else if (error.code === "ERR_BAD_RESPONSE") {
     toast.error("Something Went wrong");
+  } else if (
+    error.code === "ERR_BAD_REQUEST" ||
+    error?.response?.data?.message !== ""
+  ) {
+    toast.error("Bad Request");
+  } else {
+    toast.error(error?.response?.data?.message);
   }
 
-
   // let err = error
-  // switch (err) {
+  // switch (error) {
   //   case error.message === "Network Error":
   //     toast.error("Network Error");
   //     break;
-  //   case err.code === "ERR_BAD_REQUEST":
-  //     toast.error("Something Went wrong");
+  //   case error.code === "ERR_BAD_REQUEST":
+  //     toast.error("Bad Request");
+  //     console.log(error.status);
   //     break;
-  //   case err.code === "ERR_BAD_RESPONSE":
-  //     toast.error("Something Went wrong,");
+  //   case error.code === "ERR_BAD_RESPONSE":
+  //     toast.error("Something Went wrong");
   //     break;
 
   //   default:

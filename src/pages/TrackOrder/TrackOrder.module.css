@@ -148,26 +148,36 @@
   text-align: center;
 }
 
+.edit > img {
+  width: 20px;
+  cursor: pointer;
+}
+
 .agent_name > p {
   font-weight: 600;
   color: #313030;
 }
 
-.status > div,
-.order_price > p {
+.status > div > p,
+.order_price > p, .order_status > .pending  {
   background: #f28b0c52;
   color: #ff4c09;
   width: 70px;
   padding: 5px 10px;
   margin: auto;
   border-radius: 5px;
-  /* background: #194234; */
-  /* color: #4FCEA2; */
+}
+
+.status > div > .updated_status, .order_status > p:nth-child(2) {
+  color: #194234;
+  background: #4fcea245;
+  text-transform: capitalize;
+  font-weight: 400;
 }
 
 .order_price > .updated_price {
   background: transparent;
-  color: #4FCEA2;
+  color: #4fcea2;
   font-weight: 700;
 }
 
@@ -193,7 +203,7 @@
   z-index: 999;
   bottom: 0;
   backdrop-filter: blur(4px) saturate(200%);
-  background-color: rgba(197, 197, 197, 0.66);
+  background-color: rgba(231, 229, 229, 0.086);
   height: 100vh;
   width: 100%;
 }
@@ -202,7 +212,7 @@
   max-width: 450px;
   background-color: #fff;
   margin: auto;
-  padding: 30px 0;
+  padding: 20px 0;
   border-radius: 15px;
   filter: drop-shadow(1px 1px 8px rgba(26, 115, 232, 0.227));
   position: absolute;
@@ -212,36 +222,54 @@
   transform: translate(-50%, -50%);
 }
 
+.detail_cont > div > h2 {
+  color: #194234;
+}
+
 .detail_cont > div:nth-child(1) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px 30px 30px;
+  padding: 0 30px 20px 30px;
 }
 
 .detail_cont > div:nth-child(1) > img {
   cursor: pointer;
 }
 
+.details {
+  margin-top: 1rem;
+}
+
 .details > div {
-  padding: 10px 20px;
+  padding: 15px 20px;
   display: flex;
   align-items: center;
-  background: #f8f9fa;
+  /* background: #f8f9fa; */
 }
 
 .details > div > p:nth-child(1) {
-  font-weight: 600;
-  color: #031d40;
+  font-weight: 500;
+  color: #313030;
   flex-grow: 5;
+  font-size: 16px;
 }
 
-.details > div > p:nth-child(2) {
-  background: #0065e82e;
-  flex-grow: 10;
+.order_detail_cont > p:nth-child(2),.order_detail_cont > a {
+  font-weight: 700;
+  font-size: 17px;
   width: 150px;
-  padding: 8px;
   text-align: center;
-  border-radius: 4px;
-  color: #031d40;
+  color: #4fcea2;
+  /* flex-grow: 10; */
+}
+
+.order_status > p:nth-child(2) {
+  width: 150px;
+  padding: 5px 10px;
+  text-align: center;
+  margin: auto;
+  border-radius: 5px;
+  font-size: 13px;
+  /* flex-grow: 10; */
 }

@@ -9,11 +9,11 @@ export const createOrder = (data, setTrackRes, trackRes) => async () => {
     const res = await CreateOrderApi(data);
 
     if (res) {
-      toast.success(res?.data?.message);
+      console.log(res);
+      toast.success("Login Sucessful!");
       setCreateOrder(res?.data);
       if (res.status === 200) setTrackRes(!trackRes);
     }
-    console.log(res);
     return res;
   } catch (error) {
     toast.error(error?.response?.data?.message);

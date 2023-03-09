@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import TrackOrder from "./pages/TrackOrder/TrackOrder";
 import CreateOrder from "./pages/CreateOrder/CreateOrder";
 import VerifyAccount from "./pages/Verify/VerifyAccount";
+import Error from "./pages/Error/Error";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/track-order" element={<TrackOrder />} />
           <Route path="/create-order" element={<CreateOrder />} />
         </Route>
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );

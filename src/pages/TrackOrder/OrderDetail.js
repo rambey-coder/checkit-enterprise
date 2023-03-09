@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./TrackOrder.module.css";
 import { ShortenTextLength } from "../../components/Functions/ShortTextLength";
+import { Link } from "react-router-dom";
 
 import close from "./assets/x.svg";
 
@@ -17,31 +18,34 @@ const OrderDetail = ({ click, setClick, orderIdData }) => {
         </div>
         <hr />
         <div className={styles.details}>
-          <div>
+          <div className={styles.order_detail_cont}>
             <p>Order ID:</p>
             <p>{orderIdData.id}</p>
           </div>
-          <hr />
-          {/* <div>
-                            <p>Date Created:</p>
-                            <p>{order.created} </p>
-                          </div>
-                          <hr /> */}
-          <div>
+          {/* <hr /> */}
+          <div className={styles.order_detail_cont}>
             <p>Order Link:</p>
-            <p>{ShortenTextLength(orderIdData.links)}</p>
+            <Link to={orderIdData.links}>
+              {ShortenTextLength(orderIdData.links)}
+            </Link>
           </div>
-          <hr />
-          <div>
+          {/* <hr /> */}
+          <div className={styles.order_detail_cont}>
             <p>Order Price:</p>
-            <p>{orderIdData?.orderPrice}</p>
+            <p>${orderIdData?.orderPrice}</p>
           </div>
-          <hr />
-          <div>
+          {/* <hr /> */}
+          <div className={styles.order_status}>
             <p>Order status:</p>
-            <p>{orderIdData?.orderStatus}</p>
+            {orderIdData?.orderStatus === null ? (
+              <p className={styles.pending}>Pending</p>
+            ) : (
+              <p className={styles.updated_status}>
+                {orderIdData?.orderStatus}
+              </p>
+            )}
           </div>
-          <hr />
+          {/* <hr /> */}
         </div>
       </div>
     </div>

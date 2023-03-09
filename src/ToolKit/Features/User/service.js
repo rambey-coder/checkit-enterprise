@@ -21,14 +21,14 @@ export const SignIn = (data) => async () => {
 
     sessionStorage.setItem("user", JSON.stringify(res?.data));
     sessionStorage.setItem("checkitAccessToken", res?.data?.accessToken);
-
+    console.log(res);
     if (res) {
-      toast.success(res?.data?.message);
+      toast.success("Login Sucessfully!");
       window.location.href = "/profile";
     }
   } catch (error) {
     Errorhandler(error);
-    toast.error(error?.response?.data?.message);
+    // toast.error(error?.response?.data?.message);
   }
 };
 
