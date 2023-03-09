@@ -148,6 +148,11 @@
   text-align: center;
 }
 
+.edit > img {
+  width: 20px;
+  cursor: pointer;
+}
+
 .agent_name > p {
   font-weight: 600;
   color: #313030;

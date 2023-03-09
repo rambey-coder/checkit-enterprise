@@ -73,9 +73,11 @@ const TrackOrder = () => {
           <div className={styles.users}>
             <div className={styles.header_list}>
               <div>Order ID</div>
+              <div>Date</div>
               <div>Price</div>
               <div>Order Status</div>
               <div>Action</div>
+              <div>Edit</div>
             </div>
             {orderData?.map((order) => {
               return (
