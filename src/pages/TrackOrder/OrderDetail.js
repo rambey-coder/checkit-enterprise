@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./TrackOrder.module.css";
 import { ShortenTextLength } from "../../components/Functions/ShortTextLength";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import close from "./assets/x.svg";
+import { getOrderDetail } from "../../ToolKit/Features/Order/Service";
 
 const OrderDetail = ({ click, setClick, orderIdData }) => {
+  const dispatch = useDispatch();
+
+  const orderDetails = useSelector((state) => state.order.orderDetail);
+  console.log(orderDetails);
+
+  useEffect(() => {
+    dispatch(getOrderDetail(orderIdData.id));
+  }, [dispatch, orderIdData]);
+
   const handleClose = () => {
     setClick(!click);
   };
@@ -20,32 +31,34 @@ const OrderDetail = ({ click, setClick, orderIdData }) => {
         <div className={styles.details}>
           <div className={styles.order_detail_cont}>
             <p>Order ID:</p>
-            <p>{orderIdData.id}</p>
+            <p>{orderDetails?.id}</p>
           </div>
-          {/* <hr /> */}
           <div className={styles.order_detail_cont}>
             <p>Order Link:</p>
-            <Link to={orderIdData.links}>
-              {ShortenTextLength(orderIdData.links)}
+            <Link to={orderDetails?.links}>
+              {ShortenTextLength(orderDetails?.links)}
             </Link>
           </div>
-          {/* <hr /> */}
           <div className={styles.order_detail_cont}>
             <p>Order Price:</p>
-            <p>${orderIdData?.orderPrice}</p>
-          </div>
-          {/* <hr /> */}
-          <div className={styles.order_status}>
-            <p>Order status:</p>
-            {orderIdData?.orderStatus === null ? (
+            {orderDetails?.orderPrice === null ? (
               <p className={styles.pending}>Pending</p>
             ) : (
-              <p className={styles.updated_status}>
-                {orderIdData?.orderStatus}
+              <p className={styles.updated_price}>
+                ${orderDetails?.orderPrice}
               </p>
             )}
           </div>
-          {/* <hr /> */}
+          <div className={styles.order_status}>
+            <p>Order status:</p>
+            {orderDetails?.orderStatus === null ? (
+              <p className={styles.pending}>Pending</p>
+            ) : (
+              <p className={styles.updated_status}>
+                {orderDetails?.orderStatus}
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>
