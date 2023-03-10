@@ -50,6 +50,7 @@ const TrackOrder = () => {
         <EditOrder
           editOrderData={editOrderData}
           editOrderMode={editOrderMode}
+          setEditOrderMode={setEditOrderMode}
         />
       )}
       <div className={styles.content}>
