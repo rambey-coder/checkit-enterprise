@@ -1,0 +1,90 @@
+.track_container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  bottom: 0;
+  backdrop-filter: blur(4px) saturate(200%);
+  background-color: rgba(231, 229, 229, 0.086);
+  height: 100vh;
+  width: 100%;
+}
+
+.detail_cont {
+  max-width: 450px;
+  background-color: #fff;
+  margin: auto;
+  padding: 20px 0;
+  border-radius: 15px;
+  filter: drop-shadow(1px 1px 8px rgba(26, 115, 232, 0.227));
+  position: absolute;
+  right: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.detail_cont > div > h2 {
+  color: #194234;
+}
+
+.detail_cont > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 20px 30px;
+}
+
+.detail_cont > div:nth-child(1) > img {
+  cursor: pointer;
+}
+
+.details {
+  margin-top: 1rem;
+}
+
+.details > div {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.details > div > p:nth-child(1) {
+  font-weight: 500;
+  color: #313030;
+  flex-grow: 5;
+  font-size: 16px;
+}
+
+.order_detail_cont > p:nth-child(2), .order_detail_cont > a {
+  font-weight: 700;
+  font-size: 17px;
+  width: 150px;
+  text-align: center;
+  color: #4fcea2;
+}
+
+.order_status > p:nth-child(2), .order_price > p:nth-child(2) {
+  width: 150px;
+  padding: 8px 10px;
+  text-align: center;
+  margin: auto;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.order_status > .pending, .order_price > .pending  {
+  background: #f28b0c52;
+  color: #ff4c09;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+
+.order_price > .updated_price,  .order_status > .updated_price {
+  color: #194234;
+  background: #4fcea245;
+  text-transform: capitalize;
+  font-weight: 400;
+}
