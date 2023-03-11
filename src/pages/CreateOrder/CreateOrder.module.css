@@ -45,7 +45,7 @@
   color: #031d40;
 }
 
-.content > form > div > input {
+.content > form > div > input, textarea  {
   padding: 10px 13px;
   border: 1px solid #1e1e1e;
   outline: 0;
@@ -54,9 +54,10 @@
   font-size: 13px;
   border-radius: 4px;
   font-weight: 500;
+  resize: none;
 }
 
-.content > form > div > input:focus {
+.content > form > div > input:focus, textarea:focus {
   border: 1px solid #2995d9;
   transition: 0.4s linear;
 }

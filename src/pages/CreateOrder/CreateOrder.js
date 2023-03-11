@@ -35,7 +35,14 @@ const CreateOrder = () => {
               <form onSubmit={handleCreateOrder}>
                 <div>
                   <label htmlFor="link">Order Link</label>
-                  <input type="text" onChange={handleLink} value={orderLink} />
+                  <textarea
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="10"
+                    onChange={handleLink}
+                    value={orderLink}
+                  ></textarea>
                 </div>
                 <div>
                   <label htmlFor="add">Delivery Address</label>
