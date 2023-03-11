@@ -11,7 +11,6 @@ const OrderDetail = ({ click, setClick, orderIdData }) => {
   const dispatch = useDispatch();
 
   const orderDetails = useSelector((state) => state.order.orderDetail);
-  console.log(orderDetails);
 
   useEffect(() => {
     dispatch(getOrderDetail(orderIdData.id));
