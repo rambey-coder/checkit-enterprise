@@ -3,9 +3,9 @@
   left: 0;
   right: 0;
   top: 0;
-  z-index: 999;
+  /* z-index: 999; */
   bottom: 0;
-  backdrop-filter: blur(4px) saturate(200%);
+  /* backdrop-filter: blur(4px) saturate(200%); */
   background-color: rgba(231, 229, 229, 0.086);
   height: 100vh;
   width: 100%;
@@ -17,7 +17,7 @@
   margin: auto;
   padding: 20px 0;
   border-radius: 15px;
-  filter: drop-shadow(1px 1px 8px rgba(26, 115, 232, 0.227));
+  filter: drop-shadow(1px 1px 8px rgba(172, 197, 230, 0.092));
   position: absolute;
   right: 0;
   left: 50%;
