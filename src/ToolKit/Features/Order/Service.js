@@ -14,7 +14,6 @@ export const createOrder = (data, setTrackRes, trackRes) => async () => {
     const res = await CreateOrderApi(data);
 
     if (res) {
-      console.log(res);
       toast.success("Login Sucessful!");
       setCreateOrder(res?.data);
       if (res.status === 200) setTrackRes(!trackRes);
@@ -49,9 +48,9 @@ export const getOrderDetail = (id) => async () => {
 export const editOrder = (id, data) => async () => {
   try {
     const res = await editOrderApi(id, data);
-    console.log(res);
+    toast.success(res?.data?.message)
     dispatch(setEditOrder(res?.data))
   } catch (error) {
-    console.log(error);
+    Errorhandler(error);
   }
 };
