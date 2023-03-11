@@ -3,8 +3,9 @@ import styles from "./EditOrder.module.css";
 import { useDispatch } from "react-redux";
 import { editOrder } from "../../../../ToolKit/Features/Order/Service";
 
-const EditOrder = ({ editOrderData, editOrderMode }) => {
-  
+import close from "../../assets/x.svg"
+
+const EditOrder = ({ editOrderData, editOrderMode, setEditOrderMode }) => {
   const [editLink, setEditLink] = useState("");
   const [editAddress, setEditAddress] = useState("");
 
@@ -23,13 +24,22 @@ const EditOrder = ({ editOrderData, editOrderMode }) => {
   const handleEditLink = (e) => {
     setEditLink(e.target.value);
   };
+
   const handleEditAddress = (e) => {
     setEditAddress(e.target.value);
   };
+
+  const handleClose = () => {
+    setEditOrderMode(!editOrderMode)
+  };
+
   return (
     <div className={styles.content}>
       <div>
-        <h3>Edit your Order</h3>
+        <div className={styles.header}>
+          <h3>Edit your Order</h3>
+          <img src={close} alt="close" onClick={handleClose} />
+        </div>
         <form onSubmit={handleEditOrder}>
           <div>
             <label htmlFor="link">Order Link</label>

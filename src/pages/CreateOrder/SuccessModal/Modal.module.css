@@ -5,6 +5,15 @@
   filter: drop-shadow(1px 1px 8px #b2d2fd1d);
   border-radius: 12px;
   padding: 30px;
+  position: relative;
+}
+
+.close {
+  width: 20px;
+  position: absolute;
+  right: 18px;
+  top: 20px;
+  cursor: pointer;
 }
 
 .img {

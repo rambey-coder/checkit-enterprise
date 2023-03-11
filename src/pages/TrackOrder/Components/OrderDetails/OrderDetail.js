@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import styles from "./TrackOrder.module.css";
-import { ShortenTextLength } from "../../components/Functions/ShortTextLength";
+import styles from "./OrderDetail.module.css";
+import { ShortenTextLength } from "../../../../components/Functions/ShortTextLength";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import close from "./assets/x.svg";
-import { getOrderDetail } from "../../ToolKit/Features/Order/Service";
+import close from "../../assets/x.svg";
+import { getOrderDetail } from "../../../../ToolKit/Features/Order/Service";
 
 const OrderDetail = ({ click, setClick, orderIdData }) => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const OrderDetail = ({ click, setClick, orderIdData }) => {
               {ShortenTextLength(orderDetails?.links)}
             </Link>
           </div>
-          <div className={styles.order_detail_cont}>
+          <div className={styles.order_price}>
             <p>Order Price:</p>
             {orderDetails?.orderPrice === null ? (
               <p className={styles.pending}>Pending</p>

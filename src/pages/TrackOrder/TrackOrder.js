@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import styles from "./TrackOrder.module.css";
 
 import Orders from "./Orders";
-import OrderDetail from "./OrderDetail";
+import OrderDetail from "./Components/OrderDetails/OrderDetail";
 import EditOrder from "./Components/EditOrder/EditOrder";
 
 import { Link } from "react-router-dom";
@@ -50,6 +50,7 @@ const TrackOrder = () => {
         <EditOrder
           editOrderData={editOrderData}
           editOrderMode={editOrderMode}
+          setEditOrderMode={setEditOrderMode}
         />
       )}
       <div className={styles.content}>
