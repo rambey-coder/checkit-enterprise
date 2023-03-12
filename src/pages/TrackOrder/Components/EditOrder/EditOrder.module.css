@@ -15,6 +15,7 @@
   width: 500px;
   margin: auto;
   background-color: #ffffff;
+  border: #031d40 1px solid;
   padding: 30px;
   border-radius: 15px;
   filter: drop-shadow(1px 1px 8px rgba(26, 115, 232, 0.227));
