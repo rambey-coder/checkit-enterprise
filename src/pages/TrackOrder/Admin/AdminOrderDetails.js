@@ -41,7 +41,12 @@ const AdminOrderDetails = () => {
           </div>
           <div>
             <p className={styles.name_id}>Order charge:</p>
-            <p>{orderDetail?.chargeRequest}</p>
+            {orderDetail?.chargeRequest === null ? (
+              <p className={styles.pending}>Pending</p>
+            ) : (
+              <p className={styles.update}>{orderDetail?.chargeRequest}</p>
+            )}
+            {/* <p>{orderDetail?.chargeRequest}</p> */}
           </div>
           <div>
             <p className={styles.name_id}>Delivery Address:</p>
@@ -49,26 +54,38 @@ const AdminOrderDetails = () => {
           </div>
           <div>
             <p className={styles.name_id}>Order Price:</p>
-            <p>{orderDetail?.orderPrice}</p>
+            {orderDetail?.orderPrice === null ? (
+              <p className={styles.pending}>pending</p>
+            ) : (
+              <p className={styles.update}>{orderDetail?.orderPrice}</p>
+            )}
           </div>
           <div>
             <p className={styles.name_id}>Order status:</p>
-            <p>{orderDetail?.orderStatus}</p>
+            {orderDetail?.orderStatus === null ? (
+              <p className={styles.pending}>pending</p>
+            ) : (
+              <p className={styles.update}>{orderDetail?.orderStatus}</p>
+            )}
           </div>
           <div>
             <p className={styles.name_id}>Payment status:</p>
-            <p>{orderDetail?.pay}</p>
+            {orderDetail?.pay === null ? (
+              <p className={styles.pending}>pending</p>
+            ) : (
+              <p className={styles.update}>{orderDetail?.pay}</p>
+            )}
           </div>
         </div>
-        <div>
-          <div>
+        <div className={styles.action}>
+          <button>
             <img src={trash} alt="trash" />
             <p>Delete</p>
-          </div>
-          <div>
+          </button>
+          <button>
             <img src={edit} alt="trash" />
             <p>Edit</p>
-          </div>
+          </button>
         </div>
       </div>
     </div>

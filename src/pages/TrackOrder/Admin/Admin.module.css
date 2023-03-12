@@ -1,53 +1,106 @@
 .container {
-    max-width: 100%;
-    width: 50%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
+  max-width: 100%;
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 
 .container > div {
-    width: 100%;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid rgb(73, 163, 241);
-    filter: drop-shadow(1px 1px 8px #b2d3fd30);
+  width: 100%;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgb(73, 163, 241);
+  filter: drop-shadow(1px 1px 8px #b2d3fd30);
 }
 
 .head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
 }
 
 .head > h2 {
-    color: rgb(73, 163, 241);
-    font-weight: 600;
+  color: rgb(73, 163, 241);
+  font-weight: 600;
 }
 
 .head > div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .head > div > p {
-    color: #6a6a6a;
-    font-weight: 400;
+  color: #6a6a6a;
+  font-weight: 400;
 }
 
 .details > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.details > div > p:nth-child(2) {
+  flex-grow: 4;
+  font-size: 14px;
+  padding: 8px 10px;
+  font-weight: 700;
+  border-radius: 4px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.pending {
+  background: #f28b0c52;
+  color: #ff4c09;
+}
+
+.update {
+  color: #194234;
+  background: #4fcea245;
 }
 
 .name_id {
-    color: #6a6a6a;
-    font-weight: 600;
+  color: #6a6a6a;
+  font-weight: 600;
+  flex-grow: 4;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.action > button {
+  display: flex;
+  align-items: center;
+  width: 170px;
+  gap: 1rem;
+  border: 0;
+  padding: 13px 20px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.action > button > img {
+    width: 20px;
+}
+
+.action > button:nth-child(1) {
+  background: rgb(255, 83, 83);
+}
+
+.action > button:nth-child(2) {
+    background: rgb(73, 163, 241);
 }
