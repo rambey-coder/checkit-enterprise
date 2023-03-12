@@ -5,20 +5,25 @@ import styles from "./Admin.module.css";
 
 import { getOrderDetail } from "../../../ToolKit/Features/Admin/Service";
 import { ShortenTextLength } from "../../../components/Functions/ShortTextLength";
+import { deleteOrder } from "../../../ToolKit/Features/Admin/Service";
 
 import trash from "../assets/trash.svg";
 import edit from "../assets/edit.svg";
-import date from "./assets/calendar.svg"
+import date from "./assets/calendar.svg";
 
 const AdminOrderDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const orderDetail = useSelector((state) => state?.adminOrder?.orderDetails);
-  console.log(orderDetail);
 
   useEffect(() => {
     dispatch(getOrderDetail(id));
   }, [dispatch, id]);
+
+  const handleDelete = () => {
+    dispatch(deleteOrder(id));
+  };
+
   return (
     <div className={styles.container}>
       <div>
@@ -46,7 +51,6 @@ const AdminOrderDetails = () => {
             ) : (
               <p className={styles.update}>{orderDetail?.chargeRequest}</p>
             )}
-            {/* <p>{orderDetail?.chargeRequest}</p> */}
           </div>
           <div>
             <p className={styles.name_id}>Delivery Address:</p>
@@ -78,7 +82,7 @@ const AdminOrderDetails = () => {
           </div>
         </div>
         <div className={styles.action}>
-          <button>
+          <button onClick={handleDelete}>
             <img src={trash} alt="trash" />
             <p>Delete</p>
           </button>
