@@ -2,19 +2,24 @@ import React from "react";
 import styles from "../TrackOrder.module.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { ShortenTextLength } from "../../../components/Functions/ShortTextLength";
 
-import edit from "../assets/edit.svg";
+// import edit from "../assets/edit.svg";
 
-const AdminOrderList = ({ handleTrackOrder, handleEditOrder }) => {
-  const orderList = useSelector((state) => state.adminOrder.orderList);
+const AdminOrderList = () => {
+    const orderList = useSelector((state) => state.adminOrder.orderList);
+    console.log(orderList);
   return (
     <>
       {orderList?.map((order) => {
         return (
-          <div className={styles.user_list} key={order?.id}>
             <Link to={`/order-detail/${order?.id}`}>
+          <div className={styles.user_list} key={order?.id}>
               <div className={styles.agent_name}>
                 <p>{order?.id}</p>
+              </div>
+              <div className={styles.agent_name}>
+                        <p>{ ShortenTextLength(order?.links)}</p>
               </div>
               <div className={styles.agent_name}>
                 <p>{order?.created}</p>
@@ -43,15 +48,15 @@ const AdminOrderList = ({ handleTrackOrder, handleEditOrder }) => {
                 </button>
               </div> */}
 
-              <div className={styles.edit}>
+              {/* <div className={styles.edit}>
                 <img
                   src={edit}
                   alt=""
                   onClick={(e) => handleEditOrder(e, order)}
                 />
-              </div>
-            </Link>
+              </div> */}
           </div>
+            </Link>
         );
       })}
     </>

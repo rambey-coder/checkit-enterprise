@@ -23,6 +23,7 @@ export const getOrderList = () => async () => {
 export const getOrderDetail = (id) => async () => {
   try {
     const res = await getOrderDetailsApi(id)
+    dispatch(setOrderDetails(res?.data))
     console.log(res);
   } catch (error) {
     
