@@ -1,8 +1,9 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { SignUp, SignIn, SignOut } from "../ToolKit/Features/User/service";
 import { createOrder } from "../ToolKit/Features/Order/Service";
 import { useDispatch } from "react-redux";
+import { getCurrentUserToken } from "../ToolKit/Features/User/service";
 
 const AppContext = createContext(null);
 
@@ -14,6 +15,22 @@ export const useAppContext = () => {
 
 const ContextProvider = ({ children }) => {
   const dispatch = useDispatch();
+
+// refactor order detail page: make it a fully page where they can edit and delete
+  
+  // check account type to dissplay certain info
+  const accountType = getCurrentUserToken();
+  const [adminAccount, setAdminAccount] = useState(false);
+  // if (accountType) {
+  // }
+ useEffect(() => {
+   if (accountType && accountType.roles) {
+     setAdminAccount(accountType.roles.includes("ROLE_ADMIN"));
+   }
+ }, [accountType]);
+
+  // console.log(adminAccount);
+  // <!--- --->
 
   // sign up state
   const [username, setUsername] = useState("");
@@ -296,6 +313,7 @@ const ContextProvider = ({ children }) => {
         setOrderLink,
         trackRes,
         setTrackRes,
+        adminAccount,
       }}
     >
       {children}

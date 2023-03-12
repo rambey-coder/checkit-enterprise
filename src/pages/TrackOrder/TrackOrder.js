@@ -4,15 +4,20 @@ import styles from "./TrackOrder.module.css";
 import Orders from "./Orders";
 import OrderDetail from "./Components/OrderDetails/OrderDetail";
 import EditOrder from "./Components/EditOrder/EditOrder";
+import AdminOrder from "./Admin/AdminOrder";
 
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getOrder } from "../../ToolKit/Features/Order/Service";
+import { useAppContext } from "../../context/Context";
 
 import add from "./assets/add.svg";
 import search from "./assets/search.svg";
+// import trash from "./assets/trash.svg";
 
 const TrackOrder = () => {
+  const { adminAccount } = useAppContext();
+
   const [orderData, setOrderData] = useState([]);
   const [orderIdData, setOrderIdData] = useState();
   const [click, setClick] = useState(false);
@@ -53,6 +58,8 @@ const TrackOrder = () => {
           setEditOrderMode={setEditOrderMode}
         />
       )}
+
+      {adminAccount && <AdminOrder />}
       <div className={styles.content}>
         <div className={styles.order}>
           <div className={styles.head}>

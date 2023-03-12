@@ -16,7 +16,7 @@ const OrderDetail = ({ click, setClick, orderIdData }) => {
     dispatch(getOrderDetail(orderIdData.id));
   }, [dispatch, orderIdData]);
 
-  console.log(orderDetails);
+  // console.log(orderDetails);
 
   const handleClose = () => {
     setClick(!click);
