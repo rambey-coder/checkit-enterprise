@@ -1,53 +1,31 @@
 import { React, useState } from "react";
 import styles from "./TrackOrder.module.css";
 
-// import Orders from "./Orders";
 import UserOrder from "./User/UserOrder";
-// import OrderDetail from "./Components/OrderDetails/OrderDetail";
 import EditOrder from "./Components/EditOrder/EditOrder";
 import AdminOrder from "./Admin/AdminOrder";
 
 import { Link } from "react-router-dom";
-// import { useSelector } from "react-redux";
-// import { getOrder } from "../../ToolKit/Features/Order/Service";
 import { useAppContext } from "../../context/Context";
 
 import add from "./assets/add.svg";
 import search from "./assets/search.svg";
-// import trash from "./assets/trash.svg";
 
 const TrackOrder = () => {
   const { adminAccount } = useAppContext();
 
-  // const [orderData, setOrderData] = useState([]);
   const [orderIdData, setOrderIdData] = useState();
   const [click, setClick] = useState(false);
   const [editOrderMode, setEditOrderMode] = useState(false);
   const [editOrderData, setEditOrderData] = useState(null);
-
-  // const orders = useSelector((state) => state?.order?.orders);
 
   const editOrderHandle = (order) => {
     setEditOrderMode(true);
     setEditOrderData(order);
   };
 
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   const getData = () => {
-  //     setOrderData(orders);
-  //   };
-  //   getData();
-  // }, [orders]);
-
-  // useEffect(() => {
-  //   dispatch(getOrder());
-  // }, [dispatch]);
-
   const handleTrackOrder = (order_data) => {
     setOrderIdData(order_data);
-    console.log("click");
     setClick(!click);
   };
 
@@ -91,37 +69,8 @@ const TrackOrder = () => {
         <div className={styles.history}>
           <h5>Order History</h5>
 
-          {/* <div className={styles.userlist_container}>
-            <div className={styles.users}>
-              <div className={styles.header_list}>
-                <div>Order ID</div>
-                <div>Date</div>
-                <div>Price</div>
-                <div>Order Status</div>
-                <div>Action</div>
-                <div>Edit</div>
-              </div>
-              {orderData?.map((order) => {
-                return (
-                  <Orders
-                    order={order}
-                    order_data={order}
-                    handleTrackOrder={handleTrackOrder}
-                    key={order.id}
-                    editOrderHandle={editOrderHandle}
-                  />
-                );
-              })}
-            </div>
-          </div> */}
           {adminAccount ? (
-            <AdminOrder
-              editOrderHandle={editOrderHandle}
-              handleTrackOrder={handleTrackOrder}
-              orderIdData={orderIdData}
-              click={click}
-              setClick={setClick}
-            />
+            <AdminOrder />
           ) : (
             <UserOrder
               editOrderHandle={editOrderHandle}
@@ -132,20 +81,6 @@ const TrackOrder = () => {
             />
           )}
         </div>
-        {/* {orders?.map((order) => {
-          return (
-            <>
-              {click && (
-                <OrderDetail
-                  orderIdData={orderIdData}
-                  click={click}
-                  setClick={setClick}
-                  key={order?.id}
-                />
-              )}
-            </>
-          );
-        })} */}
       </div>
     </>
   );

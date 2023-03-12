@@ -2,10 +2,13 @@ import { React, useState } from "react";
 import styles from "./EditOrder.module.css";
 import { useDispatch } from "react-redux";
 import { editOrder } from "../../../../ToolKit/Features/Order/Service";
+import { editAdminOrder } from "../../../../ToolKit/Features/Admin/Service";
+import { useAppContext } from "../../../../context/Context";
 
-import close from "../../assets/x.svg"
+import close from "../../assets/x.svg";
 
 const EditOrder = ({ editOrderData, editOrderMode, setEditOrderMode }) => {
+  const { adminAccount } = useAppContext();
   const [editLink, setEditLink] = useState("");
   const [editAddress, setEditAddress] = useState("");
 
@@ -18,7 +21,13 @@ const EditOrder = ({ editOrderData, editOrderMode, setEditOrderMode }) => {
       links: editLink,
       deliveryAddress: editAddress,
     };
-    dispatch(editOrder(id, data));
+
+    if (adminAccount) {
+      console.log(data);
+      dispatch(editAdminOrder(id, data));
+    } else {
+      dispatch(editOrder(id, data));
+    }
   };
 
   const handleEditLink = (e) => {
@@ -30,7 +39,7 @@ const EditOrder = ({ editOrderData, editOrderMode, setEditOrderMode }) => {
   };
 
   const handleClose = () => {
-    setEditOrderMode(!editOrderMode)
+    setEditOrderMode(!editOrderMode);
   };
 
   return (
@@ -46,7 +55,7 @@ const EditOrder = ({ editOrderData, editOrderMode, setEditOrderMode }) => {
             <input
               type="text"
               onChange={handleEditLink}
-              defaultValue={editOrderMode ? editOrderData.links : ""}
+              defaultValue={editOrderMode ? editOrderData?.links : ""}
             />
           </div>
           <div>
@@ -54,7 +63,7 @@ const EditOrder = ({ editOrderData, editOrderMode, setEditOrderMode }) => {
             <input
               type="text"
               onChange={handleEditAddress}
-              defaultValue={editOrderMode ? editOrderData.deliveryAddress : ""}
+              defaultValue={editOrderMode ? editOrderData?.deliveryAddress : ""}
             />
           </div>
           <button>Update Order Details</button>

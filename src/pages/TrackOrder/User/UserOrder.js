@@ -25,7 +25,6 @@ const UserOrder = ({
     };
     getData();
   }, [orders]);
-  // console.log(orderData);
 
   useEffect(() => {
     dispatch(getOrder());
