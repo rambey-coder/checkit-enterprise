@@ -10,10 +10,10 @@ import { getOrderDetail } from "../../../../ToolKit/Features/Order/Service";
 const OrderDetail = ({ click, setClick, orderIdData }) => {
   const dispatch = useDispatch();
 
-  const orderDetails = useSelector((state) => state.order.orderDetail);
+  const orderDetails = useSelector((state) => state?.order?.orderDetail);
 
   useEffect(() => {
-    dispatch(getOrderDetail(orderIdData.id));
+    dispatch(getOrderDetail(orderIdData?.id));
   }, [dispatch, orderIdData]);
 
   // console.log(orderDetails);

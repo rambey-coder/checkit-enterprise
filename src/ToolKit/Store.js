@@ -6,8 +6,8 @@ import adminReducer from "./Features/Admin/AdminSlice";
 const store = configureStore({
   reducer: {
     user: userReducer,
-    order: orderReducer,
-    admin: adminReducer,
+    userOrder: orderReducer,
+    adminOrder: adminReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
   devTools: true,

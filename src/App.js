@@ -12,6 +12,7 @@ import TrackOrder from "./pages/TrackOrder/TrackOrder";
 import CreateOrder from "./pages/CreateOrder/CreateOrder";
 import VerifyAccount from "./pages/Verify/VerifyAccount";
 import Error from "./pages/Error/Error";
+import AdminOrderDetails from "./pages/TrackOrder/Admin/AdminOrderDetails";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/track-order" element={<TrackOrder />} />
           <Route path="/create-order" element={<CreateOrder />} />
+          <Route path="/order-detail/:id" element={<AdminOrderDetails />} />
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>
