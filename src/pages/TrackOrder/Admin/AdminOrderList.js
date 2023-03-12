@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ShortenTextLength } from "../../../components/Functions/ShortTextLength";
 
-// import edit from "../assets/edit.svg";
 
 const AdminOrderList = () => {
     const orderList = useSelector((state) => state.adminOrder.orderList);
-    console.log(orderList);
+
   return (
     <>
       {orderList?.map((order) => {

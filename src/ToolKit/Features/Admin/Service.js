@@ -23,8 +23,9 @@ export const getOrderDetail = (id) => async () => {
   try {
     const res = await getOrderDetailsApi(id);
     dispatch(setOrderDetails(res?.data));
-    console.log(res);
-  } catch (error) {}
+  } catch (error) {
+    Errorhandler(error)
+  }
 };
 
 export const deleteOrder = (id) => async () => {
@@ -39,7 +40,7 @@ export const deleteOrder = (id) => async () => {
   }
 };
 
-export const editOrder = (id, data) => async () => {
+export const editAdminOrder = (id, data) => async () => {
   try {
     const res = await editOrderApi(id, data);
     toast.success(res?.data?.message);
