@@ -7,7 +7,7 @@ import styles from "./Account.module.css";
 import user from "./assets/user.svg";
 
 const Account = () => {
-  const { handleLogout } = useAppContext();
+  const { handleLogout, adminAccount } = useAppContext();
   const currentUser = getCurrentUser();
 
   return (
@@ -39,6 +39,12 @@ const Account = () => {
                 User ID: &nbsp;
                 <span>{currentUser?.id}</span>
               </p>
+            </div>
+            <div>
+              <p>
+                account type: &nbsp;
+              </p>
+                {adminAccount ? <p>Admin</p> : <p>user</p>}
             </div>
             <div>
               <p>

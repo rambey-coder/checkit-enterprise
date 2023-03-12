@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./Features/User/UserSlice";
 import orderReducer from "./Features/Order/OrderSlice";
+import adminReducer from "./Features/Admin/AdminSlice";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
-    order: orderReducer,
+    userOrder: orderReducer,
+    adminOrder: adminReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
   devTools: true,
