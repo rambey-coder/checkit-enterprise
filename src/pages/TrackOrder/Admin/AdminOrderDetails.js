@@ -7,7 +7,8 @@ import { getOrderDetail } from "../../../ToolKit/Features/Admin/Service";
 import { ShortenTextLength } from "../../../components/Functions/ShortTextLength";
 import { deleteOrder } from "../../../ToolKit/Features/Admin/Service";
 // import EditOrder from "./EditOrder/EditOrder";
-import EditOrder from "../Components/EditOrder/EditOrder";
+import EditUserOrder from "./EditUserOrder/EditUserOrder";
+// import EditOrder from "../Components/EditOrder/EditOrder";
 
 import trash from "../assets/trash.svg";
 import edit from "../assets/edit.svg";
@@ -43,8 +44,9 @@ const AdminOrderDetails = () => {
 
   return (
     <>
+      {/* <EditUserOrder /> */}
       {editOrderMode && (
-        <EditOrder
+        <EditUserOrder
           editOrderMode={editOrderMode}
           setEditOrderMode={setEditOrderMode}
           id={id}
