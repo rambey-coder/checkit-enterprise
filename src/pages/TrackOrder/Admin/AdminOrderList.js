@@ -4,21 +4,20 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ShortenTextLength } from "../../../components/Functions/ShortTextLength";
 
-
 const AdminOrderList = () => {
-    const orderList = useSelector((state) => state.adminOrder.orderList);
+  const orderList = useSelector((state) => state.adminOrder.orderList);
 
   return (
     <>
       {orderList?.map((order) => {
         return (
-            <Link to={`/order-detail/${order?.id}`}>
-          <div className={styles.user_list} key={order?.id}>
+          <>
+            <div className={styles.user_list} key={order?.id}>
               <div className={styles.agent_name}>
                 <p>{order?.id}</p>
               </div>
               <div className={styles.agent_name}>
-                        <p>{ ShortenTextLength(order?.links)}</p>
+                <p>{ShortenTextLength(order?.links)}</p>
               </div>
               <div className={styles.agent_name}>
                 <p>{order?.created}</p>
@@ -41,21 +40,14 @@ const AdminOrderList = () => {
                   )}
                 </div>
               </div>
-              {/* <div className={styles.date}>
-                <button onClick={() => handleTrackOrder(order_data)}>
-                  Track
-                </button>
-              </div> */}
 
-              {/* <div className={styles.edit}>
-                <img
-                  src={edit}
-                  alt=""
-                  onClick={(e) => handleEditOrder(e, order)}
-                />
-              </div> */}
-          </div>
-            </Link>
+              <div className={styles.details_btn}>
+                <Link to={`/order-detail/${order?.id}`} className={styles.btn}>
+                  Details
+                </Link>
+              </div>
+            </div>
+          </>
         );
       })}
     </>

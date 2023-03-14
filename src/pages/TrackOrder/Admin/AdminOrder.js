@@ -21,8 +21,8 @@ const AdminOrder = () => {
             <div>Date</div>
             <div>Price</div>
             <div>Order Status</div>
-            {/* <div>Action</div>
-            <div>Edit</div>
+            <div>Action</div>
+            {/* <div>Edit</div>
             <div>Delete</div> */}
           </div>
           <AdminOrderList />

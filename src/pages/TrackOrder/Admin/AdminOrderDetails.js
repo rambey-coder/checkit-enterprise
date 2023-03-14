@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styles from "./Admin.module.css";
 
 import { getOrderDetail } from "../../../ToolKit/Features/Admin/Service";
@@ -12,6 +12,8 @@ import EditOrder from "../Components/EditOrder/EditOrder";
 import trash from "../assets/trash.svg";
 import edit from "../assets/edit.svg";
 import date from "./assets/calendar.svg";
+import back from "./assets/back.svg";
+import download from "./assets/download.svg";
 
 const AdminOrderDetails = () => {
   const [editOrderMode, setEditOrderMode] = useState(false);
@@ -19,6 +21,12 @@ const AdminOrderDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const orderDetail = useSelector((state) => state?.adminOrder?.orderDetails);
+
+  const navigate = useNavigate();
+
+  const handlePrev = () => {
+    navigate(-1)
+  }
 
   useEffect(() => {
     dispatch(getOrderDetail(id));
@@ -43,6 +51,16 @@ const AdminOrderDetails = () => {
           editOrderData={editOrderData}
         />
       )}
+      <div className={styles.nav}>
+        <div onClick={handlePrev}>
+          <img src={back} alt="back" />
+        </div>
+
+        <button>
+          <img src={download} alt="download" />
+          Download
+        </button>
+      </div>
       <div className={styles.container}>
         <div>
           <div className={styles.head}>
