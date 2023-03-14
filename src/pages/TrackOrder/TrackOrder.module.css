@@ -189,7 +189,7 @@ a {
   width: 20%;
 }
 
-.btn {
+.btn, .date > button {
   width: 70px;
   border-radius: 5px;
   padding: 5px 10px;
