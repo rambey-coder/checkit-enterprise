@@ -7,8 +7,13 @@ import create from "./assets/create.svg";
 import track from "./assets/track.svg";
 import calc from "./assets/calculate.svg";
 import user from "./assets/user.svg";
+import order from "./assets/order.png";
+
+import { useAppContext } from "../../context/Context";
 
 const Sidebar = ({ children }) => {
+  const { adminAccount } = useAppContext();
+
   return (
     <>
       <div className={styles.sidebar}>
@@ -43,6 +48,20 @@ const Sidebar = ({ children }) => {
               <img src={track} alt="dashboard" />
               <p>Track Order</p>
             </NavLink>
+
+            {adminAccount && (
+              <NavLink
+                to="/admin-order"
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.link} ${styles.active}`
+                    : `${styles.link} `
+                }
+              >
+                <img src={order} alt="dashboard" />
+                <p>Orders</p>
+              </NavLink>
+            )}
 
             <div>
               <img src={calc} alt="dashboard" />

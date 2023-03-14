@@ -15,7 +15,7 @@ export const useAppContext = () => {
 
 const ContextProvider = ({ children }) => {
   const dispatch = useDispatch();
-
+// bug noticed: on user track order => fetch the data again once user edit an order && same on admin plus a back arrow && admin order
 // refactor order detail page: make it a fully page where they can edit and delete
   
   // check account type to dissplay certain info

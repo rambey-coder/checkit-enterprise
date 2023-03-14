@@ -13,12 +13,13 @@ import CreateOrder from "./pages/CreateOrder/CreateOrder";
 import VerifyAccount from "./pages/Verify/VerifyAccount";
 import Error from "./pages/Error/Error";
 import AdminOrderDetails from "./pages/TrackOrder/Admin/AdminOrderDetails";
+import AdminOrder from "./pages/TrackOrder/AdminOrder/AdminOrder";
 
 function App() {
   return (
     <div className="App">
       <ToastContainer />
-     
+
       <Routes>
         {/* protected from visiting when authenticated */}
         <Route element={<Authenticated />}>
@@ -34,6 +35,7 @@ function App() {
           <Route path="/track-order" element={<TrackOrder />} />
           <Route path="/create-order" element={<CreateOrder />} />
           <Route path="/order-detail/:id" element={<AdminOrderDetails />} />
+          <Route path="/admin-order" element={<AdminOrder />} />
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>
