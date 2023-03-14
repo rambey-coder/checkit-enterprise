@@ -18,7 +18,7 @@ import download from "./assets/download.svg";
 
 const AdminOrderDetails = () => {
   const [editOrderMode, setEditOrderMode] = useState(false);
-  const [editOrderData, setEditOrderData] = useState(null);
+  // const [editOrderData, setEditOrderData] = useState(null);
   const { id } = useParams();
   const dispatch = useDispatch();
   const orderDetail = useSelector((state) => state?.adminOrder?.orderDetails);
@@ -39,7 +39,7 @@ const AdminOrderDetails = () => {
 
   const handleEdit = () => {
     setEditOrderMode(!editOrderMode);
-    setEditOrderData(orderDetail);
+    // setEditOrderData(orderDetail);
   };
 
   return (
@@ -50,7 +50,7 @@ const AdminOrderDetails = () => {
           editOrderMode={editOrderMode}
           setEditOrderMode={setEditOrderMode}
           id={id}
-          editOrderData={editOrderData}
+          // editOrderData={editOrderData}
         />
       )}
       <div className={styles.nav}>
