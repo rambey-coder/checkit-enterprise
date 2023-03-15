@@ -9,7 +9,6 @@ import AdminOrderList from "./AdminOrderList";
 const AdminOrder = () => {
   const dispatch = useDispatch();
   const { setPageNo, pageNo, pageSize } = useAppContext();
-  console.log(pageNo);
 
   useEffect(() => {
     dispatch(getOrderList(pageNo, pageSize));

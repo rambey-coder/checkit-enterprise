@@ -82,8 +82,10 @@ const ContextProvider = ({ children }) => {
     };
 
     const res = dispatch(createOrder(data, setTrackRes, trackRes));
-    if (res) setOrderAddress("");
-    setOrderLink("");
+    if (res) {
+      setOrderAddress("");
+      setOrderLink("");
+    } 
 
     return res;
   };
