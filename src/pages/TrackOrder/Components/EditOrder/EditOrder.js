@@ -2,15 +2,14 @@ import { React, useState } from "react";
 import styles from "./EditOrder.module.css";
 import { useDispatch } from "react-redux";
 import { editOrder } from "../../../../ToolKit/Features/Order/Service";
-import { editAdminOrder } from "../../../../ToolKit/Features/Admin/Service";
 import { useAppContext } from "../../../../context/Context";
 
 import close from "../../assets/x.svg";
 
 const EditOrder = ({ editOrderData, editOrderMode, setEditOrderMode }) => {
-  const { adminAccount } = useAppContext();
   const [editLink, setEditLink] = useState("");
   const [editAddress, setEditAddress] = useState("");
+    const { pageNo, pageSize } = useAppContext();
 
   const dispatch = useDispatch();
 
@@ -22,12 +21,7 @@ const EditOrder = ({ editOrderData, editOrderMode, setEditOrderMode }) => {
       deliveryAddress: editAddress,
     };
 
-    if (adminAccount) {
-      console.log(data);
-      dispatch(editAdminOrder(id, data));
-    } else {
-      dispatch(editOrder(id, data));
-    }
+    dispatch(editOrder(id, data, pageNo, pageSize));
   };
 
   const handleEditLink = (e) => {

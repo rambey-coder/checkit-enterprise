@@ -40,11 +40,12 @@ export const deleteOrder = (id) => async () => {
   }
 };
 
-export const editAdminOrder = (id, data) => async () => {
+export const editAdminOrder = (id, data, pageNo, pageSize) => async () => {
   try {
     const res = await editOrderApi(id, data);
     toast.success(res?.data?.message);
     dispatch(setEditOrder(res?.data));
+    dispatch(getOrderList(pageNo, pageSize));
   } catch (error) {
     Errorhandler(error);
   }

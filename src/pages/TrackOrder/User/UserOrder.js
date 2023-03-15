@@ -17,7 +17,7 @@ const UserOrder = ({
 }) => {
   const [orderData, setOrderData] = useState([]);
   const orders = useSelector((state) => state?.userOrder?.orders);
-  const { setPageNo,   pageNo, pageSize } = useAppContext();
+  const { setPageNo, pageNo, pageSize } = useAppContext();
 
   const dispatch = useDispatch();
 
@@ -30,7 +30,8 @@ const UserOrder = ({
 
   useEffect(() => {
     dispatch(getOrder(pageNo, pageSize));
-  }, [dispatch, pageNo, pageSize]);
+  }, [dispatch, pageNo, pageSize, setPageNo]);
+
   return (
     <div>
       <div className={styles.userlist_container}>

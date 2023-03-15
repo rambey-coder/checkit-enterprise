@@ -1,27 +1,27 @@
 import React from "react";
 import styles from "./EditUserOrder.module.css";
 
+import { useAppContext } from "../../../../context/Context";
+
 import close from "../../assets/x.svg";
 
 const EditUserOrder = ({ editOrderMode, setEditOrderMode }) => {
+  const { pageNo, pageSize } = useAppContext();
+  // pass in pageNo, pageSize as argument when dispatching the put action
   const handleEditOrder = (e) => {
     e.preventDefault();
-    };
-    
-    const handleClose = () => {
-        setEditOrderMode(!editOrderMode)
-    }
+  };
+
+  const handleClose = () => {
+    setEditOrderMode(!editOrderMode);
+  };
 
   return (
     <div className={styles.content}>
       <div>
         <div className={styles.header}>
           <h3>Edit your Order</h3>
-          <img
-            src={close}
-            alt="close"
-              onClick={handleClose}
-          />
+          <img src={close} alt="close" onClick={handleClose} />
         </div>
         <form onSubmit={handleEditOrder}>
           <div>
