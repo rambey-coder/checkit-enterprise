@@ -4,6 +4,7 @@ import styles from "../TrackOrder.module.css";
 
 import Orders from "../Orders";
 import OrderDetail from "../Components/OrderDetails/OrderDetail";
+import { useAppContext } from "../../../context/Context";
 
 import { getOrder } from "../../../ToolKit/Features/Order/Service";
 
@@ -16,6 +17,7 @@ const UserOrder = ({
 }) => {
   const [orderData, setOrderData] = useState([]);
   const orders = useSelector((state) => state?.userOrder?.orders);
+  const { setPageNo,   pageNo, pageSize } = useAppContext();
 
   const dispatch = useDispatch();
 
@@ -27,8 +29,8 @@ const UserOrder = ({
   }, [orders]);
 
   useEffect(() => {
-    dispatch(getOrder());
-  }, [dispatch]);
+    dispatch(getOrder(pageNo, pageSize));
+  }, [dispatch, pageNo, pageSize]);
   return (
     <div>
       <div className={styles.userlist_container}>
@@ -61,12 +63,37 @@ const UserOrder = ({
                   orderIdData={orderIdData}
                   click={click}
                   setClick={setClick}
-                  key={orders?.id}
+                  key={order?.id}
                 />
               )}
             </>
           );
         })}
+      </div>
+
+      <div className={styles.pagination}>
+        <button
+          onClick={() => setPageNo(pageNo - 1)}
+          disabled={pageNo < 1}
+          className={
+            pageNo < 1
+              ? `${`${styles.disable} ${styles.prev}`}`
+              : `${styles.prev}`
+          }
+        >
+          Previous
+        </button>
+        <button
+          onClick={() => setPageNo(pageNo + 1)}
+          className={
+            pageNo < 0
+              ? `${`${styles.disable} ${styles.next}`}`
+              : `${styles.next}`
+          }
+          disabled={pageNo < 0}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

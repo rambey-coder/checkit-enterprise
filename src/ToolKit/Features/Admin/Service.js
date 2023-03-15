@@ -10,9 +10,9 @@ import { toast } from "react-toastify";
 import { dispatch } from "../../Store";
 import Errorhandler from "../../ApiRequest/Errorhandler";
 
-export const getOrderList = () => async () => {
+export const getOrderList = (pageNo, pageSize) => async () => {
   try {
-    const res = await getOrderListApi();
+    const res = await getOrderListApi(pageSize, pageNo);
     dispatch(setOrderList(res?.data));
   } catch (error) {
     Errorhandler(error);
@@ -24,7 +24,7 @@ export const getOrderDetail = (id) => async () => {
     const res = await getOrderDetailsApi(id);
     dispatch(setOrderDetails(res?.data));
   } catch (error) {
-    Errorhandler(error)
+    Errorhandler(error);
   }
 };
 

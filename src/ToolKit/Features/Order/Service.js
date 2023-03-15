@@ -25,9 +25,9 @@ export const createOrder = (data, setTrackRes, trackRes) => async () => {
   }
 };
 
-export const getOrder = () => async () => {
+export const getOrder = (pageNo, pageSize) => async () => {
   try {
-    const res = await getOrderApi();
+    const res = await getOrderApi(pageNo, pageSize);
     dispatch(setOrders(res?.data));
     return res;
   } catch (error) {

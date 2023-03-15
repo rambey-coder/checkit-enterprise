@@ -10,6 +10,7 @@ const AdminOrderList = () => {
   return (
     <>
       {orderList?.map((order) => {
+        console.log(order.id)
         return (
           <>
             <div className={styles.user_list} key={order?.id}>
