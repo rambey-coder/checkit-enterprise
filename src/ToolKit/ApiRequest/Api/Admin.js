@@ -12,6 +12,8 @@ export const deleteOrderApi = async (id) => {
   return api.delete(`admin/orders/${id}`);
 };
 
-export const getOrderListApi = async (id) => {
-  return api.get(`admin/orders/list-orders`);
+export const getOrderListApi = async (pageSize, pageNo) => {
+  return api.get(
+    `admin/orders/list-orders?pageNo=${pageNo}&pageSize=${pageSize}`
+  );
 };

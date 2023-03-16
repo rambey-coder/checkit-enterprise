@@ -185,7 +185,11 @@ a {
   font-weight: 700;
 }
 
-.date > button {
+.details_btn {
+  width: 20%;
+}
+
+.btn, .date > button {
   width: 70px;
   border-radius: 5px;
   padding: 5px 10px;
@@ -194,7 +198,41 @@ a {
   outline: 0;
   margin: auto;
   cursor: pointer;
-  background: #1e6ed765;
+  background: #3485ee42;
   color: #031d40;
   font-weight: 500;
+}
+
+
+.pagination{
+  margin: 3rem 0 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.next, .prev {
+  padding: 10px 30px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  outline: 0;
+}
+
+.next {
+  color: #fff;
+  background: linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232));
+  border: 0;
+}
+
+.prev {
+  border: 1px solid rgb(73, 163, 241);
+  color: rgb(73, 163, 241);
+}
+
+.prev.disable, .next.disable {
+  border: 0;
+  background: rgba(175, 175, 175, 0.782);
+  color: #313030;
 }

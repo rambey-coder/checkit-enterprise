@@ -1,17 +1,43 @@
-import React from "react";
+import { React, useState } from "react";
 import styles from "./Sidebar.module.css";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import { setToggleSidebar } from "../../ToolKit/utils/UtilSlice";
+import { dispatch } from "../../ToolKit/Store";
 
 import dashboard from "./assets/dashboard.svg";
 import create from "./assets/create.svg";
 import track from "./assets/track.svg";
 import calc from "./assets/calculate.svg";
 import user from "./assets/user.svg";
+import order from "./assets/order.png";
+import back from "./assets/back.svg";
+
+import { useAppContext } from "../../context/Context";
 
 const Sidebar = ({ children }) => {
+  const { adminAccount } = useAppContext();
+
+  const [sidebar, setSidebar] = useState(false);
+
+  const { toggleSidebar } = useSelector((state) => state.util);
+
+  const toggleSideBar = () => {
+    setSidebar(!sidebar);
+    dispatch(setToggleSidebar(sidebar));
+  };
+
   return (
-    <>
-      <div className={styles.sidebar}>
+    <div className={styles.gen_sidebar}>
+      <div className={styles.back} onClick={toggleSideBar}>
+        <img src={back} alt="" />
+      </div>
+      <div
+        // className={styles.sidebar}
+        className={`${styles.sidebar}
+      } ${toggleSidebar ? styles.showSidebar : ""} `}
+      >
         <div className={styles.container}>
           <div className={styles.head}>
             <NavLink
@@ -44,6 +70,20 @@ const Sidebar = ({ children }) => {
               <p>Track Order</p>
             </NavLink>
 
+            {adminAccount && (
+              <NavLink
+                to="/admin-order"
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.link} ${styles.active}`
+                    : `${styles.link} `
+                }
+              >
+                <img src={order} alt="dashboard" />
+                <p>Orders</p>
+              </NavLink>
+            )}
+
             <div>
               <img src={calc} alt="dashboard" />
               <p>Cost Calculator</p>
@@ -62,7 +102,7 @@ const Sidebar = ({ children }) => {
         </div>
       </div>
       <div className={styles.app_container}>{children}</div>
-    </>
+    </div>
   );
 };
 

@@ -15,21 +15,27 @@ export const useAppContext = () => {
 
 const ContextProvider = ({ children }) => {
   const dispatch = useDispatch();
+  // bug noticed: on user track order => fetch the data again once user edit an order && same on admin plus a back arrow && admin order
+  // refactor order detail page: make it a fully page where they can edit and delete
 
-// refactor order detail page: make it a fully page where they can edit and delete
-  
   // check account type to dissplay certain info
   const accountType = getCurrentUserToken();
   const [adminAccount, setAdminAccount] = useState(false);
   // if (accountType) {
   // }
- useEffect(() => {
-   if (accountType && accountType.roles) {
-     setAdminAccount(accountType.roles.includes("ROLE_ADMIN"));
-   }
- }, [accountType]);
+  useEffect(() => {
+    if (accountType && accountType.roles) {
+      setAdminAccount(accountType.roles.includes("ROLE_ADMIN"));
+    }
+  }, [accountType]);
+  // <!--- --->
 
-  // console.log(adminAccount);
+  // <!--- --->
+
+  const [pageNo, setPageNo] = useState(0);
+
+  const [pageSize] = useState(10);
+
   // <!--- --->
 
   // sign up state
@@ -76,8 +82,10 @@ const ContextProvider = ({ children }) => {
     };
 
     const res = dispatch(createOrder(data, setTrackRes, trackRes));
-    if (res) setOrderAddress("");
-    setOrderLink("");
+    if (res) {
+      setOrderAddress("");
+      setOrderLink("");
+    } 
 
     return res;
   };
@@ -314,6 +322,9 @@ const ContextProvider = ({ children }) => {
         trackRes,
         setTrackRes,
         adminAccount,
+        pageNo,
+        pageSize,
+        setPageNo
       }}
     >
       {children}

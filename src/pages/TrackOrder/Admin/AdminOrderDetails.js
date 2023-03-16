@@ -1,24 +1,33 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styles from "./Admin.module.css";
 
 import { getOrderDetail } from "../../../ToolKit/Features/Admin/Service";
 import { ShortenTextLength } from "../../../components/Functions/ShortTextLength";
 import { deleteOrder } from "../../../ToolKit/Features/Admin/Service";
 // import EditOrder from "./EditOrder/EditOrder";
-import EditOrder from "../Components/EditOrder/EditOrder";
+import EditUserOrder from "./EditUserOrder/EditUserOrder";
+// import EditOrder from "../Components/EditOrder/EditOrder";
 
 import trash from "../assets/trash.svg";
 import edit from "../assets/edit.svg";
 import date from "./assets/calendar.svg";
+import back from "./assets/back.svg";
+import download from "./assets/download.svg";
 
 const AdminOrderDetails = () => {
   const [editOrderMode, setEditOrderMode] = useState(false);
-  const [editOrderData, setEditOrderData] = useState(null);
+  // const [editOrderData, setEditOrderData] = useState(null);
   const { id } = useParams();
   const dispatch = useDispatch();
   const orderDetail = useSelector((state) => state?.adminOrder?.orderDetails);
+
+  const navigate = useNavigate();
+
+  const handlePrev = () => {
+    navigate(-1)
+  }
 
   useEffect(() => {
     dispatch(getOrderDetail(id));
@@ -30,19 +39,30 @@ const AdminOrderDetails = () => {
 
   const handleEdit = () => {
     setEditOrderMode(!editOrderMode);
-    setEditOrderData(orderDetail);
+    // setEditOrderData(orderDetail);
   };
 
   return (
     <>
+      {/* <EditUserOrder /> */}
       {editOrderMode && (
-        <EditOrder
+        <EditUserOrder
           editOrderMode={editOrderMode}
           setEditOrderMode={setEditOrderMode}
           id={id}
-          editOrderData={editOrderData}
+          // editOrderData={editOrderData}
         />
       )}
+      <div className={styles.nav}>
+        <div onClick={handlePrev}>
+          <img src={back} alt="back" />
+        </div>
+
+        <button>
+          <img src={download} alt="download" />
+          Download
+        </button>
+      </div>
       <div className={styles.container}>
         <div>
           <div className={styles.head}>

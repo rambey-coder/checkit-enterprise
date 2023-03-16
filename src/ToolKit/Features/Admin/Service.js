@@ -4,17 +4,22 @@ import {
   deleteOrderApi,
   getOrderListApi,
 } from "../../ApiRequest/Api/Admin";
+import { setLoading } from "../../utils/UtilSlice";
 
 import { setOrderList, setEditOrder, setOrderDetails } from "./AdminSlice";
 import { toast } from "react-toastify";
 import { dispatch } from "../../Store";
 import Errorhandler from "../../ApiRequest/Errorhandler";
 
-export const getOrderList = () => async () => {
+export const getOrderList = (pageNo, pageSize) => async () => {
+  dispatch(setLoading(true));
   try {
-    const res = await getOrderListApi();
+    const res = await getOrderListApi(pageSize, pageNo);
     dispatch(setOrderList(res?.data));
+     dispatch(setLoading(false))
+    return res;
   } catch (error) {
+     dispatch(setLoading(false))
     Errorhandler(error);
   }
 };
@@ -24,7 +29,7 @@ export const getOrderDetail = (id) => async () => {
     const res = await getOrderDetailsApi(id);
     dispatch(setOrderDetails(res?.data));
   } catch (error) {
-    Errorhandler(error)
+    Errorhandler(error);
   }
 };
 
@@ -40,11 +45,12 @@ export const deleteOrder = (id) => async () => {
   }
 };
 
-export const editAdminOrder = (id, data) => async () => {
+export const editAdminOrder = (id, data, pageNo, pageSize) => async () => {
   try {
     const res = await editOrderApi(id, data);
     toast.success(res?.data?.message);
     dispatch(setEditOrder(res?.data));
+    dispatch(getOrderList(pageNo, pageSize));
   } catch (error) {
     Errorhandler(error);
   }

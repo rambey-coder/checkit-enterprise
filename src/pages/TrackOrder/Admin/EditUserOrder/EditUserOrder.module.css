@@ -7,7 +7,7 @@
   bottom: 0;
   backdrop-filter: blur(4px) saturate(200%);
   background-color: rgba(231, 229, 229, 0.086);
-  /* height: 100vh; */
+  height: 100vh;
   width: 100%;
 }
 
@@ -15,10 +15,10 @@
   width: 500px;
   margin: auto;
   background-color: #ffffff;
-  border: #031d40 1px solid;
+  border: #ff4c09 1px solid;
   padding: 30px;
   border-radius: 15px;
-  filter: drop-shadow(1px 1px 8px rgba(26, 115, 232, 0.227));
+  filter: drop-shadow(1px 1px 8px #fe561933);
   position: absolute;
   right: 0;
   left: 50%;
@@ -38,7 +38,7 @@
 }
 
 .header > h3 {
-  color: #031d40;
+  color: #ff4c09;
   font-weight: 700;
   font-size: 20px;
   text-align: center;
@@ -57,10 +57,10 @@
 .content > div > form > div label {
   font-size: 13px;
   font-weight: 600;
-  color: #031d40;
+  color: #552210;
 }
 
-.content > div > form > div > input {
+.content > div > form > div > input, .content > div > form > div > select {
   padding: 10px 13px;
   border: 1px solid #1e1e1e;
   outline: 0;
@@ -71,15 +71,15 @@
   font-weight: 500;
 }
 
-.content > div > form > div > input:focus {
-  border: 1px solid #2995d9;
+.content > div > form > div > input:focus, .content > div > form > div > select:focus{
+  border: 1px solid #ff4c09;
   transition: 0.4s linear;
 }
 
 .content > div > form > button {
   display: block;
   width: 100%;
-  background-color: #031d40;
+  background-color: #ff4c09;
   color: #fff;
   outline: 0;
   padding: 10px;
@@ -90,6 +90,6 @@
 
 .content > div > form > button:hover {
   background: transparent;
-  color: #2995d9;
-  border-color: #2995d9;
+  color: #ff4c09;
+  border-color: #ff4c09;
 }
