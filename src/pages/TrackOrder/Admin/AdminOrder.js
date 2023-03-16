@@ -1,14 +1,18 @@
 import { React, useEffect } from "react";
 import styles from "../TrackOrder.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { getOrderList } from "../../../ToolKit/Features/Admin/Service";
 import { useAppContext } from "../../../context/Context";
+
 import AdminOrderList from "./AdminOrderList";
+import Loader from "../../../components/Loader/Loader";
 
 const AdminOrder = () => {
   const dispatch = useDispatch();
   const { setPageNo, pageNo, pageSize } = useAppContext();
+
+  const { isLoading } = useSelector((state) => state.util);
 
   useEffect(() => {
     dispatch(getOrderList(pageNo, pageSize));
@@ -25,7 +29,7 @@ const AdminOrder = () => {
             <div>Order Status</div>
             <div>Action</div>
           </div>
-          <AdminOrderList />
+          {isLoading ? <Loader /> : <AdminOrderList />}
         </div>
         <div className={styles.pagination}>
           <button

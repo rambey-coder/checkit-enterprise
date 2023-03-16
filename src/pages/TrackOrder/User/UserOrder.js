@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../TrackOrder.module.css";
 
+import Loader from "../../../components/Loader/Loader";
 import Orders from "../Orders";
 import OrderDetail from "../Components/OrderDetails/OrderDetail";
 import { useAppContext } from "../../../context/Context";
@@ -18,6 +19,8 @@ const UserOrder = ({
   const [orderData, setOrderData] = useState([]);
   const orders = useSelector((state) => state?.userOrder?.orders);
   const { setPageNo, pageNo, pageSize } = useAppContext();
+
+  const { isLoading } = useSelector((state) => state.util);
 
   const dispatch = useDispatch();
 
@@ -44,17 +47,23 @@ const UserOrder = ({
             <div>Action</div>
             <div>Edit</div>
           </div>
-          {orderData?.map((order) => {
-            return (
-              <Orders
-                order={order}
-                order_data={order}
-                handleTrackOrder={handleTrackOrder}
-                key={order.id}
-                editOrderHandle={editOrderHandle}
-              />
-            );
-          })}
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              {orderData?.map((order) => {
+                return (
+                  <Orders
+                    order={order}
+                    order_data={order}
+                    handleTrackOrder={handleTrackOrder}
+                    key={order.id}
+                    editOrderHandle={editOrderHandle}
+                  />
+                );
+              })}
+            </>
+          )}
         </div>
         {orders?.map((order) => {
           return (

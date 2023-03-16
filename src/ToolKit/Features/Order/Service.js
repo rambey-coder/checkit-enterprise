@@ -8,6 +8,7 @@ import { setCreateOrder, setOrders, setEditOrder, setOrderDetails } from "./Orde
 import { toast } from "react-toastify";
 import Errorhandler from "../../ApiRequest/Errorhandler";
 import { dispatch } from "../../Store";
+import { setLoading } from "../../utils/UtilSlice";
 
 export const createOrder = (data, setTrackRes, trackRes) => async () => {
   try {
@@ -26,21 +27,27 @@ export const createOrder = (data, setTrackRes, trackRes) => async () => {
 };
 
 export const getOrder = (pageNo, pageSize) => async () => {
+  dispatch(setLoading(true))
   try {
     const res = await getOrderApi(pageNo, pageSize);
     dispatch(setOrders(res?.data));
+    dispatch(setLoading(false));
     return res;
   } catch (error) {
     toast.error(error?.response?.data?.message);
+    dispatch(setLoading(false));
     Errorhandler(error);
   }
 };
 
 export const getOrderDetail = (id) => async () => {
+  dispatch(setLoading(true));
   try {
     const res = await getOrderDetailApi(id)
     dispatch(setOrderDetails(res?.data))
+    dispatch(setLoading(false))
   } catch (error) {
+    dispatch(setLoading(false))
     Errorhandler(error)
   }
 }

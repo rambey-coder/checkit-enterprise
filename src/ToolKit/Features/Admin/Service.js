@@ -4,6 +4,7 @@ import {
   deleteOrderApi,
   getOrderListApi,
 } from "../../ApiRequest/Api/Admin";
+import { setLoading } from "../../utils/UtilSlice";
 
 import { setOrderList, setEditOrder, setOrderDetails } from "./AdminSlice";
 import { toast } from "react-toastify";
@@ -11,10 +12,14 @@ import { dispatch } from "../../Store";
 import Errorhandler from "../../ApiRequest/Errorhandler";
 
 export const getOrderList = (pageNo, pageSize) => async () => {
+  dispatch(setLoading(true));
   try {
     const res = await getOrderListApi(pageSize, pageNo);
     dispatch(setOrderList(res?.data));
+     dispatch(setLoading(false))
+    return res;
   } catch (error) {
+     dispatch(setLoading(false))
     Errorhandler(error);
   }
 };
