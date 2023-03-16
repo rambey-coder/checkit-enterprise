@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./CreateOrder.module.css";
 import { useAppContext } from "../../context/Context";
+import { useSelector } from "react-redux";
+import { PuffLoader } from "react-spinners";
 
 import Modal from "./SuccessModal/Modal";
 
@@ -14,6 +16,8 @@ const CreateOrder = () => {
     trackRes,
   } = useAppContext();
 
+  const {isLoading} = useSelector(state => state.util)
+
   const handleLink = (e) => {
     setOrderLink(e.target.value);
   };
@@ -23,6 +27,11 @@ const CreateOrder = () => {
 
   return (
     <div className={styles.general}>
+      {isLoading && (
+        <div className={styles.puff}>
+          <PuffLoader />
+        </div>
+      )}
       {trackRes ? (
         <>
           <Modal />

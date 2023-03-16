@@ -11,18 +11,21 @@ import { dispatch } from "../../Store";
 import { setLoading } from "../../utils/UtilSlice";
 
 export const createOrder = (data, setTrackRes, trackRes) => async () => {
+  dispatch(setLoading(true))
   try {
     const res = await CreateOrderApi(data);
 
     if (res) {
-      toast.success("Login Sucessful!");
+      toast.success(res?.data?.message);
       setCreateOrder(res?.data);
       if (res.status === 200) setTrackRes(!trackRes);
     }
+    dispatch(setLoading(false))
     return res;
   } catch (error) {
-    toast.error(error?.response?.data?.message);
+    // toast.error(error?.response?.data?.message);
     Errorhandler(error);
+    dispatch(setLoading(false))
   }
 };
 

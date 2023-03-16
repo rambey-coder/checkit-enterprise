@@ -1,33 +1,40 @@
 import { SignInApi, SignUpApi } from "../../ApiRequest/Api/User";
 import { toast } from "react-toastify";
 import Errorhandler from "../../ApiRequest/Errorhandler";
+import { setLoading } from "../../utils/UtilSlice";
+import { dispatch } from "../../Store";
 
 export const SignUp = (data) => async () => {
+  dispatch(setLoading(true))
   try {
     const res = await SignUpApi(data);
     if (res) {
       toast.success(res?.data?.message);
       window.location.href = "/verify-signup";
+      dispatch(setLoading(false))
     }
   } catch (error) {
+    dispatch(setLoading(false))
     Errorhandler(error);
-    toast.error(error?.response?.data?.message);
+    // toast.error(error?.response?.data?.message);
   }
 };
 
 export const SignIn = (data) => async () => {
+  dispatch(setLoading(true));
   try {
     const res = await SignInApi(data);
 
     sessionStorage.setItem("user", JSON.stringify(res?.data));
     sessionStorage.setItem("checkitAccessToken", res?.data?.accessToken);
-    console.log(res);
+    dispatch(setLoading(false))
     if (res) {
       toast.success("Login Sucessfully!");
       window.location.href = "/profile";
     }
   } catch (error) {
     Errorhandler(error);
+    dispatch(setLoading(false))
     // toast.error(error?.response?.data?.message);
   }
 };
