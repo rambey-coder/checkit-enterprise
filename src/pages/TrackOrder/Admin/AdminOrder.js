@@ -8,11 +8,14 @@ import { useAppContext } from "../../../context/Context";
 import AdminOrderList from "./AdminOrderList";
 import Loader from "../../../components/Loader/Loader";
 
+import data from "./assets/empty.svg"
+
 const AdminOrder = () => {
   const dispatch = useDispatch();
   const { setPageNo, pageNo, pageSize } = useAppContext();
 
   const { isLoading } = useSelector((state) => state.util);
+  const orderList = useSelector((state) => state.adminOrder.orderList);
 
   useEffect(() => {
     dispatch(getOrderList(pageNo, pageSize));
@@ -29,7 +32,22 @@ const AdminOrder = () => {
             <div>Order Status</div>
             <div>Action</div>
           </div>
-          {isLoading ? <Loader /> : <AdminOrderList />}
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              {orderList?.length === 0 ? (
+                <div className={styles.empty_container}>
+                  <div>
+                    <img src={data} alt="data" />
+                  </div>
+                  <p>No data available</p>
+                </div>
+              ) : (
+                <AdminOrderList />
+              )}
+            </>
+          )}
         </div>
         <div className={styles.pagination}>
           <button
