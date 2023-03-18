@@ -236,3 +236,24 @@ a {
   background: rgba(175, 175, 175, 0.782);
   color: #313030;
 }
+
+.empty_container {
+  width: 90%;
+  margin: 3rem auto 0 auto;
+}
+
+.empty_container > div {
+  width: 200px;
+  margin: auto;
+}
+
+.empty_container > div > img {
+  width: 100%;
+}
+
+.empty_container > p {
+  text-align: center;
+  color: #031d40;
+  margin: 2rem 0 0 0;
+  font-weight: 500;
+}

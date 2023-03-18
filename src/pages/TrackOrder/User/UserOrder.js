@@ -9,6 +9,8 @@ import { useAppContext } from "../../../context/Context";
 
 import { getOrder } from "../../../ToolKit/Features/Order/Service";
 
+import data from "./assets/empty.svg";
+
 const UserOrder = ({
   handleTrackOrder,
   editOrderHandle,
@@ -47,21 +49,33 @@ const UserOrder = ({
             <div>Action</div>
             <div>Edit</div>
           </div>
+          
           {isLoading ? (
             <Loader />
           ) : (
             <>
-              {orderData?.map((order) => {
-                return (
-                  <Orders
-                    order={order}
-                    order_data={order}
-                    handleTrackOrder={handleTrackOrder}
-                    key={order.id}
-                    editOrderHandle={editOrderHandle}
-                  />
-                );
-              })}
+              {orderData?.length === 0 ? (
+                <div className={styles.empty_container}>
+                  <div>
+                    <img src={data} alt="data" />
+                  </div>
+                  <p>No data available</p>
+                </div>
+              ) : (
+                <>
+                  {orderData?.map((order) => {
+                    return (
+                      <Orders
+                        order={order}
+                        order_data={order}
+                        handleTrackOrder={handleTrackOrder}
+                        key={order.id}
+                        editOrderHandle={editOrderHandle}
+                      />
+                    );
+                  })}
+                </>
+              )}
             </>
           )}
         </div>
