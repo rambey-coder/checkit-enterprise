@@ -89,6 +89,7 @@ const Dashboard = () => {
                     <>
                       {orderData?.map((order) => {
                         return (
+                          <>
                           <div className={styles.order_list}>
                             <h5>{order?.id}</h5>
                             <p>{order.created}</p>
@@ -109,6 +110,8 @@ const Dashboard = () => {
                               )}
                             </div>
                           </div>
+                            <hr />
+                            </>
                         );
                       })}
                     </>

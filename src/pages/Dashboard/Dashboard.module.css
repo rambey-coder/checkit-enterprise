@@ -39,7 +39,7 @@
 }
 
 .history {
-  margin: 4rem auto 0 auto;
+  margin: 4rem auto;
 }
 
 .order_overview {
@@ -90,6 +90,8 @@
 .order_heading > p {
   color: #373636;
   font-weight: 700;
+  width: 20%;
+  text-align: center;
   font-size: 14px;
   text-transform: uppercase;
 }
@@ -113,4 +115,31 @@
   color: #031d40;
   margin: 2rem 0 0 0;
   font-weight: 500;
+}
+
+.order_list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.order_list > h5, .order_list > p:nth-child(2) {
+  color: #031d40;
+  width: 20%;
+  font-size: 15px;
+}
+
+.status, .updates {
+  width: 20%;
+}
+
+hr {
+  opacity: 0.4;
+}
+
+.updates, .pending {
+  color: #08428c;
+  font-weight: 700;
 }
