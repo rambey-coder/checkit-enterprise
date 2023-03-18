@@ -46,8 +46,11 @@ const EditOrder = ({ editOrderData, editOrderMode, setEditOrderMode }) => {
         <form onSubmit={handleEditOrder}>
           <div>
             <label htmlFor="link">Order Link</label>
-            <input
-              type="text"
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
               onChange={handleEditLink}
               defaultValue={editOrderMode ? editOrderData?.links : ""}
             />
