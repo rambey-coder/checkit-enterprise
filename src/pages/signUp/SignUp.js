@@ -23,15 +23,18 @@ const SignUp = () => {
     handleBlur,
     phoneNumber,
     phoneNumberError,
+    refererCode,
   } = useAppContext();
 
   const { isLoading } = useSelector((state) => state.util);
 
   return (
     <div className={styles.cont}>
-      {isLoading && <div className={styles.puff}>
-        <PuffLoader />
-      </div>}
+      {isLoading && (
+        <div className={styles.puff}>
+          <PuffLoader />
+        </div>
+      )}
       <div className={styles.signup_container}>
         <div className={styles.img_background}>
           <div className={styles.color}></div>
@@ -104,6 +107,17 @@ const SignUp = () => {
                       ) : (
                         ""
                       )}
+                    </span>
+
+                    <span>
+                      <label htmlFor="number">Referer Code</label>
+
+                      <input
+                        type="text"
+                        name="referer"
+                        onChange={handleChange}
+                        value={refererCode}
+                      />
                     </span>
 
                     <span>

@@ -7,7 +7,7 @@ const Orders = ({ handleTrackOrder, order, order_data, editOrderHandle }) => {
     editOrderHandle(order)
   };
   return (
-    <div className={styles.user_list}>
+    <div className={styles.user_list} key={order?.id}>
       <div className={styles.agent_name}>
         <p>{order?.id}</p>
       </div>

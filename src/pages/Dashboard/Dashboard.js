@@ -13,7 +13,6 @@ import data from "./assets/empty.svg";
 
 const Dashboard = () => {
   const currentUser = getCurrentUser();
-  console.log(currentUser);
   const [orderData, setOrderData] = useState([]);
   const orders = useSelector((state) => state?.userOrder?.orders);
   const { isLoading } = useSelector((state) => state.util);
@@ -30,8 +29,6 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(getOrder(pageNo, pageSize));
   }, [dispatch, pageNo, pageSize, setPageNo]);
-
-  console.log(orderData);
 
   return (
     <div className={styles.general}>
@@ -98,7 +95,7 @@ const Dashboard = () => {
                     <>
                       {orderData?.map((order) => {
                         return (
-                          <>
+                          <div key={order.id}>
                           <div className={styles.order_list}>
                             <h5>{order?.id}</h5>
                             <p>{order.created}</p>
@@ -120,7 +117,7 @@ const Dashboard = () => {
                             </div>
                           </div>
                             <hr />
-                            </>
+                            </div>
                         );
                       })}
                     </>
