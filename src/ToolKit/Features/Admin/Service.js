@@ -46,12 +46,15 @@ export const deleteOrder = (id) => async () => {
 };
 
 export const editAdminOrder = (id, data, pageNo, pageSize) => async () => {
+  dispatch(setLoading(true))
   try {
     const res = await editOrderApi(id, data);
     toast.success(res?.data?.message);
     dispatch(setEditOrder(res?.data));
     dispatch(getOrderList(pageNo, pageSize));
+    dispatch(setLoading(false))
   } catch (error) {
     Errorhandler(error);
+    dispatch(setLoading(false))
   }
 };
