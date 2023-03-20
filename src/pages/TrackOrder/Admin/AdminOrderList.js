@@ -11,8 +11,8 @@ const AdminOrderList = () => {
     <>
       {orderList?.map((order) => {
         return (
-          <>
-            <div className={styles.user_list} key={order?.id}>
+          <div key={order.id}>
+            <div className={styles.user_list}>
               <div className={styles.agent_name}>
                 <p>{order?.id}</p>
               </div>
@@ -47,7 +47,7 @@ const AdminOrderList = () => {
                 </Link>
               </div>
             </div>
-          </>
+          </div>
         );
       })}
     </>

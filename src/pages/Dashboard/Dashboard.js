@@ -13,7 +13,6 @@ import data from "./assets/empty.svg";
 
 const Dashboard = () => {
   const currentUser = getCurrentUser();
-  console.log(currentUser);
   const [orderData, setOrderData] = useState([]);
   const orders = useSelector((state) => state?.userOrder?.orders);
   const { isLoading } = useSelector((state) => state.util);
@@ -31,28 +30,35 @@ const Dashboard = () => {
     dispatch(getOrder(pageNo, pageSize));
   }, [dispatch, pageNo, pageSize, setPageNo]);
 
-  console.log(orderData);
-
   return (
     <div className={styles.general}>
-      <h1>Analytics Overview</h1>
+      <h1>Account Overview</h1>
       <div className={styles.container_content}>
         <div className={styles.user_details}>
-          <p>70</p>
-          <h4>Orders</h4>
+          <h4>China Address</h4>
+          <p><b>Name: </b> Checkit/{currentUser?.username}</p>
+          <p><b>Warehouse number: </b> 15986856909</p>
+          <p><b>Warehouse address:</b> 广州市越秀区广园西路盈富商贸城D区D35 {currentUser?.username} {currentUser?.phonenumber}</p>
+          
         </div>
         <div className={styles.user_details}>
-          <p>70</p>
-          <h4>Canceled Orders</h4>
+          <h4>Referral Code</h4>
+          <p>{currentUser?.referralCode}</p>
+          <hr/>
+          <h4>Referred By Code</h4>
+          <p>{currentUser?.referredByCode}</p>
+          
         </div>
         <div className={styles.user_details}>
-          <p>70</p>
-          <h4>Orders Deliverd</h4>
+          <h4>Exchange Rate Today</h4>
+          <p>pending</p>
+          <hr/>
+          <h4>Earning ($) </h4>
+          <p>0.00</p>
+          
+          
         </div>
-        <div className={styles.user_details}>
-          <p>70</p>
-          <h4>Pending Orders</h4>
-        </div>
+        
       </div>
       <div className={styles.history}>
         <h1>Order Overview</h1>
@@ -89,7 +95,7 @@ const Dashboard = () => {
                     <>
                       {orderData?.map((order) => {
                         return (
-                          <>
+                          <div key={order.id}>
                           <div className={styles.order_list}>
                             <h5>{order?.id}</h5>
                             <p>{order.created}</p>
@@ -111,7 +117,7 @@ const Dashboard = () => {
                             </div>
                           </div>
                             <hr />
-                            </>
+                            </div>
                         );
                       })}
                     </>

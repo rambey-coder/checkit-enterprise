@@ -43,6 +43,7 @@ const ContextProvider = ({ children }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setphoneNumber] = useState(undefined);
+  const [refererCode, setRefererCode] = useState("");
 
   // signup error state
   const [emailError, setEmailError] = useState(false);
@@ -85,7 +86,7 @@ const ContextProvider = ({ children }) => {
     if (res) {
       setOrderAddress("");
       setOrderLink("");
-    } 
+    }
 
     return res;
   };
@@ -119,6 +120,9 @@ const ContextProvider = ({ children }) => {
         break;
       case "number":
         setphoneNumber(value);
+        break;
+      case "referer":
+        setRefererCode(value);
         break;
       default:
         break;
@@ -245,6 +249,7 @@ const ContextProvider = ({ children }) => {
       username: username,
       email: email,
       password: password,
+      referredByCode: refererCode,
     };
 
     const formFields = ["username", "email", "password"];
@@ -324,7 +329,8 @@ const ContextProvider = ({ children }) => {
         adminAccount,
         pageNo,
         pageSize,
-        setPageNo
+        setPageNo,
+        refererCode,
       }}
     >
       {children}
