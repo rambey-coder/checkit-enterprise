@@ -9,11 +9,12 @@ import SignUp from "./pages/signUp/SignUp";
 import Account from "./pages/Account/Account";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import TrackOrder from "./pages/TrackOrder/TrackOrder";
-import CreateOrder from "./pages/CreateOrder/CreateOrder";
+// import CreateOrder from "./pages/CreateOrder/CreateOrder";
 import VerifyAccount from "./pages/Verify/VerifyAccount";
 import Error from "./pages/Error/Error";
 import AdminOrderDetails from "./pages/TrackOrder/Admin/AdminOrderDetails";
 import AdminOrder from "./pages/TrackOrder/AdminOrder/AdminOrder";
+import CreateOrdersPage from "./pages/CreateOrder/CreateOrdersPage";
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
           <Route path="/profile" element={<Dashboard />} />
           <Route path="/account" element={<Account />} />
           <Route path="/track-order" element={<TrackOrder />} />
-          <Route path="/create-order" element={<CreateOrder />} />
+          {/* <Route path="/create-order" element={<CreateOrder />} /> */}
+          <Route path="/create-order" element={<CreateOrdersPage />} />
           <Route path="/order-detail/:id" element={<AdminOrderDetails />} />
           <Route path="/admin-order" element={<AdminOrder />} />
         </Route>
