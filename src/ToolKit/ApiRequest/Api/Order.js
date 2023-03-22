@@ -4,6 +4,10 @@ export const CreateOrderApi = async (data) => {
   return api.post("orders/send-links", data);
 };
 
+export const CustomOrderApi = async (data) => {
+  return api.post("customorders/send-customOrder", data);
+};
+
 export const getOrderDetailApi = async (id) => {
   return api.get(`orders/${id}`);
 };
