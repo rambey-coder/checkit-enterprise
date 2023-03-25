@@ -34,7 +34,6 @@ const Sidebar = ({ children }) => {
         <img src={back} alt="" />
       </div>
       <div
-        // className={styles.sidebar}
         className={`${styles.sidebar}
       } ${toggleSidebar ? styles.showSidebar : ""} `}
       >

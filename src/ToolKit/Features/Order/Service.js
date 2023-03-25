@@ -5,6 +5,7 @@ import {
   getOrderDetailApi,
   CustomOrderApi,
   LinkOrderApi,
+  PictureOrderApi,
 } from "../../ApiRequest/Api/Order";
 import {
   setCreateOrder,
@@ -58,6 +59,24 @@ export const linkOrder = (data, setTrackRes, trackRes) => async () => {
   dispatch(setLoading(true));
   try {
     const res = await LinkOrderApi(data);
+
+    if (res) {
+      toast.success(res?.data?.message);
+      setCreateOrder(res?.data);
+      if (res.status === 200) setTrackRes(!trackRes);
+    }
+    dispatch(setLoading(false));
+    return res;
+  } catch (error) {
+    Errorhandler(error);
+    dispatch(setLoading(false));
+  }
+};
+
+export const pictureOrder = (data, setTrackRes, trackRes) => async () => {
+  dispatch(setLoading(true));
+  try {
+    const res = await PictureOrderApi(data);
 
     if (res) {
       toast.success(res?.data?.message);

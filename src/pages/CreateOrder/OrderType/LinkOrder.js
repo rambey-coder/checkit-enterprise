@@ -64,7 +64,11 @@ const LinkOrder = () => {
                 </div>
                 <div>
                   <label htmlFor="quantity">Quantity</label>
-                  <input onChange={handleQuantity} value={orderQuantity} type="number"/>
+                  <input
+                    onChange={handleQuantity}
+                    value={orderQuantity}
+                    type="number"
+                  />
                 </div>
                 <div>
                   <label htmlFor="add">Order Specification</label>
