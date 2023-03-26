@@ -17,6 +17,7 @@ import {
   setOrders,
   setEditOrder,
   setOrderDetails,
+  setCustomOrder,
 } from "./OrderSlice";
 import { toast } from "react-toastify";
 import Errorhandler from "../../ApiRequest/Errorhandler";
@@ -49,7 +50,7 @@ export const customOrder = (data, setTrackRes, trackRes) => async () => {
 
     if (res) {
       toast.success(res?.data?.message);
-      setCreateOrder(res?.data);
+      setCustomOrder(res?.data);
       if (res.status === 200) setTrackRes(!trackRes);
     }
     dispatch(setLoading(false));
@@ -150,7 +151,7 @@ export const getLinkListOrder = (pageNo, pageSize) => async () => {
     dispatch(setLoading(false));
     return res;
   } catch (error) {
-    toast.error(error?.response?.data?.message);
+    // toast.error(error?.response?.data?.message);
     dispatch(setLoading(false));
     Errorhandler(error);
   }
@@ -174,11 +175,12 @@ export const getCustomListOrder = (pageNo, pageSize) => async () => {
   dispatch(setLoading(true));
   try {
     const res = await getCustomListOrderApi(pageNo, pageSize);
-    dispatch(setOrders(res?.data));
+    console.log(res);
+    dispatch(setCustomOrder(res?.data));
     dispatch(setLoading(false));
     return res;
   } catch (error) {
-    toast.error(error?.response?.data?.message);
+    // toast.error(error?.response?.data?.message);
     dispatch(setLoading(false));
     Errorhandler(error);
   }

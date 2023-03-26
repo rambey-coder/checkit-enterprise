@@ -97,7 +97,18 @@ const UserOrder = () => {
           <Link to="/user/order?checkpoint=parcel">Parcel Order</Link>
         </div>
       </div>
-      <div>{componentsRender()}</div>
+
+      <div className={styles.children_container}>
+        <div className={styles.header_list}>
+          <div>Order ID</div>
+          <div>Date</div>
+          <div>Price</div>
+          <div>Order Status</div>
+          <div>Action</div>
+          <div>Edit</div>
+        </div>
+        <div>{componentsRender()}</div>
+      </div>
     </div>
   );
 };

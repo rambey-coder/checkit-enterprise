@@ -4,7 +4,8 @@ const initialState = {
   createOrder: null,
   orders: null,
   editOrder: null,
-  orderDetail: null
+  orderDetail: null,
+  customOrder: null,
 };
 
 const orderSlice = createSlice({
@@ -15,18 +16,26 @@ const orderSlice = createSlice({
       state.createOrder = action.payload;
     },
     setOrders: (state, action) => {
-      state.orders = action.payload
+      state.orders = action.payload;
     },
     setEditOrder: (state, action) => {
-      state.editOrder = action.payload
+      state.editOrder = action.payload;
     },
     setOrderDetails: (state, action) => {
-      state.orderDetail = action.payload
-    }
+      state.orderDetail = action.payload;
+    },
+    setCustomOrder: (state, action) => {
+      state.customOrder = action.payload;
+    },
   },
 });
 
-export const { setCreateOrder, setOrders, setEditOrder, setOrderDetails } =
-  orderSlice.actions;
+export const {
+  setCreateOrder,
+  setOrders,
+  setEditOrder,
+  setOrderDetails,
+  setCustomOrder,
+} = orderSlice.actions;
 
 export default orderSlice.reducer;

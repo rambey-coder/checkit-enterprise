@@ -99,6 +99,20 @@
   color: #031d40;
 }
 
+.children_container {
+  width: 90%;
+  margin: auto;
+}
+
+.links_order {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 60%;
+  margin: 2rem auto;
+  justify-content: space-between;
+}
+
 .userlist_container {
   /* background: rgba(197, 224, 248, 0.111); */
   padding: 20px 15px;
