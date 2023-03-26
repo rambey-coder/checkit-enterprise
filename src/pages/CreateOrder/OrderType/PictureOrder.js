@@ -9,7 +9,7 @@ import { PuffLoader } from "react-spinners";
 const PictureOrder = () => {
   const [ordeSpec, setOrderSpec] = useState("");
   const [qty, setQty] = useState("");
-  const [uploadFile, setUploadFile] = useState(null);
+  const [image, setUploadFile] = useState(null);
 
   const { trackRes, setTrackRes } = useAppContext();
   const { isLoading } = useSelector((state) => state.util);
@@ -27,7 +27,7 @@ const PictureOrder = () => {
     e.preventDefault();
 
     const data = {
-      pictureUrl: uploadFile,
+      pictureUrl: image,
       specification: ordeSpec,
       quantity: qty,
     };
@@ -69,7 +69,8 @@ const PictureOrder = () => {
                   </div>
                   <div>
                     <input
-                      type="file"
+                        type="file"
+                        name="image"
                       onChange={handleSelectFile}
                       className={styles.upload}
                     />
