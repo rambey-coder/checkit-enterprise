@@ -59,29 +59,29 @@ const Sidebar = ({ children }) => {
               <p>Create Order</p>
             </NavLink>
 
-            <NavLink
-              to="/track-order"
-              className={({ isActive }) =>
-                isActive ? `${styles.link} ${styles.active}` : `${styles.link} `
-              }
-            >
-              <img src={track} alt="dashboard" />
-              <p>Track Order</p>
-            </NavLink>
-
             {adminAccount && (
               <NavLink
-                to="/admin-order"
+                to="/track-order"
                 className={({ isActive }) =>
                   isActive
                     ? `${styles.link} ${styles.active}`
                     : `${styles.link} `
                 }
               >
-                <img src={order} alt="dashboard" />
-                <p>Orders</p>
+                <img src={track} alt="dashboard" />
+                <p>Track Order</p>
               </NavLink>
             )}
+
+            <NavLink
+              to="/user/order"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : `${styles.link} `
+              }
+            >
+              <img src={order} alt="dashboard" />
+              <p>Orders</p>
+            </NavLink>
 
             <div>
               <img src={calc} alt="dashboard" />
