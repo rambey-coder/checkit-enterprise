@@ -37,7 +37,6 @@ export const createOrder = (data, setTrackRes, trackRes) => async () => {
     dispatch(setLoading(false));
     return res;
   } catch (error) {
-    // toast.error(error?.response?.data?.message);
     Errorhandler(error);
     dispatch(setLoading(false));
   }
@@ -123,7 +122,6 @@ export const getOrder = (pageNo, pageSize) => async () => {
     dispatch(setLoading(false));
     return res;
   } catch (error) {
-    toast.error(error?.response?.data?.message);
     dispatch(setLoading(false));
     Errorhandler(error);
   }
@@ -137,7 +135,6 @@ export const getParcelListOrder = (pageNo, pageSize) => async () => {
     dispatch(setLoading(false));
     return res;
   } catch (error) {
-    toast.error(error?.response?.data?.message);
     dispatch(setLoading(false));
     Errorhandler(error);
   }
@@ -151,7 +148,6 @@ export const getLinkListOrder = (pageNo, pageSize) => async () => {
     dispatch(setLoading(false));
     return res;
   } catch (error) {
-    // toast.error(error?.response?.data?.message);
     dispatch(setLoading(false));
     Errorhandler(error);
   }
@@ -165,7 +161,6 @@ export const getPictureListOrder = (pageNo, pageSize) => async () => {
     dispatch(setLoading(false));
     return res;
   } catch (error) {
-    toast.error(error?.response?.data?.message);
     dispatch(setLoading(false));
     Errorhandler(error);
   }
@@ -180,7 +175,6 @@ export const getCustomListOrder = (pageNo, pageSize) => async () => {
     dispatch(setLoading(false));
     return res;
   } catch (error) {
-    // toast.error(error?.response?.data?.message);
     dispatch(setLoading(false));
     Errorhandler(error);
   }

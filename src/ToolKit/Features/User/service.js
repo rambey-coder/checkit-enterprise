@@ -16,7 +16,6 @@ export const SignUp = (data) => async () => {
   } catch (error) {
     dispatch(setLoading(false))
     Errorhandler(error);
-    // toast.error(error?.response?.data?.message);
   }
 };
 
@@ -35,7 +34,6 @@ export const SignIn = (data) => async () => {
   } catch (error) {
     Errorhandler(error);
     dispatch(setLoading(false))
-    // toast.error(error?.response?.data?.message);
   }
 };
 
