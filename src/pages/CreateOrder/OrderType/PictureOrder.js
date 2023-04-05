@@ -5,6 +5,7 @@ import { pictureOrder } from "../../../ToolKit/Features/Order/Service";
 import Modal from "../SuccessModal/Modal";
 import { useAppContext } from "../../../context/Context";
 import { PuffLoader } from "react-spinners";
+import axiosInstance from "../../../ToolKit/ApiRequest/axiosRequest";
 
 const PictureOrder = () => {
   const [ordeSpec, setOrderSpec] = useState("");
@@ -23,15 +24,25 @@ const PictureOrder = () => {
     setQty(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = {
-      pictureUrl: image,
-      specification: ordeSpec,
-      quantity: qty,
-    };
-    dispatch(pictureOrder(data, setTrackRes, trackRes));
+
+    const formdata = new FormData();
+    formdata.append("file", image);
+    formdata.append("quantity", qty);
+    formdata.append("specification", ordeSpec);
+    try {
+      const res = await axiosInstance.post("pictureorders/send-picture", FormData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+    // dispatch(pictureOrder(data, setTrackRes, trackRes));
   };
 
   const handleSelectFile = (e) => {
@@ -41,6 +52,8 @@ const PictureOrder = () => {
       setUploadFile(reader.result);
     };
   };
+
+  console.log(image);
 
   return (
     <div className={styles.general}>
@@ -69,8 +82,8 @@ const PictureOrder = () => {
                   </div>
                   <div>
                     <input
-                        type="file"
-                        name="image"
+                      type="file"
+                      name="image"
                       onChange={handleSelectFile}
                       className={styles.upload}
                     />

@@ -6,6 +6,9 @@ const initialState = {
   editOrder: null,
   orderDetail: null,
   customOrder: null,
+  linkOrder: null,
+  pictureOrder: null,
+  parcelOrder: null,
 };
 
 const orderSlice = createSlice({
@@ -27,6 +30,15 @@ const orderSlice = createSlice({
     setCustomOrder: (state, action) => {
       state.customOrder = action.payload;
     },
+    setLinkOrder: (state, action) => {
+      state.linkOrder = action.payload;
+    },
+    setPictureOrder: (state, action) => {
+      state.pictureOrder = action.payload;
+    },
+    setParcelOrder: (state, action) => {
+      state.parcelOrder = action.payload;
+    },
   },
 });
 
@@ -36,6 +48,9 @@ export const {
   setEditOrder,
   setOrderDetails,
   setCustomOrder,
+  setLinkOrder,
+  setPictureOrder,
+  setParcelOrder,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

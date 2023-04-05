@@ -18,6 +18,9 @@ import {
   setEditOrder,
   setOrderDetails,
   setCustomOrder,
+  setLinkOrder,
+  setPictureOrder,
+  setParcelOrder,
 } from "./OrderSlice";
 import { toast } from "react-toastify";
 import Errorhandler from "../../ApiRequest/Errorhandler";
@@ -67,7 +70,7 @@ export const linkOrder = (data, setTrackRes, trackRes) => async () => {
 
     if (res) {
       toast.success(res?.data?.message);
-      setCreateOrder(res?.data);
+      setLinkOrder(res?.data);
       if (res.status === 200) setTrackRes(!trackRes);
     }
     dispatch(setLoading(false));
@@ -85,7 +88,7 @@ export const pictureOrder = (data, setTrackRes, trackRes) => async () => {
 
     if (res) {
       toast.success(res?.data?.message);
-      setCreateOrder(res?.data);
+      setPictureOrder(res?.data);
       if (res.status === 200) setTrackRes(!trackRes);
     }
     dispatch(setLoading(false));
@@ -103,7 +106,7 @@ export const parcelOrder = (data, setTrackRes, trackRes) => async () => {
 
     if (res) {
       toast.success(res?.data?.message);
-      setCreateOrder(res?.data);
+      setParcelOrder(res?.data);
       if (res.status === 200) setTrackRes(!trackRes);
     }
     dispatch(setLoading(false));
@@ -131,7 +134,7 @@ export const getParcelListOrder = (pageNo, pageSize) => async () => {
   dispatch(setLoading(true));
   try {
     const res = await getParcelListOrderApi(pageNo, pageSize);
-    dispatch(setOrders(res?.data));
+    dispatch(setParcelOrder(res?.data));
     dispatch(setLoading(false));
     return res;
   } catch (error) {
@@ -144,7 +147,7 @@ export const getLinkListOrder = (pageNo, pageSize) => async () => {
   dispatch(setLoading(true));
   try {
     const res = await getLinkListOrderApi(pageNo, pageSize);
-    dispatch(setOrders(res?.data));
+    dispatch(setLinkOrder(res?.data));
     dispatch(setLoading(false));
     return res;
   } catch (error) {
@@ -157,7 +160,7 @@ export const getPictureListOrder = (pageNo, pageSize) => async () => {
   dispatch(setLoading(true));
   try {
     const res = await getPictureListOrderApi(pageNo, pageSize);
-    dispatch(setOrders(res?.data));
+    dispatch(setPictureOrder(res?.data));
     dispatch(setLoading(false));
     return res;
   } catch (error) {
