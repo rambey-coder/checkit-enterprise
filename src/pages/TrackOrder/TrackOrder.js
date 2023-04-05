@@ -68,6 +68,7 @@ const TrackOrder = () => {
 
         <div className={styles.history}>
           <h5>Order History</h5>
+          <Link>Admin</Link>
 
           {adminAccount ? (
             <AdminOrder />

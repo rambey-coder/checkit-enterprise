@@ -22,13 +22,16 @@
     -o-transition: all 0.3s ease-in-out;
 }
 
+.pic_cont {
+  width: 100%;
+}
 
-.content_container {
+.content_container, .picture_container {
   width: 90%;
   margin: auto;
 }
 
-.content {
+.content, .forms {
   max-width: 500px;
   margin: auto;
   backdrop-filter: blur(16px) saturate(180%);
@@ -39,7 +42,7 @@
   padding: 30px;
 }
 
-.content > h3 {
+.content > h3,  .forms > h3{
   color: #031d40;
   font-weight: 700;
   font-size: 20px;
@@ -47,23 +50,23 @@
   text-align: center;
 }
 
-.content > form {
+.content > form, .forms > form {
   width: 100%;
 }
 
-.content > form > div {
+.content > form > div , .forms > form > div {
   display: flex;
   flex-direction: column;
   gap: 9px;
 }
 
-.content > form > div label {
+.content > form > div label, .froms > form > div label {
   font-size: 13px;
   font-weight: 600;
   color: #031d40;
 }
 
-.content > form > div > input, textarea  {
+.content > form > div > input, textarea, .forms > form > div > input  {
   padding: 10px 13px;
   border: 1px solid #1e1e1e;
   outline: 0;
@@ -75,12 +78,12 @@
   resize: none;
 }
 
-.content > form > div > input:focus, textarea:focus {
+.content > form > div > input:focus, textarea:focus, .forms > form > div > input:focus {
   border: 1px solid #2995d9;
   transition: 0.4s linear;
 }
 
-.content > form > button {
+.content > form > button, .forms > form > button {
   display: block;
   width: 100%;
   background-color: #031d40;
@@ -96,4 +99,21 @@
   background: transparent;
   color: #2995d9;
   border-color: #2995d9;
+}
+
+.upload {
+  background: #2995d9;
+  width: 100%;
+  margin-bottom: 25px;
+  padding: 10px 13px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  border: 0 !important;
+}
+
+.check_inspect {
+  display: flex;
+  flex-direction: row !important;
 }
